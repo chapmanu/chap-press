@@ -19,17 +19,17 @@ This WordPress project is intended to provide:
 
   Installation process for the setting up Wordpress on a local environment.
 
-  ** Create the MySQL database using the MariaDB monitor.
+- Create the MySQL user and database using the MariaDB monitor.
 
   ```
   mysql -uroot
-  CREATE DATABASE databasename;
-  GRANT ALL PRIVILEGES ON databasename.* TO "wordpressusername"@"localhost" IDENTIFIED BY "password";
+  CREATE DATABASE chappress_dev;
+  GRANT ALL PRIVILEGES ON chappress_dev.* TO "chappress"@"localhost" IDENTIFIED BY "chappress";
   FLUSH PRIVILEGES;
   EXIT
   ```
 
-  ** Download WordPress and run the server.
+- Download WordPress and run the server.
 
   ```
   git clone git@github.com:chapmanu/chap-press.git
@@ -37,7 +37,7 @@ This WordPress project is intended to provide:
   cp -v wp-config.php{-dist,}
 
   # Update db settings in wp-config.php
-  
+
   php -S localhost:8000
   ```
 
@@ -55,16 +55,25 @@ This WordPress project is intended to provide:
   The WordPress admin panel should be displayed and the user should have full access
   to developing in a local environment.
 
-  ## Troubleshooting
+## Troubleshooting
 
-  ** MariaDB
-  If the MariaDB has not been used before, the MySQL database may have to be
-  restarted or unlinked using Homebrew:
+- MariaDB
+  -  If the MariaDB has not been used before, the MySQL database may have to be restarted or unlinked using Homebrew:
 
-  ```
-  brew services stop mysql
-  brew services list
-  brew unlink mysql
-  brew link mariadb
-  brew services start mariadb
-  ```
+    ```
+    brew services stop mysql
+    brew services list
+    brew unlink mysql
+    brew link mariadb
+    brew services start mariadb
+    ```
+
+  - ERROR 1290 --skip-grant-tables option Error
+
+    If you see this error when trying to create or grant privileges to a MYSQL user:
+
+        ERROR 1290 (HY000): The MySQL server is running with the --skip-grant-tables option so it cannot execute this statement
+
+    Run `FLUSH PRIVILEGES;` first then run the command.
+
+    Source: https://unix.stackexchange.com/a/102916
