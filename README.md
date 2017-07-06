@@ -19,7 +19,7 @@ This WordPress project is intended to provide:
 
   Installation process for the setting up Wordpress on a local environment.
 
-  ### Create the MySQL database using the MariaDB monitor.
+  ** Create the MySQL database using the MariaDB monitor.
 
   ```
   mysql -uroot
@@ -29,11 +29,15 @@ This WordPress project is intended to provide:
   EXIT
   ```
 
-  ### Download WordPress and run the server.
+  ** Download WordPress and run the server.
 
   ```
-  cd /public/
-  wp core download
+  git clone git@github.com:chapmanu/chap-press.git
+  cd chap-press/public
+  cp -v wp-config.php{-dist,}
+
+  # Update db settings in wp-config.php
+  
   php -S localhost:8000
   ```
 
@@ -53,7 +57,7 @@ This WordPress project is intended to provide:
 
   ## Troubleshooting
 
-  ### MariaDB
+  ** MariaDB
   If the MariaDB has not been used before, the MySQL database may have to be
   restarted or unlinked using Homebrew:
 
