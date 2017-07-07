@@ -34,8 +34,8 @@ This WordPress project is intended to provide:
   git clone git@github.com:chapmanu/chap-press.git
   cd chap-press/public
   cp -v wp-config.php{-dist,}
-  
-  # The wp-config file already contains the database information to get started. 
+
+  # The wp-config file already contains the database information to get started.
   # These are for local development only.
 
   php -S localhost:8000
@@ -49,6 +49,39 @@ This WordPress project is intended to provide:
   ```
 
   Finish the final instructions through the WordPress installation. The WordPress admin panel should be displayed and the user should have full access to developing in a local environment.
+
+## Debugging in Wordpress
+
+  WordPress comes with specific debug systems designed to simplify the process.
+  The following are meant only for local testing and staging installs.
+
+
+  The following code is already set in the ```wp-config.php``` file.
+  It will log all errors, notices, and warnings to a file called ```debug.log``` in the wp-content directory.
+  It will also hide the errors so they do not interrupt page generation.
+
+  Enable WP_DEBUG mode
+  ```
+  define( 'WP_DEBUG', true );
+  ```
+
+  Enable Debug logging to the /wp-content/debug.log file
+  ```
+  define( 'WP_DEBUG_LOG', true );
+  ```
+
+  Disable display of errors and warnings
+  ```
+  define( 'WP_DEBUG_DISPLAY', false );
+  ```
+  ```
+  @ini_set( 'display_errors', 0 );
+  ```
+
+  Use dev versions of core JS and CSS files (only needed if you are modifying these core files)
+  ```
+  define( 'SCRIPT_DEBUG', true );
+  ```
 
 ## Troubleshooting
 
@@ -67,7 +100,7 @@ This WordPress project is intended to provide:
 
     If you see this error when trying to create or grant privileges to a MYSQL user:
 
-        ERROR 1290 (HY000): The MySQL server is running with the --skip-grant-tables 
+        ERROR 1290 (HY000): The MySQL server is running with the --skip-grant-tables
         option so it cannot execute this statement
 
     Run `FLUSH PRIVILEGES;` first then run the command.
