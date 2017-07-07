@@ -17,7 +17,7 @@ wp-content/plugins/hello.php
 *.bak 
 *.swp
 Thumbs.db 
-*.log
+#*.log
 /.htaccess
 /license.txt
 /readme.html
