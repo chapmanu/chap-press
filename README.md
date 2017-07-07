@@ -35,7 +35,8 @@ This WordPress project is intended to provide:
   cd chap-press/public
   cp -v wp-config.php{-dist,}
   
-  # The wp-config file already contains the database information to get started. These are for local development only.
+  # The wp-config file already contains the database information to get started. 
+  # These are for local development only.
 
   php -S localhost:8000
   ```
@@ -66,7 +67,8 @@ This WordPress project is intended to provide:
 
     If you see this error when trying to create or grant privileges to a MYSQL user:
 
-        ERROR 1290 (HY000): The MySQL server is running with the --skip-grant-tables option so it cannot execute this statement
+        ERROR 1290 (HY000): The MySQL server is running with the --skip-grant-tables 
+        option so it cannot execute this statement
 
     Run `FLUSH PRIVILEGES;` first then run the command.
 
