@@ -39,21 +39,21 @@ define('DB_COLLATE', '');
 
 /**#@+
  * Authentication Unique Keys and Salts.
- *
- * Change these to different unique phrases!
+ * 
+ * DEVELOPER notice - These values need to be updated before release to production for the Chappress project.
  * You can generate these using the {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service}
  * You can change these at any point in time to invalidate all existing cookies. This will force all users to have to log in again.
  *
  * @since 2.6.0
  */
-define('AUTH_KEY',         'B|YWbRE|pj$l@_,K7|yLr:U9~oaM!f1+-0d-uc^@Bd7Na-8F6J$Sg0|R<;B_v;W?');
-define('SECURE_AUTH_KEY',  'Oy[V+Ti:&+obt)|8bT#nmt>>a|m2dm47~WiYC&bd-j|w2>bb5t;3|-~<,by[2=4>');
-define('LOGGED_IN_KEY',    '!rC `o9]oMC_QN,Hj}pki]jIue+2mu^c/{q5}aH5d[`^6}$2-|FV(!b&n &QG{yL');
-define('NONCE_KEY',        ' !FiKB-p =svBWwo!aI+!E==_ih%!H&a5.Lc]. .^fXsvqNNCcDq@.SeJxM7r=|3');
-define('AUTH_SALT',        '?P[BSChZ27aE@[Kh0oS9YZN{Ql`~LS7yCS$^0z.J.]*dj#rxlY$Xych77a#//Sy)');
-define('SECURE_AUTH_SALT', 'F:4F|IQ||#FXBDA)-0:]v:|RK9JSvEJL@CU<-0A(d_(5(3UO,<G5.^~*rrR`G6^g');
-define('LOGGED_IN_SALT',   'ex%=96_>4Mx,g0/=G5Ac0Uv*My5jf3jwneXXRJ5!E(s%ON6ezA8%w*moi,$U%?[X');
-define('NONCE_SALT',       'u!$?hgAACq~kw4^J.hkE~FgbB&&pab!vn6[kpzMU9ay`[`-RM1QXF|#Q6TP3JyL+');
+ define('AUTH_KEY',         'put your unique phrase here');
+ define('SECURE_AUTH_KEY',  'put your unique phrase here');
+ define('LOGGED_IN_KEY',    'put your unique phrase here');
+ define('NONCE_KEY',        'put your unique phrase here');
+ define('AUTH_SALT',        'put your unique phrase here');
+ define('SECURE_AUTH_SALT', 'put your unique phrase here');
+ define('LOGGED_IN_SALT',   'put your unique phrase here');
+ define('NONCE_SALT',       'put your unique phrase here');
 
 /**#@-*/
 

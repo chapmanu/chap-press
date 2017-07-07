@@ -13,7 +13,6 @@ This WordPress project is intended to provide:
   - MariaDB (10.0 or greater)
   - Wordpress Command Line (1.2.1)
 - PHP 7
-- Xcode (8.3.3)
 
 ## Installation
 
@@ -48,11 +47,7 @@ This WordPress project is intended to provide:
   http://localhost:8000
   ```
 
-  Finish the final instructions through the WordPress installation.
-  Enter the database information that was created earlier including database name
-  and password.
-
-  The WordPress admin panel should be displayed and the user should have full access
+  Finish the final instructions through the WordPress installation. The WordPress admin panel should be displayed and the user should have full access
   to developing in a local environment.
 
 ## Troubleshooting
