@@ -92,8 +92,8 @@ This WordPress project is intended to provide:
 
 ## Troubleshooting
 
-- MariaDB
-  -  If the MariaDB has not been used before, the MySQL database may have to be restarted or unlinked using Homebrew:
+### MariaDB
+-  If the MariaDB has not been used before, the MySQL database may have to be restarted or unlinked using Homebrew:
 
     ```
     brew services stop mysql
@@ -103,7 +103,7 @@ This WordPress project is intended to provide:
     brew services start mariadb
     ```
 
-  - ERROR 1290 --skip-grant-tables option Error
+- ERROR 1290 --skip-grant-tables option Error
 
     If you see this error when trying to create or grant privileges to a MYSQL user:
 
