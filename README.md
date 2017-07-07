@@ -1,6 +1,13 @@
 # ChapPress
 ChapPress is a simple WordPress project initiated by the Web and Interactive Marketing team for Chapman University. It is intended to to model best practices for WordPress development. This repository will host the Wordpress model site with custom child themes and plugins.
 
+## Table of Contents
+1. [Goals](#goals)
+2. [Requirements](#requirements)
+3. [Installation](#installation)
+4. [Debugging](#debugging)
+5. [Troubleshooting](#troubleshooting)
+
 ## Goals
 This WordPress project is intended to provide:
 - A consistent local development environment
@@ -50,7 +57,7 @@ This WordPress project is intended to provide:
 
   Finish the final instructions through the WordPress installation. The WordPress admin panel should be displayed and the user should have full access to developing in a local environment.
 
-## Debugging in Wordpress
+## Debugging
 
   WordPress comes with specific debug systems designed to simplify the process.
   The following are meant only for local testing and staging installs.
