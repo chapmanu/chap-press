@@ -34,8 +34,8 @@ This WordPress project is intended to provide:
   git clone git@github.com:chapmanu/chap-press.git
   cd chap-press/public
   cp -v wp-config.php{-dist,}
-
-  # Update db settings in wp-config.php
+  
+  # The wp-config file already contains the database information to get started. These are for local development only.
 
   php -S localhost:8000
   ```
@@ -47,8 +47,7 @@ This WordPress project is intended to provide:
   http://localhost:8000
   ```
 
-  Finish the final instructions through the WordPress installation. The WordPress admin panel should be displayed and the user should have full access
-  to developing in a local environment.
+  Finish the final instructions through the WordPress installation. The WordPress admin panel should be displayed and the user should have full access to developing in a local environment.
 
 ## Troubleshooting
 
