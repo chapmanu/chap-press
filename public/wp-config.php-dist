@@ -18,7 +18,7 @@
  * @package WordPress
  */
 
-// ** MySQL settings - These database values are only to be used for local env development for the Chappress project. ** //
+// ** ChapPress- MySQL settings - These database values are only to be used for local env development for the ChapPress project. ** //
 /** The name of the database for WordPress */
 define('DB_NAME', 'chappress_dev');
 
@@ -40,7 +40,7 @@ define('DB_COLLATE', '');
 /**#@+
  * Authentication Unique Keys and Salts.
  *
- * DEVELOPER notice - These values need to be updated before release to production for the Chappress project.
+ * ChapPress- DEVELOPER notice - These values need to be updated before release to production for the Chappress project.
  * You can generate these using the {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service}
  * You can change these at any point in time to invalidate all existing cookies. This will force all users to have to log in again.
  *
@@ -66,7 +66,7 @@ define('NONCE_SALT',       'put your unique phrase here');
 $table_prefix  = 'wp_';
 
 /**
- * For developers: WordPress debugging mode.
+ * ChapPress - For developers working in WordPress debugging mode.
  *
  * Change this to true to enable the display of notices during development.
  * It is strongly recommended that plugin and theme developers use WP_DEBUG
@@ -92,3 +92,9 @@ if ( !defined('ABSPATH') )
 
 /** Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');
+
+/* ChapPress-For logging purposes only, not to be used for live site */
+$messageLog  = '';
+$messageLog .= "[" . date('d-M-Y H:i:s e') . "]" . " - "; 
+$messageLog .= "Hello from the config file \n"; 
+error_log($messageLog, 3, "./wp-content/debug.log");
