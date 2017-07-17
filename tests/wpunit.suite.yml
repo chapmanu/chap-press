@@ -1,0 +1,22 @@
+# Codeception Test Suite Configuration
+#
+# Suite for unit or integration tests that require WordPress functions and classes.
+
+# actor: WpunitTester
+# modules:
+#     enabled:
+#         - WPLoader
+#         - \Helper\Wpunit
+#     config:
+#         WPLoader:
+#             wpRootFolder: "./public/"
+#             dbName: "wpTests"
+#             dbHost: "localhost"
+#             dbUser: "wpTests"
+#             dbPassword: "wpTests"
+#             tablePrefix: "wp_"
+#             domain: "localhost:8000"
+#             adminEmail: "chappress@gmail.com"
+#             title: "Test"        
+#             plugins: ['my-plugin/my-plugin.php']
+#             activatePlugins: ['my-plugin/my-plugin.php']

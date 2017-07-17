@@ -1,0 +1,29 @@
+# Codeception Test Suite Configuration
+#
+# Suite for functional tests
+# Emulate web requests and make WordPress process them
+
+actor: FunctionalTester
+modules:
+    enabled:
+        - WPDb
+        - WordPress
+        - Asserts
+        - \Helper\Functional
+    config:
+        WPDb:
+            dsn: 'mysql:host=localhost;dbname=chappress_dev'
+            user: 'chappress'
+            password: 'chappress'
+            dump: 'tests/_data/dump.sql'
+            populate: true
+            cleanup: true
+            url: 'http://localhost:8000'
+            urlReplacement: true
+            tablePrefix: 'wp_'
+        WordPress:
+            depends: WPDb
+            wpRootFolder: './public/'
+            adminUsername: 'chappress'
+            adminPassword: 'password'
+            adminPath: '/wp-admin'
