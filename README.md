@@ -228,7 +228,7 @@ tests/_output  --> Output log & Reports
 
 **[Acceptance Tests](http://codeception.com/docs/03-AcceptanceTests)** - Reproduces user's actions in a scenario in clear and direct syntax.
 
-**[Functional Tests](http://codeception.com/docs/04-FunctionalTests)** - Handles end-to-end interactions with Wordpress based modules (WordPress & WPDb). [Functional]
+**[Functional Tests](http://codeception.com/docs/04-FunctionalTests)** - Handles end-to-end interactions with Wordpress based modules (WordPress & WPDb).
 
 **[Unit Tests](http://codeception.com/docs/05-UnitTests)** - Codeception uses PHPUnit as a backend for running its tests. Thus, any PHPUnit test can be added to a Codeception test suite and then executed.
 
