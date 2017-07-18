@@ -105,6 +105,7 @@ Codeception is executed as:
 `./vendor/bin/codecept`
 
 For brevity, you can create an alias that refers to that path:
+
 `#For a permanent alias, add this to your local path environment (e.g. ~/.bash_profile)`
 
 ```
@@ -164,4 +165,4 @@ If you see this error when trying to create or grant privileges to a MYSQL user:
 
 Run `FLUSH PRIVILEGES;` first then run the command.
 
-[Source](https://unix.stackexchange.com/a/102916)
+[Skip-grant Source](https://unix.stackexchange.com/a/102916)
