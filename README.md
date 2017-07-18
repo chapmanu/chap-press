@@ -24,6 +24,8 @@ This WordPress project is intended to provide:
 - PHP 7
 - Codeception for Wordpress (Wp-Browser 1.21)
 
+***
+
 ## Installation
 
 Installation process for the setting up Wordpress on a local environment.
@@ -71,6 +73,8 @@ Go to your browser and enter the url port: `http://localhost:8000`
 Server should be running in the terminal displaying PHP version, port location, and document root.
 Finish the final instructions through the WordPress installation. The WordPress admin panel should be displayed and the user should have full access to developing in a local environment.
 
+***
+
 ## Debugging
 
 WordPress comes with specific debug systems designed to simplify the process.
@@ -80,6 +84,8 @@ The following code is already set in the `wp-config.php` file.
 It will log all errors, notices, and warnings to a file called `debug.log` in the wp-content directory.
 It will also hide the errors so they do not interrupt page generation.
 
+<br/>
+
 | Command | Description |
 | --- | --- |
 | `define( 'WP_DEBUG', true );` | Enable WP_DEBUG mode |
@@ -87,6 +93,8 @@ It will also hide the errors so they do not interrupt page generation.
 | `define( 'WP_DEBUG_DISPLAY', false );` | Disable display of errors and warnings |
 | `@ini_set( 'display_errors', 0 );` | // |
 | `define( 'SCRIPT_DEBUG', true );` | Uses unminified versions of core JS and CSS files |
+
+***
 
 ## Automated Testing ###
 
@@ -97,15 +105,16 @@ Codeception is executed as:
 `./vendor/bin/codecept`
 
 For brevity, you can create an alias that refers to that path:
+`#For a permanent alias, add this to your local path environment (e.g. ~/.bash_profile)`
 
 ```
 alias codecept=./vendor/bin/codecept
 codecept run 
-
-#For a permanent alias, add this to your local path environment (e.g. `~/.bash_profile`)
 ```
 
 ![Demo](http://codeception.com/images/codecept_run.gif)
+
+<br/>
 
 | Command | Description |
 | --- | --- |
@@ -124,10 +133,14 @@ codecept run
 | `codecept g:wpunit suite Custom Name` | Generates WPUnit test |
 | `codecept run --h` | General help |
 
+<br/>
 
-See [Commands](http://codeception.com/docs/reference/Commands)
-See [Chappress Wiki](https://github.com/chapmanu/chap-press/wiki#automated-testing) for more info
 
+See [Codeception Console Commands](http://codeception.com/docs/reference/Commands)
+
+See [Chappress Wiki - Automated Testing](https://github.com/chapmanu/chap-press/wiki#automated-testing)
+
+***
 
 ## Troubleshooting
 
