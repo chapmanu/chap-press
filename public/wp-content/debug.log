@@ -1,1 +1,20 @@
 [07-Jul-2017 22:54:12 UTC] WP_Community_Events::maybe_log_events_response: Valid response received. Details: {"api_url":"https:\/\/api.wordpress.org\/events\/1.0\/","request_args":{"body":{"number":5,"ip":"::","locale":"en_US","timezone":"America\/Los_Angeles"}},"response_code":200,"response_body":{"location":{"ip":"24.171.136.59"},"events":"5 events trimmed."}}
+[18-Jul-2017 00:21:21 UTC] - Hello from the config file 
+[18-Jul-2017 00:21:26 UTC] - Hello from the config file 
+[18-Jul-2017 00:21:33 UTC] - Hello from the config file 
+[18-Jul-2017 00:21:33 UTC] PHP Warning:  error_log(./wp-content/debug.log): failed to open stream: No such file or directory in /Users/spence/Documents/ChapmanDev/GitRepo/public/wp-config.php on line 100
+[18-Jul-2017 00:21:39 UTC] PHP Warning:  error_log(./wp-content/debug.log): failed to open stream: No such file or directory in /Users/spence/Documents/ChapmanDev/GitRepo/public/wp-config.php on line 100
+[18-Jul-2017 00:21:44 UTC] PHP Warning:  error_log(./wp-content/debug.log): failed to open stream: No such file or directory in /Users/spence/Documents/ChapmanDev/GitRepo/public/wp-config.php on line 100
+[18-Jul-2017 00:21:46 UTC] PHP Warning:  error_log(./wp-content/debug.log): failed to open stream: No such file or directory in /Users/spence/Documents/ChapmanDev/GitRepo/public/wp-config.php on line 100
+[18-Jul-2017 00:21:49 UTC] PHP Warning:  error_log(./wp-content/debug.log): failed to open stream: No such file or directory in /Users/spence/Documents/ChapmanDev/GitRepo/public/wp-config.php on line 100
+[18-Jul-2017 00:21:55 UTC] PHP Warning:  error_log(./wp-content/debug.log): failed to open stream: No such file or directory in /Users/spence/Documents/ChapmanDev/GitRepo/public/wp-config.php on line 100
+[18-Jul-2017 00:21:56 UTC] PHP Warning:  error_log(./wp-content/debug.log): failed to open stream: No such file or directory in /Users/spence/Documents/ChapmanDev/GitRepo/public/wp-config.php on line 100
+[18-Jul-2017 00:21:57 UTC] PHP Warning:  error_log(./wp-content/debug.log): failed to open stream: No such file or directory in /Users/spence/Documents/ChapmanDev/GitRepo/public/wp-config.php on line 100
+[18-Jul-2017 00:22:05 UTC] PHP Warning:  error_log(./wp-content/debug.log): failed to open stream: No such file or directory in /Users/spence/Documents/ChapmanDev/GitRepo/public/wp-config.php on line 100
+[18-Jul-2017 00:22:08 UTC] PHP Warning:  error_log(./wp-content/debug.log): failed to open stream: No such file or directory in /Users/spence/Documents/ChapmanDev/GitRepo/public/wp-config.php on line 100
+[18-Jul-2017 00:23:08 UTC] PHP Warning:  error_log(./wp-content/debug.log): failed to open stream: No such file or directory in /Users/spence/Documents/ChapmanDev/GitRepo/public/wp-config.php on line 100
+[18-Jul-2017 00:23:32 UTC] - Hello from the config file 
+[18-Jul-2017 00:23:32 UTC] - Hello from the config file 
+[18-Jul-2017 00:23:32 UTC] - Hello from the config file 
+[18-Jul-2017 00:23:32 UTC] PHP Warning:  error_log(./wp-content/debug.log): failed to open stream: No such file or directory in /Users/spence/Documents/ChapmanDev/GitRepo/public/wp-config.php on line 100
+[18-Jul-2017 00:23:32 UTC] PHP Warning:  error_log(./wp-content/debug.log): failed to open stream: No such file or directory in /Users/spence/Documents/ChapmanDev/GitRepo/public/wp-config.php on line 100

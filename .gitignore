@@ -23,7 +23,8 @@ Thumbs.db
 /readme.html
 /sitemap.xml
 /sitemap.xml.gz
-*.sql
+# *.sql #
 *.sqlite
 database.yml
 secrets.yml
+/vendor
