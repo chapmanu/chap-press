@@ -90,9 +90,20 @@ It will also hide the errors so they do not interrupt page generation.
 
 ## Automated Testing ###
 
-Please make sure your local development server is running. Tests are executed with 'run' command. 
+Please make sure your local development server is running. Tests are executed with 'run' command.
 
-[Quick Start](http://codeception.com/quickstart)
+Codeception is executed as:
+
+`./vendor/bin/codecept`
+
+For brevity, you can create an alias that refers to that path:
+
+```
+alias codecept=./vendor/bin/codecept
+codecept run 
+
+#For a permanent alias, add this to your local path environment (e.g. `~/.bash_profile`)
+```
 
 ![Demo](http://codeception.com/images/codecept_run.gif)
 
@@ -115,6 +126,7 @@ Please make sure your local development server is running. Tests are executed wi
 
 
 See [Commands](http://codeception.com/docs/reference/Commands)
+See [Chappress Wiki](https://github.com/chapmanu/chap-press/wiki#automated-testing) for more info
 
 
 ## Troubleshooting
