@@ -136,13 +136,16 @@ It will also hide the errors so they do not interrupt page generation.
 
 <br/>
 
-[Chappress Wiki - Create A Test](https://github.com/chapmanu/chap-press/wiki#create-a-test) - See a quick example of how to create a test.
+**Test Resources**
 
-[Acceptance Doc](http://codeception.com/docs/03-AcceptanceTests) for more specifics
+[Chappress Wiki - Create A Test](https://github.com/chapmanu/chap-press/wiki#create-a-test) - See a quick example of how to create a test.    
+[Wordpress Methods](https://github.com/lucatume/wp-browser#methods) - WordPress methods to use when creating tests ($I->doSomething syntax).  
+[General Test Methods](http://codeception.com/docs/modules/PhpBrowser) - General methods to use from Codeception.  
 
-[Codeception Console Commands](http://codeception.com/docs/reference/Commands)
+**General**
 
-[Chappress Wiki - Automated Testing](https://github.com/chapmanu/chap-press/wiki#automated-testing)
+[Codeception Console Commands](http://codeception.com/docs/reference/Commands)  
+[Chappress Wiki - Automated Testing](https://github.com/chapmanu/chap-press/wiki#automated-testing)  
 
 ***
 
