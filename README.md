@@ -125,7 +125,7 @@ It will also hide the errors so they do not interrupt page generation.
 | `codecept run unit` | Run all the unit tests |
 | `codecept run functional` | Run all the functional tests |
 | `codecept run wpunit` | Run all the wpunit tests |
-| `codecept run dry-run acceptance` | Do a dry run of a specific test |
+| `codecept run dry-run acceptance` | Do a dry run of a specific suite |
 | `codecept run --steps` | Print a step-by-step execution |
 | `codecept run --debug` | Print steps and debug information |
 | `codecept run --html` | Prints a stylized html report |
