@@ -54,18 +54,23 @@ cp -v wp-config.php{-dist,}
 
 - **Install Automated Test Suite**
 
-Navigate to project folder root: `/chap-press` and use composer:
+Navigate to project folder root: `/chap-press`
 
 ```
 composer install
-./vendor/bin/codecept --version
+#installs depedency from composer.json 
 
-#This will install Codeception for Wordpress.  
+echo "alias codecept=./vendor/bin/codecept" >> ~/.bash_profile  
+#creates an alias
+
+codecept --version  
 ```
+
+Codeception executed as `codecept` or `./vendor/bin/codecept`
 
 - **Run the Server**
   
-`php -S localhost:8000`
+Navigate to the `/public` directory and run `php -S localhost:8000`
 
 
 Go to your browser and enter the url port: `http://localhost:8000`
@@ -96,22 +101,17 @@ It will also hide the errors so they do not interrupt page generation.
 
 ***
 
-## Automated Testing ###
+## Automated Testing 
 
-Please make sure your local development server is running. Tests are executed with 'run' command.
+### Run Automated Tests
 
-Codeception is executed as:
+1. **Run Local Server** at `/public` directory: `php -S localhost:8000`
 
-`./vendor/bin/codecept`
+2. **Navigate to root folder**: `/chap-press`
 
-For brevity, you can create an alias that refers to that path:
+3. **Execute in terminal**: `codecept run`
 
-`#For a permanent alias, add this to your local path environment (e.g. ~/.bash_profile)`
-
-```
-alias codecept=./vendor/bin/codecept
-codecept run 
-```
+**See Table** below for more specific commands
 
 ![Demo](http://codeception.com/images/codecept_run.gif)
 
@@ -136,10 +136,13 @@ codecept run
 
 <br/>
 
+[Chappress Wiki - Create A Test](https://github.com/chapmanu/chap-press/wiki#create-a-test) - See a quick example of how to create a test.
 
-See [Codeception Console Commands](http://codeception.com/docs/reference/Commands)
+[Acceptance Doc](http://codeception.com/docs/03-AcceptanceTests) for more specifics
 
-See [Chappress Wiki - Automated Testing](https://github.com/chapmanu/chap-press/wiki#automated-testing)
+[Codeception Console Commands](http://codeception.com/docs/reference/Commands)
+
+[Chappress Wiki - Automated Testing](https://github.com/chapmanu/chap-press/wiki#automated-testing)
 
 ***
 
