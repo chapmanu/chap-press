@@ -120,10 +120,11 @@ It will also hide the errors so they do not interrupt page generation.
 | Command | Description |
 | --- | --- |
 | `codecept run` | Run all tests |
-| `codecept run acceptance` | Run an acceptance test |
-| `codecept run unit` | Run a unit test |
-| `codecept run functional` | Run a functional test |
-| `codecept run wpunit` | Run a wpunit test |
+| `codecept run acceptance test.php`| Run a specific test from a suite|
+| `codecept run acceptance` | Run all the acceptance tests |
+| `codecept run unit` | Run all the unit tests |
+| `codecept run functional` | Run all the functional tests |
+| `codecept run wpunit` | Run all the wpunit tests |
 | `codecept run dry-run acceptance` | Do a dry run of a specific test |
 | `codecept run --steps` | Print a step-by-step execution |
 | `codecept run --debug` | Print steps and debug information |
@@ -134,6 +135,8 @@ It will also hide the errors so they do not interrupt page generation.
 | `codecept g:wpunit suite Custom Name` | Generates WPUnit test |
 | `codecept run --h` | General help |
 
+[Codeception Console Commands](http://codeception.com/docs/reference/Commands)  
+
 <br/>
 
 **Test Resources**
@@ -142,9 +145,8 @@ It will also hide the errors so they do not interrupt page generation.
 [Wordpress Methods](https://github.com/lucatume/wp-browser#methods) - WordPress methods to use when creating tests ($I->doSomething syntax).  
 [General Test Methods](http://codeception.com/docs/modules/PhpBrowser) - General methods to use from Codeception.  
 
-**General**
+**General** 
 
-[Codeception Console Commands](http://codeception.com/docs/reference/Commands)  
 [Chappress Wiki - Automated Testing](https://github.com/chapmanu/chap-press/wiki#automated-testing)  
 
 ***
