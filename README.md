@@ -121,7 +121,26 @@ It will also hide the errors so they do not interrupt page generation.
 
 3. **Execute in terminal**: `codecept run`
 
+This command will run all tests (acceptance,functional,unit,wpunit)
+
+To run a specific suite: `codecept run acceptance`
+
+To run a specific file: `codecept run acceptance testfile.php`
+
 **See Table** below for more specific commands
+
+### WPUnit
+
+Wordpress Unit tests are integration tests that check how components work inside WordPress. WPLoader is a module that loads, installs and configures a fresh WordPress installation before each test method runs.
+
+This module uses a separate database `wpTests`. If not created, see [installation guide](https://github.com/chapmanu/chap-press/tree/automated-test-suite#installation).
+
+- Add your full wordpress path to the `wpunit.suite.yml` file at the key `wpRootFolder`
+
+- `codecept run wpunit`
+
+** 
+
 
 ![Demo](http://codeception.com/images/codecept_run.gif)
 
