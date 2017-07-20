@@ -30,7 +30,7 @@ This WordPress project is intended to provide:
 
 Installation process for the setting up Wordpress on a local environment.
 
-- **Create the MySQL user and database using the MariaDB monitor**.
+- **Create the MySQL user and databases using the MariaDB monitor**.
 
 ```
 mysql -uroot
