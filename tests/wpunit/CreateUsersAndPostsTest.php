@@ -1,20 +1,22 @@
 <?php
 
-class createPostsAndCommentsTest extends \Codeception\TestCase\WPTestCase
+### This is the standard file when codecept generates a wpunit test.
+
+
+
+class CreateUsersAndPostsTest extends \Codeception\TestCase\WPTestCase
 {
+    /**
+     * @var \WpunitTester
+     */
+    protected $tester;
 
-    public function setUp()
+    protected function _before()
     {
-        // before
-        parent::setUp();
-
-        // your set up methods here
     }
 
-    public function tearDown()
+    protected function _after()
     {
-        // your tear down methods here
-        parent::tearDown();
     }
 
     // tests
@@ -33,5 +35,4 @@ class createPostsAndCommentsTest extends \Codeception\TestCase\WPTestCase
         $comment_id = $this->factory->comment->create();
         $comment_id_array = $this->factory->comment->create_many( 4 );
     }
-
 }
