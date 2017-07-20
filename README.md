@@ -36,22 +36,14 @@ Installation process for the setting up Wordpress on a local environment.
 mysql -uroot
 CREATE DATABASE chappress_dev;
 GRANT ALL PRIVILEGES ON chappress_dev.* TO "chappress"@"localhost" IDENTIFIED BY "chappress";
-FLUSH PRIVILEGES;
-EXIT
-```
 
-- **Create A Testing Database used for Codeception**.
-
-```
-mysql -uroot
-CREATE DATABASE wpTests;
-GRANT ALL PRIVILEGES ON wpTests.* TO "wpTests"@"localhost" IDENTIFIED BY "wpTests";
+CREATE DATABASE chappress_test;
+GRANT ALL PRIVILEGES ON chappress_test.* TO "chappress"@"localhost" IDENTIFIED BY "chappress";
 FLUSH PRIVILEGES;
 EXIT
 ```
 
 - **Download Chap-Press Git with WordPress** 
-
 
 ```
 git clone git@github.com:chapmanu/chap-press.git

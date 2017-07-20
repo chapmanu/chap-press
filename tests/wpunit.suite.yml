@@ -12,13 +12,13 @@ modules:
     config:
         WPLoader:
             wpRootFolder: "./public/"
-            dbName: "wpTests"
+            dbName: "chappress_test"
             dbHost: "localhost"
-            dbUser: "wpTests"
-            dbPassword: "wpTests"
+            dbUser: "chappress"
+            dbPassword: "chappress"
             tablePrefix: "wp_"
             domain: "localhost:8000"
             adminEmail: "chappress@gmail.com"
-            title: "Test"        
+            title: "Chappress Test Site"        
             
             
