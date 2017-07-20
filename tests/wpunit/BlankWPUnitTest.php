@@ -1,5 +1,8 @@
 <?php
 
+### This is the standard file when codecept generates a wpunit test.
+
+
 
 class BlankWPUnitTest extends \Codeception\Test\Unit
 {

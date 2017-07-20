@@ -11,7 +11,7 @@ modules:
         - \Helper\Wpunit
     config:
         WPLoader:
-            wpRootFolder: ""
+            wpRootFolder: "path/to/wordpress"
             dbName: "wpTests"
             dbHost: "localhost"
             dbUser: "wpTests"
