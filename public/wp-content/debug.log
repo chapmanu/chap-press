@@ -76,3 +76,29 @@
 [20-Jul-2017 16:23:27 UTC] - Hello from the config file 
 [20-Jul-2017 16:23:28 UTC] PHP Warning:  error_log(./wp-content/debug.log): failed to open stream: No such file or directory in /Users/spence/Documents/ChapmanDev/GitRepo/public/wp-config.php on line 100
 [20-Jul-2017 16:23:28 UTC] PHP Warning:  error_log(./wp-content/debug.log): failed to open stream: No such file or directory in /Users/spence/Documents/ChapmanDev/GitRepo/public/wp-config.php on line 100
+[20-Jul-2017 17:44:00 UTC] - Hello from the config file 
+[20-Jul-2017 17:44:00 UTC] - Hello from the config file 
+[20-Jul-2017 17:44:01 UTC] - Hello from the config file 
+[20-Jul-2017 17:44:01 UTC] PHP Warning:  error_log(./wp-content/debug.log): failed to open stream: No such file or directory in /Users/spence/Documents/ChapmanDev/GitRepo/public/wp-config.php on line 100
+[20-Jul-2017 17:44:01 UTC] PHP Warning:  error_log(./wp-content/debug.log): failed to open stream: No such file or directory in /Users/spence/Documents/ChapmanDev/GitRepo/public/wp-config.php on line 100
+[20-Jul-2017 17:44:01 UTC] PHP Warning:  error_log(./wp-content/debug.log): failed to open stream: No such file or directory in /Users/spence/Documents/ChapmanDev/GitRepo/public/wp-config.php on line 100
+[20-Jul-2017 17:44:03 UTC] - Hello from the config file 
+[20-Jul-2017 17:44:03 UTC] - Hello from the config file 
+[20-Jul-2017 17:44:04 UTC] - Hello from the config file 
+[20-Jul-2017 17:44:04 UTC] - Hello from the config file 
+[20-Jul-2017 17:44:05 UTC] - Hello from the config file 
+[20-Jul-2017 17:44:05 UTC] - Hello from the config file 
+[20-Jul-2017 17:44:06 UTC] - Hello from the config file 
+[20-Jul-2017 17:44:06 UTC] - Hello from the config file 
+[20-Jul-2017 17:44:06 UTC] PHP Warning:  error_log(./wp-content/debug.log): failed to open stream: No such file or directory in /Users/spence/Documents/ChapmanDev/GitRepo/public/wp-config.php on line 100
+[20-Jul-2017 17:44:07 UTC] - Hello from the config file 
+[20-Jul-2017 17:44:07 UTC] - Hello from the config file 
+[20-Jul-2017 17:44:08 UTC] - Hello from the config file 
+[20-Jul-2017 17:44:08 UTC] - Hello from the config file 
+[20-Jul-2017 17:44:08 UTC] PHP Warning:  error_log(./wp-content/debug.log): failed to open stream: No such file or directory in /Users/spence/Documents/ChapmanDev/GitRepo/public/wp-config.php on line 100
+[20-Jul-2017 17:44:08 UTC] PHP Warning:  error_log(./wp-content/debug.log): failed to open stream: No such file or directory in /Users/spence/Documents/ChapmanDev/GitRepo/public/wp-config.php on line 100
+[20-Jul-2017 17:44:09 UTC] PHP Warning:  error_log(./wp-content/debug.log): failed to open stream: No such file or directory in /Users/spence/Documents/ChapmanDev/GitRepo/public/wp-config.php on line 100
+[20-Jul-2017 17:44:09 UTC] PHP Warning:  error_log(./wp-content/debug.log): failed to open stream: No such file or directory in /Users/spence/Documents/ChapmanDev/GitRepo/public/wp-config.php on line 100
+[20-Jul-2017 17:44:09 UTC] PHP Warning:  error_log(./wp-content/debug.log): failed to open stream: No such file or directory in /Users/spence/Documents/ChapmanDev/GitRepo/public/wp-config.php on line 100
+[20-Jul-2017 17:44:09 UTC] PHP Warning:  error_log(./wp-content/debug.log): failed to open stream: No such file or directory in /Users/spence/Documents/ChapmanDev/GitRepo/public/wp-config.php on line 100
+[20-Jul-2017 17:44:10 UTC] PHP Warning:  error_log(./wp-content/debug.log): failed to open stream: No such file or directory in /Users/spence/Documents/ChapmanDev/GitRepo/public/wp-config.php on line 100
