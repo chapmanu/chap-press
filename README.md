@@ -125,17 +125,6 @@ This command will run all tests (acceptance,functional,unit,wpunit)
 
 [See Table](#codeception-commands) below for more specific commands
 
-### WPUnit
-
-Wordpress Unit tests are integration tests that check how components work inside WordPress. WPLoader is a module that loads, installs and configures a fresh WordPress installation before each test method runs.
-
-This module uses a separate database `wpTests`. If not created, see [installation guide](https://github.com/chapmanu/chap-press/tree/automated-test-suite#installation).
-
-- Add your full wordpress path to the `wpunit.suite.yml` file at the key `wpRootFolder`
-
-- `codecept run wpunit`
-
-
 
 ![Demo](http://codeception.com/images/codecept_run.gif)
 
@@ -164,6 +153,17 @@ This module uses a separate database `wpTests`. If not created, see [installatio
 [Codeception Console Commands](http://codeception.com/docs/reference/Commands)  
 
 <br/>
+
+### WPUnit
+
+Wordpress Unit tests are integration tests that check how components work inside WordPress. WPLoader is a module that loads, installs and configures a fresh WordPress installation before each test method runs.
+
+This module uses a separate database `wpTests`. If not created, see [installation guide](https://github.com/chapmanu/chap-press/tree/automated-test-suite#installation).
+
+- Add your full wordpress path to the `wpunit.suite.yml` file at the key `wpRootFolder`
+
+- `codecept run wpunit`
+
 
 **Test Resources**
 
