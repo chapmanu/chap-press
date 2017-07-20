@@ -121,13 +121,9 @@ It will also hide the errors so they do not interrupt page generation.
 
 3. **Execute in terminal**: `codecept run`
 
-This command will run all tests (acceptance,functional,unit,wpunit)
+This command will run all tests (acceptance,functional,unit,wpunit) 
 
-To run a specific suite: `codecept run acceptance`
-
-To run a specific file: `codecept run acceptance testfile.php`
-
-**See Table** below for more specific commands
+[See Table](#codeception-commands) below for more specific commands
 
 ### WPUnit
 
@@ -139,12 +135,13 @@ This module uses a separate database `wpTests`. If not created, see [installatio
 
 - `codecept run wpunit`
 
-** 
 
 
 ![Demo](http://codeception.com/images/codecept_run.gif)
 
 <br/>
+
+### Codeception Commands
 
 | Command | Description |
 | --- | --- |
