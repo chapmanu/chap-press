@@ -40,6 +40,16 @@ FLUSH PRIVILEGES;
 EXIT
 ```
 
+- **Create A Testing Database used for Codeception**.
+
+```
+mysql -uroot
+CREATE DATABASE wpTests;
+GRANT ALL PRIVILEGES ON wpTests.* TO "wpTests"@"localhost" IDENTIFIED BY "wpTests";
+FLUSH PRIVILEGES;
+EXIT
+```
+
 - **Download Chap-Press Git with WordPress** 
 
 
