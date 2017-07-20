@@ -1,6 +1,6 @@
 <?php
 
-class AddUserTest extends \Codeception\TestCase\WPTestCase
+class createPostsAndCommentsTest extends \Codeception\TestCase\WPTestCase
 {
 
     public function setUp()
