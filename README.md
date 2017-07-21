@@ -43,7 +43,7 @@ FLUSH PRIVILEGES;
 EXIT
 ```
 
-- **Download Chap-Press Git with WordPress** 
+- **Download Chap-Press Git with WordPress**
 
 ```
 git clone git@github.com:chapmanu/chap-press.git
@@ -60,10 +60,12 @@ Navigate to project folder root: `/chap-press`
 
 ```
 composer install
-#installs depedency from composer.json 
+#installs depedency from composer.json
 
 echo "alias codecept=./vendor/bin/codecept" >> ~/.bash_profile  
 #creates an alias
+
+source ~/.bash_profile 
 
 codecept --version  
 ```
@@ -71,7 +73,7 @@ codecept --version
 Codeception executed as `codecept` or `./vendor/bin/codecept`
 
 - **Run the Server**
-  
+
 Navigate to the `/public` directory and run `php -S localhost:8000`
 
 
@@ -103,7 +105,7 @@ It will also hide the errors so they do not interrupt page generation.
 
 ***
 
-## Automated Testing 
+## Automated Testing
 
 ### Run Automated Tests
 
@@ -115,7 +117,7 @@ It will also hide the errors so they do not interrupt page generation.
 
 This command will run all tests (acceptance,functional,unit,wpunit)
 
-**_Note_**: _WPUnit - This module uses a separate database_ `wpTests`. _If not created, see_ [installation guide](https://github.com/chapmanu/chap-press/tree/automated-test-suite#installation). 
+**_Note_**: _WPUnit - This module uses a separate database_ `wpTests`. _If not created, see_ [installation guide](https://github.com/chapmanu/chap-press/tree/automated-test-suite#installation).
 
 [See Table](#codeception-commands) below for more specific commands
 
@@ -153,7 +155,7 @@ This command will run all tests (acceptance,functional,unit,wpunit)
 [Wordpress Methods](https://github.com/lucatume/wp-browser#methods) - WordPress methods to use when creating tests ($I->doSomething syntax).  
 [General Test Methods](http://codeception.com/docs/modules/PhpBrowser) - General methods to use from Codeception.  
 
-**General** 
+**General**
 
 [Chappress Wiki - Automated Testing](https://github.com/chapmanu/chap-press/wiki#automated-testing)  
 
