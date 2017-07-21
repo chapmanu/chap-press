@@ -62,12 +62,12 @@ Navigate to project folder root: `/chap-press`
 composer install
 #installs depedency from composer.json
 
-echo "alias codecept=./vendor/bin/codecept" >> ~/.bash_profile  
+echo "alias codecept=./vendor/bin/codecept" >> ~/.bash_profile
 #creates an alias
 
-source ~/.bash_profile 
+source ~/.bash_profile
 
-codecept --version  
+codecept --version
 ```
 
 Codeception executed as `codecept` or `./vendor/bin/codecept`
@@ -109,15 +109,9 @@ It will also hide the errors so they do not interrupt page generation.
 
 ### Run Automated Tests
 
-1. **Run Local Server** at `/public` directory: `php -S localhost:8000`
-
-2. **Navigate to root folder**: `/chap-press`
-
-3. **Execute in terminal**: `codecept run`
+- **Execute in terminal**: `codecept run`
 
 This command will run all tests (acceptance,functional,unit,wpunit)
-
-**_Note_**: _WPUnit - This module uses a separate database_ `chappress_test`. _If not created, see_ [installation guide](https://github.com/chapmanu/chap-press/tree/automated-test-suite#installation).
 
 [See Table](#codeception-commands) below for more specific commands
 
@@ -145,19 +139,19 @@ This command will run all tests (acceptance,functional,unit,wpunit)
 | `codecept g:wpunit suite Custom Name` | Generates WPUnit test |
 | `codecept run --h` | General help |
 
-[Codeception Console Commands](http://codeception.com/docs/reference/Commands)  
+[Codeception Console Commands](http://codeception.com/docs/reference/Commands)
 
 <br/>
 
 **Test Resources**
 
-[Chappress Wiki - Create A Test](https://github.com/chapmanu/chap-press/wiki#create-a-test) - See a quick example of how to create a test.    
-[Wordpress Methods](https://github.com/lucatume/wp-browser#methods) - WordPress methods to use when creating tests ($I->doSomething syntax).  
-[General Test Methods](http://codeception.com/docs/modules/PhpBrowser) - General methods to use from Codeception.  
+[Chappress Wiki - Create A Test](https://github.com/chapmanu/chap-press/wiki#create-a-test) - See a quick example of how to create a test.
+[Wordpress Methods](https://github.com/lucatume/wp-browser#methods) - WordPress methods to use when creating tests ($I->doSomething syntax).
+[General Test Methods](http://codeception.com/docs/modules/PhpBrowser) - General methods to use from Codeception.
 
 **General**
 
-[Chappress Wiki - Automated Testing](https://github.com/chapmanu/chap-press/wiki#automated-testing)  
+[Chappress Wiki - Automated Testing](https://github.com/chapmanu/chap-press/wiki#automated-testing)
 
 ***
 
