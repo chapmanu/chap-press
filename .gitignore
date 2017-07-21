@@ -29,3 +29,9 @@ Thumbs.db
 database.yml
 secrets.yml
 /vendor
+
+# Codeception
+/tests/_output
+phpbuiltinserver.access_log.txt
+phpbuiltinserver.errors.txt
+phpbuiltinserver.output.txt
