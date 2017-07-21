@@ -9,6 +9,7 @@ modules:
     enabled:
         - WPLoader
         - \Helper\Wpunit
+        - \Helper\Acceptance
     config:
         WPLoader:
             wpRootFolder: "./public/"
@@ -17,8 +18,18 @@ modules:
             dbUser: "chappress"
             dbPassword: "chappress"
             tablePrefix: "wp_"
-            domain: "localhost:8080"
+            domain: "localhost:8181"
             adminEmail: "chappress@gmail.com"
             title: "Chappress Test Site"        
-            
+extensions:
+    enabled:
+        - Codeception\Extension\PhpBuiltinServer
+    config:
+        Codeception\Extension\PhpBuiltinServer:
+            hostname: localhost
+            port: 8000
+            autostart: true
+            documentRoot: ./public
+            startDelay: 1
+            phpIni: ./config/php.ini
             

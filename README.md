@@ -74,10 +74,10 @@ Codeception executed as `codecept` or `./vendor/bin/codecept`
 
 - **Run the Server**
 
-Navigate to the `/public` directory and run `php -S localhost:8000`
+Navigate to the `/public` directory and run `php -S localhost:8181`
 
 
-Go to your browser and enter the url port: `http://localhost:8000`
+Go to your browser and enter the url port: `http://localhost:8181`
 
 Server should be running in the terminal displaying PHP version, port location, and document root.
 Finish the final instructions through the WordPress installation. The WordPress admin panel should be displayed and the user should have full access to developing in a local environment.
@@ -111,11 +111,9 @@ It will also hide the errors so they do not interrupt page generation.
 
 - **Execute in terminal**: `codecept run`
 
-This command will run all tests (acceptance,functional,unit,wpunit)
+This command will run all tests (acceptance, functional, unit, wpunit)
 
 [See Table](#codeception-commands) below for more specific commands
-
-![Demo](http://codeception.com/images/codecept_run.gif)
 
 <br/>
 
