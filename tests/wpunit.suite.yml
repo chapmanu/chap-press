@@ -17,7 +17,7 @@ modules:
             dbUser: "chappress"
             dbPassword: "chappress"
             tablePrefix: "wp_"
-            domain: "localhost:8000"
+            domain: "localhost:8080"
             adminEmail: "chappress@gmail.com"
             title: "Chappress Test Site"        
             
