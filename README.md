@@ -117,7 +117,7 @@ It will also hide the errors so they do not interrupt page generation.
 
 This command will run all tests (acceptance,functional,unit,wpunit)
 
-**_Note_**: _WPUnit - This module uses a separate database_ `wpTests`. _If not created, see_ [installation guide](https://github.com/chapmanu/chap-press/tree/automated-test-suite#installation).
+**_Note_**: _WPUnit - This module uses a separate database_ `chappress_test`. _If not created, see_ [installation guide](https://github.com/chapmanu/chap-press/tree/automated-test-suite#installation).
 
 [See Table](#codeception-commands) below for more specific commands
 
