@@ -78,7 +78,7 @@ Codeception executed as `codecept` or `./vendor/bin/codecept`
 
 - **Run the Server**
 
-**Execute**: `./start-server.sh`
+**Execute**: `php -S localhost:8222 -t ./public`
 
 **Server** should be running in the terminal.
 **Go to** the url: `http://localhost:8222`.
