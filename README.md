@@ -78,10 +78,10 @@ Codeception executed as `codecept` or `./vendor/bin/codecept`
 
 - **Run the Server**
 
-**Execute**: `php -S localhost:8222 -t ./public`
-**Server** should be running in the terminal.
-**Go to** the url: `http://localhost:8222`.
-**Finish** the final instructions through the WordPress admin installation.
+**Execute**: `php -S localhost:8222 -t ./public`  
+**Server** should be running in the terminal.  
+**Go to** the url: `http://localhost:8222`.  
+**Finish** the final instructions through the WordPress admin installation.  
 
 ***
 
