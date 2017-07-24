@@ -61,6 +61,7 @@ Navigate to project folder root: `/chap-press`
 
 ```
 composer install
+composer update
 #installs depedency from composer.json
 
 echo "alias codecept=./vendor/bin/codecept" >> ~/.bash_profile
