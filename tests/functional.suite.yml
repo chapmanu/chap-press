@@ -15,7 +15,7 @@ modules:
             dsn: 'mysql:host=localhost;dbname=chappress_test'
             user: 'chappress'
             password: 'chappress'
-            dump: 'tests/_data/dump.sql'
+            dump: 'tests/_data/chappress_dev_dump.sql'
             populate: true
             cleanup: true
             url: 'http://localhost:8777'
@@ -23,7 +23,7 @@ modules:
             tablePrefix: 'wp_'
         WordPress:
             depends: WPDb
-            wpRootFolder: './tests/_wp_test_site'
-            adminUsername: 'chappress_test'
+            wpRootFolder: './public'
+            adminUsername: 'chappress'
             adminPassword: 'password'
             adminPath: '/wp-admin'

@@ -14,7 +14,7 @@ extensions:
             hostname: localhost
             port: 8777
             autostart: true
-            documentRoot: ./tests/_wp_test_site
+            documentRoot: ./public
             startDelay: 1
             phpIni: ./config/php.ini
     commands:
