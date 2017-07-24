@@ -145,9 +145,9 @@ This command will run all tests (acceptance, functional, unit, wpunit)
 
 **Test Resources**
 
-[Chappress Wiki - Create A Test](https://github.com/chapmanu/chap-press/wiki#create-a-test) - See a quick example of how to create a test.
-[Wordpress Methods](https://github.com/lucatume/wp-browser#methods) - WordPress methods to use when creating tests ($I->doSomething syntax).
-[General Test Methods](http://codeception.com/docs/modules/PhpBrowser) - General methods to use from Codeception.
+[Chappress Wiki - Create A Test](https://github.com/chapmanu/chap-press/wiki#create-a-test) - See a quick example of how to create a test.  
+[Wordpress Methods](https://github.com/lucatume/wp-browser#methods) - WordPress methods to use when creating tests ($I->doSomething syntax).  
+[General Test Methods](http://codeception.com/docs/modules/PhpBrowser) - General methods to use from Codeception.  
 
 **General**
 
