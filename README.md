@@ -78,7 +78,7 @@ Codeception executed as `codecept` or `./vendor/bin/codecept`
 
 - **Run the Server**
 
-**Execute**: `./start-server.sh`
+**Execute**: `./run-server.sh`
 
 **Server** should be running in the terminal.  
 **Go to** the url: `http://localhost:8222`.  
