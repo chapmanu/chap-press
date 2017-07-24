@@ -80,9 +80,9 @@ Codeception executed as `codecept` or `./vendor/bin/codecept`
 
 **Execute**: `./start-server.sh`
 
-**Server** should be running in the terminal.
-**Go to** the url: `http://localhost:8222`.
-**Finish** the final instructions through the WordPress admin installation.
+**Server** should be running in the terminal.  
+**Go to** the url: `http://localhost:8222`.  
+**Finish** the final instructions through the WordPress admin installation.  
 
 ***
 
