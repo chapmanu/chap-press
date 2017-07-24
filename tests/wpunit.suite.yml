@@ -12,24 +12,12 @@ modules:
         - \Helper\Acceptance
     config:
         WPLoader:
-            wpRootFolder: "./public/"
-            dbName: "chappress_test"
+            wpRootFolder: "tests/_wp_test_site/"
+            dbName: "chappress_test_wpunit"
             dbHost: "localhost"
             dbUser: "chappress"
             dbPassword: "chappress"
             tablePrefix: "wp_"
-            domain: "localhost:8181"
+            domain: "localhost:8777"
             adminEmail: "chappress@gmail.com"
-            title: "Chappress Test Site"        
-extensions:
-    enabled:
-        - Codeception\Extension\PhpBuiltinServer
-    config:
-        Codeception\Extension\PhpBuiltinServer:
-            hostname: localhost
-            port: 8000
-            autostart: true
-            documentRoot: ./public
-            startDelay: 1
-            phpIni: ./config/php.ini
-            
+            title: "Chappress WPUnit Test"

@@ -23,7 +23,7 @@ class expectUserAndAdminLoginCest
     
     public function expectsUserToLogin(AcceptanceTester $I) {
         $I->wantTo('log in as a user');
-        $I->loginAs('chappress', 'password');
+        $I->loginAs('chappress_test', 'password');
     }
 
     public function expectsAdminToLogin(AcceptanceTester $I) {

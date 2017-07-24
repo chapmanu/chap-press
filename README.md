@@ -39,6 +39,10 @@ GRANT ALL PRIVILEGES ON chappress_dev.* TO "chappress"@"localhost" IDENTIFIED BY
 
 CREATE DATABASE chappress_test;
 GRANT ALL PRIVILEGES ON chappress_test.* TO "chappress"@"localhost" IDENTIFIED BY "chappress";
+
+CREATE DATABASE chappress_test_wpunit;
+GRANT ALL PRIVILEGES ON chappress_test_wpunit.* TO "chappress"@"localhost" IDENTIFIED BY "chappress";
+
 FLUSH PRIVILEGES;
 EXIT
 ```
@@ -74,13 +78,11 @@ Codeception executed as `codecept` or `./vendor/bin/codecept`
 
 - **Run the Server**
 
-Navigate to the `/public` directory and run `php -S localhost:8181`
+**Execute**: `./start-server.sh`
 
-
-Go to your browser and enter the url port: `http://localhost:8181`
-
-Server should be running in the terminal displaying PHP version, port location, and document root.
-Finish the final instructions through the WordPress installation. The WordPress admin panel should be displayed and the user should have full access to developing in a local environment.
+**Server** should be running in the terminal.
+**Go to** the url: `http://localhost:8222`
+**Finish** the final instructions through the WordPress admin installation.
 
 ***
 

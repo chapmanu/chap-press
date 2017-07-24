@@ -12,18 +12,18 @@ modules:
         - \Helper\Functional
     config:
         WPDb:
-            dsn: 'mysql:host=localhost;dbname=chappress_dev'
+            dsn: 'mysql:host=localhost;dbname=chappress_test'
             user: 'chappress'
             password: 'chappress'
             dump: 'tests/_data/dump.sql'
             populate: true
             cleanup: true
-            url: 'http://localhost:8181'
+            url: 'http://localhost:8777'
             urlReplacement: true
             tablePrefix: 'wp_'
         WordPress:
             depends: WPDb
-            wpRootFolder: './public/'
-            adminUsername: 'chappress'
+            wpRootFolder: './tests/_wp_test_site'
+            adminUsername: 'chappress_test'
             adminPassword: 'password'
             adminPath: '/wp-admin'

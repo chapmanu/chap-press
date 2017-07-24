@@ -8,15 +8,15 @@ actor_suffix: Tester
 extensions:
     enabled:
         - Codeception\Extension\RunFailed
-    #     - Codeception\Extension\PhpBuiltinServer
-    # config:
-    #     Codeception\Extension\PhpBuiltinServer:
-    #         hostname: localhost
-    #         port: 8000
-    #         autostart: true
-    #         documentRoot: ./public
-    #         startDelay: 1
-    #         phpIni: ./config/php.ini
+        - Codeception\Extension\PhpBuiltinServer
+    config:
+        Codeception\Extension\PhpBuiltinServer:
+            hostname: localhost
+            port: 8777
+            autostart: true
+            documentRoot: ./tests/_wp_test_site
+            startDelay: 1
+            phpIni: ./config/php.ini
     commands:
         - Codeception\Command\GenerateWPUnit
         - Codeception\Command\GenerateWPRestApi
