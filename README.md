@@ -124,15 +124,13 @@ This command will run all tests (acceptance, functional, unit, wpunit)
 | `codecept run acceptance` | Run all the acceptance tests |
 | `codecept run unit` | Run all the unit tests |
 | `codecept run functional` | Run all the functional tests |
-| `codecept run wpunit` | Run all the wpunit tests |
 | `codecept run dry-run acceptance` | Do a dry run of a specific suite |
 | `codecept run --steps` | Print a step-by-step execution |
 | `codecept run --debug` | Print steps and debug information |
 | `codecept run --html` | Prints a stylized html report |
 | `codecept g:cept suite "Custom Name"` | Generates Cept (scenario-driven test) file |
 | `codecept g:cest suite "Custom Name"` | Generates Cest (scenario-driven object-oriented test) file |
-| `codecept g:test suite Custom Name` | Generates Unit test |
-| `codecept g:wpunit suite Custom Name` | Generates WPUnit test |
+| `codecept g:test suite "Custom Name"` | Generates Unit test |
 | `codecept run --h` | General help |
 
 [Codeception Console Commands](http://codeception.com/docs/reference/Commands)
