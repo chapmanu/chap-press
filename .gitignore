@@ -10,6 +10,7 @@ wp-content/uploads/
 wp-content/wp-cache-config.php
 wp-content/plugins/hello.php
 
+
 # Misc
 .DS_Store
 .svn
@@ -23,7 +24,14 @@ Thumbs.db
 /readme.html
 /sitemap.xml
 /sitemap.xml.gz
-*.sql
+# *.sql #
 *.sqlite
 database.yml
 secrets.yml
+/vendor
+
+# Codeception
+/tests/_output
+phpbuiltinserver.access_log.txt
+phpbuiltinserver.errors.txt
+phpbuiltinserver.output.txt
