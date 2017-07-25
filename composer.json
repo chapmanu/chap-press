@@ -1,6 +1,5 @@
 {
     "require-dev": {
-        "lucatume/wp-browser": "^1.21",
-        "codeception/phpbuiltinserver": "*"
+        "lucatume/wp-browser": "^1.21"
     }
 }
