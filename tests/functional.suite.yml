@@ -16,9 +16,9 @@ modules:
             user: 'chappress'
             password: 'chappress'
             dump: 'tests/_data/chappress_dev_dump.sql'
-            populate: true
-            cleanup: true
-            url: 'http://localhost:8777'
+            populate: true #import the dump before the tests
+            cleanup: true #import the dump between tests
+            url: 'http://localhost:8777' #replace the hardcoded dump URL with the one above
             urlReplacement: true
             tablePrefix: 'wp_'
         WordPress:
