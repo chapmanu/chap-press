@@ -121,11 +121,9 @@ This command will run all tests (acceptance, functional, unit, wpunit)
 | Command | Description |
 | --- | --- |
 | `codecept run` | Run all tests |
-| `codecept run acceptance test.php`| Run a specific test from a suite|
-| `codecept run acceptance` | Run all the acceptance tests |
 | `codecept run unit` | Run all the unit tests |
 | `codecept run functional` | Run all the functional tests |
-| `codecept run dry-run acceptance` | Do a dry run of a specific suite |
+| `codecept run dry-run functional` | Do a dry run of a specific suite |
 | `codecept run --steps` | Print a step-by-step execution |
 | `codecept run --debug` | Print steps and debug information |
 | `codecept run --html` | Prints a stylized html report |
