@@ -7,7 +7,8 @@ ChapPress is a simple WordPress project initiated by the Web and Interactive Mar
 3. [Installation](#installation)
 4. [Debugging](#debugging)
 5. [Automated Testing](#automated-testing)
-6. [Troubleshooting](#troubleshooting)
+6. [Ansible](#ansible)
+7. [Troubleshooting](#troubleshooting)
 
 ## Goals
 This WordPress project is intended to provide:
@@ -73,6 +74,14 @@ codecept --version
 ```
 
 Codeception executed as `codecept` or `./vendor/bin/codecept`
+
+- **Install Ansible**
+```
+brew update
+python -V
+#ansible requires python >= 2.6
+brew install ansible
+```
 
 - **Run the Server**
 
@@ -145,6 +154,11 @@ This command will run all tests (acceptance, functional, unit, wpunit)
 **General**
 
 [Chappress Wiki - Automated Testing](https://github.com/chapmanu/chap-press/wiki#automated-testing)
+
+***
+
+## Ansible
+
 
 ***
 
