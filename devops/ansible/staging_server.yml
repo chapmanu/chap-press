@@ -1,7 +1,2 @@
 - hosts: stagingserver
   remote_user: wimops
-  vars:
-    - vars/defaults.yml
-
-  roles:
-    - { role: ssh, tags: ['ssh'] }

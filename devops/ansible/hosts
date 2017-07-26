@@ -1,2 +1,5 @@
 [stagingserver]
-chappress-staging.chapman.edu ansible_ssh_user=wimops
+chappress-staging.chapman.edu
+
+[stagingserver:vars]
+ansible_ssh_user=wimops
