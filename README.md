@@ -76,12 +76,21 @@ codecept --version
 Codeception executed as `codecept` or `./vendor/bin/codecept`
 
 - **Install Ansible**
-```
-brew update
-python -V
-#ansible requires python >= 2.6
-brew install ansible
-```
+
+Ansible will run a staging server to do WordPress testing.
+
+`# install pip, if needed`  
+`sudo easy_install pip`
+
+`sudo pip install ansible`  
+`ansible --version`  
+`# $ ansible 2.3.1.0`
+
+**Copy SSH Public Key to Staging Server**  
+`ssh-copy-id wimops@chappress-staging.chapman.edu`
+
+**Verify Success**  
+`ansible all -m ping`
 
 - **Run the Server**
 
@@ -158,7 +167,6 @@ This command will run all tests (acceptance, functional, unit, wpunit)
 ***
 
 ## Ansible
-
 
 ***
 
