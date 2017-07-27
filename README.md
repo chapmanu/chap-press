@@ -83,14 +83,13 @@ Ansible will run a staging server to do WordPress testing.
 `sudo easy_install pip`
 
 `sudo pip install ansible`  
-`ansible --version`  
-`# $ ansible 2.3.1.0`
+`ansible --version`
 
-**Copy SSH Public Key to Staging Server**  
-`ssh-copy-id wimops@chappress-staging.chapman.edu`
+`ssh-copy-id wimops@chappress-staging.chapman.edu`  
+`# copy SSH Public Key to Staging Server`
 
-**Verify Success**  
-`ansible all -m ping`
+`ansible all -m ping`  
+`# verify success`
 
 - **Run the Server**
 
