@@ -6,7 +6,7 @@
     - name: Test connection with ping
       ping:
       tags:
-         - testp
+         - testp #can target specific tasks with tags
     - name: Check server version #name of task
       changed_when: false #disables changed notification
       command: cat /etc/redhat-release # remote terminal
