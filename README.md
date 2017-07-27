@@ -58,22 +58,21 @@ cp -v wp-config.php{-dist,}
 
 - **Install Automated Test Suite**
 
-Navigate to project folder root: `/chap-press`
+**Navigate** to project folder root: `/chap-press`
 
 ```
 composer install
 composer update
-#installs depedency from composer.json
+#installs dependency from composer.json
 
 echo "alias codecept=./vendor/bin/codecept" >> ~/.bash_profile
 #creates an alias
-
 source ~/.bash_profile
 
 codecept --version
 ```
 
-Codeception executed as `codecept` or `./vendor/bin/codecept`
+Codeception **executed as** `codecept` or `./vendor/bin/codecept`
 
 - **Install Ansible**
 

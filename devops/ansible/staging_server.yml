@@ -1,2 +1,23 @@
-- hosts: stagingserver
+---
+- name: Staging Server environment playbook
+  hosts: stagingserver
   remote_user: wimops
+  tasks:
+    - name: Test connection with ping
+      ping:
+      tags:
+         - testp
+    - name: Check server version #name of task
+      changed_when: false #disables changed notification
+      command: cat /etc/redhat-release # remote terminal
+      register: server_result #saves result as a variable
+    - name: Print OS verison
+      debug: var=server_result.stdout_lines #prints result to terminal
+    - name: Get IP address
+      changed_when: false
+      command: hostname -I
+      register: ip_result
+    - name: Print IP Address
+      debug: var=ip_result.stdout_lines
+
+...
