@@ -1,5 +1,7 @@
+---
 - name: Install nginx server 
   hosts: stagingserver
   remote_user: wimops
   roles:
     - nginx
+...

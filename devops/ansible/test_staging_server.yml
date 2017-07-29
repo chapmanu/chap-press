@@ -19,5 +19,4 @@
       register: ip_result
     - name: Print IP Address
       debug: var=ip_result.stdout_lines
-
 ...
