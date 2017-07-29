@@ -24,6 +24,7 @@ This WordPress project is intended to provide:
   - Composer (1.4.2)
 - PHP 7
 - Codeception for Wordpress (Wp-Browser 1.21)
+- Ansible (2.3.1)
 
 ***
 
