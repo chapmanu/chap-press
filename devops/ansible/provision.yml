@@ -1,7 +1,12 @@
 ---
-- name: Install nginx server 
+- name: Install WordPress, MariaDB, Nginx, and PHP7
   hosts: staging
-  remote_user: wimops
+  become: true
+  vars_files:
+    - vars/php-vars.yml
+
   roles:
+    - mariadb
     - nginx
-...
+    - php70
+    - wordpress
