@@ -167,6 +167,15 @@ This command will run all tests (acceptance, functional, unit, wpunit)
 
 ## Ansible
 
+Server provisioning has been automated using Ansible.  
+The staging server will be running at `chappress-staging.chapman.edu`
+
+Run the playbook from the ansible directory:
+
+```
+cd devops/ansible
+ansible-playbook provision.yml -K
+```
 ***
 
 ## Troubleshooting
