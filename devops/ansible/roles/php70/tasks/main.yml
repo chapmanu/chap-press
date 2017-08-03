@@ -1,5 +1,4 @@
 ---
-
 # before install.
 - name: install requires package for use yum module
   yum: name=libselinux-python state=present
@@ -38,11 +37,4 @@
 - include: php-fpm-centos.yml
   when: phpfpm_centos.stat.exists
 
-- name: Disable default pool
-  command: mv /etc/php-fpm.d/www.conf /etc/php-fpm.d/www.disabled creates=/etc/php-fpm.d/www.disabled
-  notify: restart php-fpm
-
-- name: Copy php-fpm configuration
-  template: src=wordpress.conf dest=/etc/php-fpm.d/
-  notify: restart php-fpm
 

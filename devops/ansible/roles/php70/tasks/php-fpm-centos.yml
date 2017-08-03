@@ -1,5 +1,4 @@
 ---
-
 - debug: msg="==> Setting phg-fpm on CentOS system"
 
 # Setting  PHP7.
@@ -74,5 +73,3 @@
     owner: root
     group: root
     mode: 644
-
-# vim:ft=ansible :

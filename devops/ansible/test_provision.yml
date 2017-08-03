@@ -1,6 +1,6 @@
 ---
 - name: Staging Server environment playbook
-  hosts: stagingserver
+  hosts: staging
   remote_user: wimops
   tasks:
     - name: Test connection with ping

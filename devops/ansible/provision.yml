@@ -1,12 +1,10 @@
 ---
-- name: Install WordPress, MariaDB, Nginx, and PHP7
+- name: Install MariaDB, Nginx, PHP70, & SSL
   hosts: staging
   become: true
-  vars_files:
-    - vars/php-vars.yml
 
   roles:
-    - mariadb
-    - nginx
-    - php70
-    - wordpress
+    - { role: mariadb, tags: ['mariadb'] }
+    - { role: nginx,   tags: ['nginx'] }
+    - { role: php70,   tags: ['php70'] }
+    - { role: ssl,     tags: ['ssl'] }

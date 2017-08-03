@@ -1,28 +1,21 @@
 ---
 # Variables listed here are applicable to all host groups
-wp_version: 4.8
-wp_sha256sum: 39210d593700dc26c58a53b38172be63ea3da67020d80bb2cf34b396b732dd4d
 
 # MySQL settings
 mysqlservice: mysqld
 mysql_port: 3306
 
-# These are the WordPress database settings
-wp_db_name: chappress_dev
-wp_db_user: chappress
-wp_db_password: chappress
-
-# This is used for the nginx server configuration, but access to the
-# WordPress site is not restricted by a named host.
+# nginx server configuration
 nginx_port: 80
 server_hostname: chappress-staging.chapman.edu
+__nginx_user: "nginx"
+nginx_yum_repo_enabled: true
 
-# Disable All Updates
-# By default automatic updates are enabled, set this value to true to disable all automatic updates
-auto_up_disable: false
+# ssl config for nginx
+ssl_chap: chappress-staging.chapman.edu
+ssl_chap_path: "/etc/ssl/certs/{{ssl_chap}}"
+ssl_csr: "{{ ssl_chap_path }}/{{ssl_chap}}.csr"
+ssl_private_key: "{{ ssl_chap_path }}/{{ssl_chap}}.key"
+ssl_pem: "{{ ssl_chap_path }}/{{ssl_chap}}.pem"
 
-#Define Core Update Level
-# true  = Development, minor, and major updates are all enabled
-# false = Development, minor, and major updates are all disabled
-# minor = Minor updates are enabled, development, and major updates are disabled
-core_update_level: true
+
