@@ -21,12 +21,7 @@
   when: nginx_yum_repo_enabled
 
 - name: Ensure nginx is installed.
-  yum:
-    name: "nginx"
-    state: installed
-
-# - name: Install nginx
-#   yum: name=nginx state=present
+  yum: name=nginx state=installed
 
 - name: Create nginx directories
   file:
