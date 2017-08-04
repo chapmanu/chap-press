@@ -1,6 +1,6 @@
 ---
 # before install.
-- name: install requires package for use yum module
+- name: Install requires package for use yum module
   yum: name=libselinux-python state=present
   when: ansible_pkg_mgr == "yum"
 
