@@ -1,4 +1,11 @@
 ---
+# Installs the latest Nginx for Redhat from the Nginx yum repo. 
+# 
+# References:
+#
+# https://github.com/geerlingguy/ansible-role-nginx/blob/master/tasks/setup-RedHat.yml
+# https://github.com/chapmanu/inside/blob/ansible-staging-server/devops/ansible/roles/nginx/tasks/main.yml
+
 - name: Install Firewalld
   yum: name=firewalld state=present
   ignore_errors: yes
@@ -11,6 +18,7 @@
     nginx_user: "{{ __nginx_user }}"
   when: nginx_user is not defined
 
+# Nginx.org recommends to source directly from their domain. Source from geerlingguy repo 
 - name: Enable nginx repo.
   template:
     src: nginx.repo.j2

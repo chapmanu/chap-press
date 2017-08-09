@@ -1,5 +1,10 @@
 ---
 # This playbook will install MariaDB and create db user and give permissions.
+# https://github.com/ansible/ansible-examples/tree/master/wordpress-nginx_rhel7
+# 
+# Note: SELinux (Security-Enhanced Linux) adds an extra layer of security and 
+# prevents programs from accessing files, directories or ports unless 
+# it is configured to access those resources.
 
 - name: Install MariaDB package
   yum: name={{ item }} state=installed
@@ -9,6 +14,8 @@
    - libselinux-python
    - libsemanage-python
 
+# Chapman staging servers defaults to disabled. 
+# https://mariadb.com/kb/en/mariadb/what-to-do-if-mariadb-doesnt-start/#selinux 
 - name: Enable SELinux at next reboot
   selinux:
     state: permissive

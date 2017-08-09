@@ -1,4 +1,7 @@
 ---
+# Generate and/or deploy SSL certificate
+# https://github.com/jdauphant/ansible-role-ssl-certs
+
   - name: Ensure OpenSSL is installed
     package: name=openssl state=present
     tags: [ssl-certs,packages]

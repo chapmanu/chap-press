@@ -174,7 +174,7 @@ Run the playbook from the ansible directory:
 
 ```
 cd devops/ansible
-ansible-playbook provision.yml -K
+ansible-playbook provision.yml --ask-become-pass
 ```
 ***
 

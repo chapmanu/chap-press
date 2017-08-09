@@ -1,4 +1,7 @@
 ---
+# Deploy PHP 7 (php-fpm) for Nginx on CentOS. (forked from itcraftsmanpl.php7)
+# https://galaxy.ansible.com/chusiang/php7/
+
 # before install.
 - name: Install requires package for use yum module
   yum: name=libselinux-python state=present
