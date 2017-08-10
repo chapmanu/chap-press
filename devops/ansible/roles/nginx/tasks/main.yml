@@ -6,13 +6,6 @@
 # https://github.com/geerlingguy/ansible-role-nginx/blob/master/tasks/setup-RedHat.yml
 # https://github.com/chapmanu/inside/blob/ansible-staging-server/devops/ansible/roles/nginx/tasks/main.yml
 
-- name: Install Firewalld
-  yum: name=firewalld state=present
-  ignore_errors: yes
-
-- name: Firewalld service state
-  service: name=firewalld state=started enabled=yes
-
 - name: Define nginx_user.
   set_fact:
     nginx_user: "{{ __nginx_user }}"
@@ -31,25 +24,6 @@
 - name: Ensure nginx is installed.
   yum: name=nginx state=installed
 
-- name: Create nginx directories
-  file:
-    state: directory
-    path: "{{ nginx_path}}/{{ item }}"
-  with_items: "{{ nginx_dirs }}"
-
-- name: Create available server block files
-  template:
-    src: "{{ item }}.conf.j2"
-    dest: "{{ nginx_path }}/sites-available/{{ item }}.conf"
-  with_items: "{{ sites_available }}"
-
-- name: Create symlinks for enabled server block files
-  file:
-    src: "{{ nginx_path }}/sites-available/{{ item }}.conf"
-    dest: "{{ nginx_path }}/sites-enabled/{{ item }}.conf"
-    state: link
-  with_items: "{{ sites_enabled }}"
-
 - name: Copy nginx root welcome configuration
   template: 
     src: "default.conf" 
@@ -61,10 +35,6 @@
     src: nginx.conf.j2
     dest: "{{ nginx_path }}/nginx.conf"
   notify: restart nginx
-
-- name: insert firewalld rule for nginx
-  firewalld: port={{ nginx_port }}/tcp permanent=true state=enabled immediate=yes
-  ignore_errors: yes
 
 - name: Ensure nginx is started and enabled to start at boot.
   service: name=nginx state=started enabled=yes

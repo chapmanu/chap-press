@@ -1,4 +1,7 @@
 ---
+  - name: Creates Private directory
+    file: path=/etc/ssl/private state=directory mode=0700
+
   - name: Generate RSA key
     command: openssl genrsa -out {{ ssl_certs_privkey_path }} {{ ssl_certs_key_size }} creates={{ ssl_certs_privkey_path }}
 

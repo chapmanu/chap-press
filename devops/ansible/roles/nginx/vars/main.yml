@@ -2,13 +2,5 @@
 nginx_worker_processes: 4
 nginx_worker_connections: 1024
 nginx_path: /etc/nginx
-
-nginx_dirs:
-  - sites-available
-  - sites-enabled
-
-sites_available:
-  - chappress
-
-sites_enabled:
-  - chappress
+__nginx_user: "nginx"
+nginx_yum_repo_enabled: true
