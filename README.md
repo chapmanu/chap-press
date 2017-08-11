@@ -7,7 +7,8 @@ ChapPress is a simple WordPress project initiated by the Web and Interactive Mar
 3. [Installation](#installation)
 4. [Debugging](#debugging)
 5. [Automated Testing](#automated-testing)
-6. [Troubleshooting](#troubleshooting)
+6. [Ansible](#ansible)
+7. [Troubleshooting](#troubleshooting)
 
 ## Goals
 This WordPress project is intended to provide:
@@ -23,6 +24,7 @@ This WordPress project is intended to provide:
   - Composer (1.4.2)
 - PHP 7
 - Codeception for Wordpress (Wp-Browser 1.21)
+- Ansible (2.3.1)
 
 ***
 
@@ -57,22 +59,37 @@ cp -v wp-config.php{-dist,}
 
 - **Install Automated Test Suite**
 
-Navigate to project folder root: `/chap-press`
+**Navigate** to project folder root: `/chap-press`
 
 ```
 composer install
 composer update
-#installs depedency from composer.json
+#installs dependency from composer.json
 
 echo "alias codecept=./vendor/bin/codecept" >> ~/.bash_profile
 #creates an alias
-
 source ~/.bash_profile
 
 codecept --version
 ```
 
-Codeception executed as `codecept` or `./vendor/bin/codecept`
+Codeception **executed as** `codecept` or `./vendor/bin/codecept`
+
+- **Install Ansible**
+
+Ansible will run a staging server to do WordPress testing.
+
+`# install pip, if needed`  
+`sudo easy_install pip`
+
+`sudo pip install ansible`  
+`ansible --version`
+
+`ssh-copy-id wimops@chappress-staging.chapman.edu`  
+`# copy SSH Public Key to Staging Server`
+
+`ansible all -m ping`  
+`# verify success`
 
 - **Run the Server**
 
@@ -146,6 +163,19 @@ This command will run all tests (acceptance, functional, unit, wpunit)
 
 [Chappress Wiki - Automated Testing](https://github.com/chapmanu/chap-press/wiki#automated-testing)
 
+***
+
+## Ansible
+
+Server provisioning has been automated using Ansible.  
+The staging server will be running at `chappress-staging.chapman.edu`
+
+Run the playbook from the ansible directory:
+
+```
+cd devops/ansible
+ansible-playbook provision.yml --ask-become-pass
+```
 ***
 
 ## Troubleshooting

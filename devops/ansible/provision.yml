@@ -1,0 +1,11 @@
+---
+- name: Install MariaDB, Nginx, PHP70, & SSL
+  hosts: staging
+  become: true
+
+  roles:
+    - { role: ssl,     tags: ['ssl'] }
+    - { role: mariadb, tags: ['mariadb'] }
+    - { role: nginx,   tags: ['nginx'] }
+    - { role: php70,   tags: ['php70'] }
+

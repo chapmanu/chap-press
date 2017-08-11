@@ -1,0 +1,6 @@
+---
+nginx_worker_processes: 4
+nginx_worker_connections: 1024
+nginx_path: /etc/nginx
+__nginx_user: "nginx"
+nginx_yum_repo_enabled: true

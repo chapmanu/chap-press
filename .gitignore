@@ -35,3 +35,6 @@ secrets.yml
 phpbuiltinserver.access_log.txt
 phpbuiltinserver.errors.txt
 phpbuiltinserver.output.txt
+
+# Ansible
+*.retry
