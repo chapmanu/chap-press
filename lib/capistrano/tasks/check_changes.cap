@@ -1,0 +1,45 @@
+include Helpers
+
+desc "Check for changed files"
+task :check_changes do
+  on roles(:app) do
+
+    if !test("cd #{repo_path}")
+      info "Skipping check for changed files since the repository path does not exist."
+    else
+      warning = ''
+
+      # Clean the branch
+      execute "cd #{repo_path} && git clean -d -x -f && git reset --hard"
+
+      # Sync files back from release path
+      execute "rsync -ar --exclude 'content/uploads' --exclude 'content/cache' --exclude 'content/w3tc-config' --exclude 'wp-config.php' --exclude 'robots.txt' --exclude '*.log' --filter 'protect .git*' #{release_path}/ #{repo_path}"
+
+      # Check for NEW un-tracked files
+      if !(new_files = capture "cd #{repo_path} && git ls-files --other").empty?
+        warning = warning + ("\n***** FILES ADDED SINCE LAST DEPLOY ***** \nThe following un-tracked files appeared on this server: \n\n#{new_files}")
+      end
+
+      # Check for changes to tracked files
+      if !test("cd #{repo_path} && git diff --name-only --quiet HEAD")
+        changes = (capture "cd #{repo_path} && git diff --name-only HEAD")
+        warning = warning + ("\n\n***** FILES CHANGED SINCE LAST DEPLOY ***** \nThe following tracked files have changed on this server: \n\n#{changes} (ignore this weird line)")
+      end
+
+      # Print warning if needed
+      if (!warning.empty?)
+        print_warning(warning+"\n\n\nTo see a detailed diff, run 'git diff' in #{repo_path} on #{fetch(:stage_domain)}. \nIt is recommended that you stop deployment and investigate why the heck there are changed files on this server!")
+
+        execute "cd #{repo_path} && git --no-pager diff" if confirm("Do you want to print full 'git diff' now?")
+
+        raise "Deployment aborted" if !confirm("Continue deployment and discard these un-committed changes on the server? Type 'n' to abort deployment.")
+
+        # Clean the branch
+        execute "cd #{repo_path} && git clean -d -x -f && git reset --hard"
+      else 
+        info "No un-committed changes detected on the server. Okay to proceed with deployment!"
+      end
+    end
+
+  end
+end
