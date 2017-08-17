@@ -5,17 +5,24 @@
 - name: update permissions of wp-cli to allow anyone to execute it
   file: path=/usr/local/bin/wp mode=0755
 
-- name: Create new group
-  command: groupadd webadmin
+- name: Webadmin group exists
+  group:
+    name: webadmin
+    state: present
+ 
+# - name: Create new webadmin group
+#   command: groupadd webadmin
 
-- name: Create new group
-  command: usermod -a -G webadmin wimops
-
+# - name: Create new group with wimops
+#   command: usermod -a -G webadmin wimops
+  
+# Linux command: chown -v root:webadmin /usr/share/nginx/html
 - name: permissions root wimops
-  command: chown -v root:webadmin /usr/share/nginx/html
+  file: path=/usr/share/nginx/html owner=root group=webadmin
 
+# Linux command: chmod 2775 /usr/share/nginx/html -Rv
 - name: permissions chmod
-  command: chmod 2775 /usr/share/nginx/html -Rv
+  file: path=/usr/share/nginx/html recurse=yes mode=2775
 
 - name: restart nginx
   service: name=nginx state=restarted enabled=yes

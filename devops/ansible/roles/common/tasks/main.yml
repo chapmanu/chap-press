@@ -1,4 +1,3 @@
 ---
 - name: Install Common Packages
-  yum: name={{ item }} state=present
-  with_nested: "{{ common_packages }}"
+  yum: name=git state=present
