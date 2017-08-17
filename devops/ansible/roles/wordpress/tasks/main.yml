@@ -1,0 +1,21 @@
+---
+- name: download wp-cli
+  get_url: url=https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar dest=/usr/local/bin/wp
+
+- name: update permissions of wp-cli to allow anyone to execute it
+  file: path=/usr/local/bin/wp mode=0755
+
+- name: Create new group
+  command: groupadd webadmin
+
+- name: Create new group
+  command: usermod -a -G webadmin wimops
+
+- name: permissions root wimops
+  command: chown -v root:webadmin /usr/share/nginx/html
+
+- name: permissions chmod
+  command: chmod 2775 /usr/share/nginx/html -Rv
+
+- name: restart nginx
+  service: name=nginx state=restarted enabled=yes

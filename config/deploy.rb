@@ -54,6 +54,8 @@ namespace :deploy do
   task :wp_permissions do
     on roles(:app) do
       execute :chmod, "644 #{release_path}/public/wp-config.php"
+      execute "chown -Rv nginx wp-content/uploads wp-content/themes"
+      execute :chmod, "-Rv 755 wp-content/uploads wp-content/themes"
     end
   end
 

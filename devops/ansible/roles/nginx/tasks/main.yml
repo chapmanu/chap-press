@@ -8,7 +8,7 @@
 
 - name: Define nginx_user.
   set_fact:
-    nginx_user: "{{ __nginx_user }}"
+    nginx_user: "{{ nginx_user }}"
   when: nginx_user is not defined
 
 # Nginx.org recommends to source directly from their domain. Source from geerlingguy repo 
