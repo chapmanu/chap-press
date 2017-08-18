@@ -223,20 +223,14 @@ It will also hide the errors so they do not interrupt page generation.
 ## Troubleshooting
 
 ### Capistrano
-
-- In case Github SSH access is denied
-
-    ls -al ~/.ssh
-    # Lists the files in your .ssh directory, if they exist
-
+An RSA key is currently added to the GitHub repo.  
+In case Github SSH access is denied, try:
+- List the files in your .ssh directory, if they exist
+  - `ls -al ~/.ssh`
 - [Generate SSH](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)
-
 - [Add SSH to Github](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/)
-
-- Test SSH connection 
-
-    ssh -T git@github.com
-    # Attempts to ssh to GitHub
+- Test SSH connection to Github
+  - `ssh -T git@github.com`
 
 ### MariaDB
 -  If the MariaDB has not been used before, the MySQL database may have to be restarted or unlinked using Homebrew:
