@@ -8,6 +8,7 @@ ChapPress is a simple WordPress project initiated by the Web and Interactive Mar
 1. [Testing](#testing)
 1. [Development Server](#development-server)
 1. [Ansible](#ansible)
+1. [Capistrano](#capistrano)
 1. [Debugging](#debugging)
 1. [Troubleshooting](#troubleshooting)
 
@@ -168,13 +169,33 @@ Site will be accessible at:
 ## Ansible
 
 Server provisioning has been automated using Ansible.  
-The staging server will be running at `chappress-staging.chapman.edu`
+The staging server will be running at `https://chappress-staging.chapman.edu`
 
-Run the playbook from the ansible directory:
+**Run the playbook** from the ansible directory:
 
     cd devops/ansible
     ansible-playbook provision.yml --ask-become-pass
 
+***
+
+## Capistrano
+
+Capistrano will deploy this repo and WordPress to the staging server.
+
+**Run Capistrano** from root folder `/chap-press`:
+
+    cap staging deploy
+
+_*Note: Will ask for sudo to restart NGINX/PHP_
+
+**Staging Server**  
+- Database    : `chappress_dev`
+- User        : `chappress`
+- Password    : `password`
+- Install path: `/usr/share/nginx/html/`
+- Wordpress   : `/usr/share/nginx/html/current/public`
+
+[Wiki](https://github.com/chapmanu/chap-press/wiki/Capistrano)
 
 ***
 
