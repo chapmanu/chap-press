@@ -9,19 +9,27 @@
   group:
     name: webadmin
     state: present
- 
-# - name: Create new webadmin group
-#   command: groupadd webadmin
 
-# - name: Create new group with wimops
-#   command: usermod -a -G webadmin wimops
-  
+- name : Create Ansible variable for group results
+  command: cat /etc/group
+  register: group_result
+
+# Creates webadmin group if group doesn't exist
+- name: Create new webadmin group
+  command: groupadd webadmin
+  when: '"webadmin" not in group_result.stdout'
+
+# Adds wimops to webadmin if group doesn't exist
+- name: Create new group with wimops
+  command: usermod -a -G webadmin wimops
+  when: '"webadmin" not in group_result.stdout'
+
 # Linux command: chown -v root:webadmin /usr/share/nginx/html
-- name: permissions root wimops
+- name: Set group permissions for webadmin at server root
   file: path=/usr/share/nginx/html owner=root group=webadmin
 
 # Linux command: chmod 2775 /usr/share/nginx/html -Rv
-- name: permissions chmod
+- name: Set file permissions at server root
   file: path=/usr/share/nginx/html recurse=yes mode=2775
 
 - name: restart nginx
