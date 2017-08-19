@@ -5,11 +5,6 @@
 - name: update permissions of wp-cli to allow anyone to execute it
   file: path=/usr/local/bin/wp mode=0755
 
-- name: Webadmin group exists
-  group:
-    name: webadmin
-    state: present
-
 - name : Create Ansible variable for group results
   command: cat /etc/group
   register: group_result
