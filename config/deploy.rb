@@ -11,12 +11,6 @@ set :repo_url, "git@github.com:chapmanu/chap-press.git"
 set :git_strategy, SubmoduleStrategy
 
 ############################################
-# Setup WordPress
-############################################
-
-set :local_domain, 'localhost:80'
-
-############################################
 # Setup Capistrano
 ############################################
 
