@@ -1,4 +1,5 @@
-# config valid only for Capistrano 3.1
+# Capistrano deployment sourced from Chapman Blogs: https://github.com/chapmanu/blogs/tree/master 
+
 lock '3.9'
 
 ############################################
