@@ -19,13 +19,19 @@
   command: usermod -a -G webadmin wimops
   when: '"webadmin" not in group_result.stdout'
 
+- name: Create www directory
+  file: state=directory path="/var/www" 
+
+- name: Create html directory
+  file: state=directory path="/var/www/html"
+
 # Linux command: chown -v root:webadmin /usr/share/nginx/html
 - name: Set group permissions for webadmin at server root
-  file: path=/usr/share/nginx/html owner=root group=webadmin
+  file: path=/var/www/html owner=root group=webadmin
 
 # Linux command: chmod 2775 /usr/share/nginx/html -Rv
 - name: Set file permissions at server root
-  file: path=/usr/share/nginx/html recurse=yes mode=2775
+  file: path=/var/www/html recurse=yes mode=2775
 
 - name: restart nginx
   service: name=nginx state=restarted enabled=yes

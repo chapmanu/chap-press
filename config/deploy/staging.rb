@@ -5,7 +5,7 @@
 set :stage, :staging
 set :stage_domain, "chappress-staging.chapman.edu"
 server "cprs-pre-wb01.chapman.edu", user: "wimops", roles: %w(web app db)
-set :deploy_to, "/usr/share/nginx/html"
+set :deploy_to, "/var/www/html"
 
 
 ############################################
