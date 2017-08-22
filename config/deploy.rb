@@ -1,6 +1,7 @@
 ###########################################
 # Capistrano deployment sourced from Chapman Blogs
 # https://github.com/chapmanu/blogs
+# Capistrano Gem updated to 3.9
 ########################################### 
  
 lock '3.9'
@@ -18,6 +19,7 @@ set :repo_url, "git@github.com:chapmanu/chap-press.git"
 
 set :log_level, :debug
 set :use_sudo, false
+set :pty, true
 set :ssh_options, forward_agent: true
 set :keep_releases, 5
 

@@ -186,8 +186,6 @@ Capistrano will deploy this repo and WordPress to the staging server.
 
     cap staging deploy
 
-_*Note: Will ask for sudo to restart NGINX/PHP_
-
 **Staging Server**  
 - Database    : `chappress_dev`
 - User        : `chappress`
