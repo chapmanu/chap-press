@@ -1,5 +1,8 @@
-# Capistrano deployment sourced from Chapman Blogs: https://github.com/chapmanu/blogs/tree/master 
-
+###########################################
+# Capistrano deployment sourced from Chapman Blogs
+# https://github.com/chapmanu/blogs
+########################################### 
+ 
 lock '3.9'
 
 ############################################
@@ -9,20 +12,13 @@ lock '3.9'
 set :application, "chappress"
 set :repo_url, "git@github.com:chapmanu/chap-press.git"
 
-set :git_strategy, SubmoduleStrategy
-
 ############################################
 # Setup Capistrano
 ############################################
 
 set :log_level, :debug
 set :use_sudo, false
-set :pty, true
-
-set :ssh_options, {
-  forward_agent: true
-}
-
+set :ssh_options, forward_agent: true
 set :keep_releases, 5
 
 ############################################
@@ -53,11 +49,11 @@ namespace :deploy do
     end
   end
 
-  desc "Restart services"
+  desc "Restart Nginx & Php-fpm services"
   task :restart_services do
     on roles(:app) do
-      sudo :service, :nginx, :restart
-      sudo :service, :'php-fpm' , :restart
+      execute "sudo systemctl restart nginx.service" 
+      execute "sudo systemctl restart php-fpm.service"
     end
   end
 

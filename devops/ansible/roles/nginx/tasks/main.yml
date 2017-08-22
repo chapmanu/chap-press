@@ -6,6 +6,7 @@
 # https://github.com/geerlingguy/ansible-role-nginx/blob/master/tasks/setup-RedHat.yml
 # https://github.com/chapmanu/inside/blob/ansible-staging-server/devops/ansible/roles/nginx/tasks/main.yml
 
+
 - name: Define nginx_user.
   set_fact:
     nginx_user: "{{ nginx_user }}"
@@ -35,6 +36,16 @@
     src: nginx.conf.j2
     dest: "{{ nginx_path }}/nginx.conf"
   notify: restart nginx
+
+# https://github.com/wtcross/ansible-sudoers
+- name: Create Sudoers custom file for Wimops sudo access
+  template:
+    src: sudoer_custom.j2
+    dest: "/etc/sudoers.d/sudoer_custom"
+    mode: 0440
+    owner: root
+    group: root
+    validate: "/usr/sbin/visudo -cf %s"
 
 - name: Ensure nginx is started and enabled to start at boot.
   service: name=nginx state=started enabled=yes

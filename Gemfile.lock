@@ -8,7 +8,7 @@ GEM
       i18n
       rake (>= 10.0.0)
       sshkit (>= 1.9.0)
-    colorize (0.7.7)
+    colorize (0.8.1)
     i18n (0.8.6)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
@@ -17,8 +17,6 @@ GEM
     sshkit (1.14.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
-    sshkit-sudo (0.1.0)
-      sshkit (~> 1.8)
 
 PLATFORMS
   ruby
@@ -26,7 +24,6 @@ PLATFORMS
 DEPENDENCIES
   capistrano (~> 3.9)
   colorize
-  sshkit-sudo
 
 BUNDLED WITH
-   1.15.3
+   1.15.4
