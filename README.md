@@ -186,13 +186,6 @@ Capistrano will deploy this repo and WordPress to the staging server.
 
     cap staging deploy
 
-**Staging Server**  
-- Database    : `chappress_dev`
-- User        : `chappress`
-- Password    : `password`
-- Install path: `/usr/share/nginx/html/`
-- Wordpress   : `/usr/share/nginx/html/current/public`
-
 [Wiki](https://github.com/chapmanu/chap-press/wiki/Capistrano)
 
 ***

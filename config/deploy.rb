@@ -31,8 +31,7 @@ set :linked_files, %w{wp-config.php}
 set :linked_dirs, %w{content/uploads}
 
 namespace :deploy do
-
-  after 'starting', 'check_changes'
+  include Helpers
 
   desc "create WordPress files for symlinking"
   task :create_wp_files do
