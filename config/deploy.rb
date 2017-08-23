@@ -41,7 +41,8 @@ namespace :deploy do
   end
 
   after 'check:make_linked_dirs', :create_wp_files
-
+  
+  #TODO FIX: remove cp config line, use shared folder to symlink to config file or better solution
   desc "WordPress directory and file permissions"
   task :wp_permissions do
     on roles(:app) do
@@ -58,6 +59,7 @@ namespace :deploy do
     end
   end
 
+  #TODO FIX: remove password from wp core install command
   desc "Wp Core Install"
   task :core_install do
     on roles(:app) do
