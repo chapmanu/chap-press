@@ -10,6 +10,7 @@ ChapPress is a simple WordPress project initiated by the Web and Interactive Mar
 1. [Ansible](#ansible)
 1. [Capistrano](#capistrano)
 1. [Debugging](#debugging)
+1. [Upgrading Wordpress](https://github.com/chapmanu/chap-press/wiki)
 1. [Troubleshooting](#troubleshooting)
 
 ## Goals
@@ -21,16 +22,17 @@ This WordPress project is intended to provide:
 
 ## Requirements
 - Homebrew (1.2.3)
-  - MariaDB (10.0 or greater)
+  - MariaDB (10.0)
   - Wordpress Command Line (1.2.1)
   - Composer (1.4.2)
 - PHP 7
 - Codeception for Wordpress (Wp-Browser 1.21)
+- Ansible (2.3.1.0) 
+- Capistrano (3.9)
 
 ***
 
 ## Installation
-
 Installation process for the setting up Wordpress on a local environment.
 
 - **Create the MySQL user and databases using the MariaDB monitor**.
