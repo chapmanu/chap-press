@@ -27,7 +27,7 @@ set :keep_releases, 5
 # Linked files and directories (symlinks)
 ############################################
 
-set :linked_files, %w{wp-config.php}
+set :linked_files, %w{public/wp-config.php}
 set :linked_dirs, %w{content/uploads}
 
 namespace :deploy do
@@ -37,7 +37,7 @@ namespace :deploy do
   task :create_wp_files do
     on roles(:app) do
       execute :mkdir, "-p #{shared_path}/public"
-      execute :touch, "#{shared_path}/wp-config.php"
+      execute :touch, "#{shared_path}/public/wp-config.php"
     end
   end
 
@@ -59,7 +59,6 @@ namespace :deploy do
       db_config = ERB.new(File.read('config/templates/wp-config.php.erb')).result(binding)
       io = StringIO.new(db_config)
       upload! io, File.join(shared_path, "public/wp-config.php")
-
       print_success("The WordPress config file has been created on #{fetch(:stage_domain)}")
     end
   end  
