@@ -41,7 +41,8 @@ namespace :deploy do
   end
 
   after 'check:make_linked_dirs', :create_wp_files
-
+  
+  #TODO FIX: remove cp config line, use shared folder to symlink to config file or better solution
   desc "WordPress directory and file permissions"
   task :wp_permissions do
     on roles(:app) do
@@ -58,16 +59,8 @@ namespace :deploy do
     end
   end
 
-  desc "Wp Core Install"
-  task :core_install do
-    on roles(:app) do
-      execute "cd '#{release_path}/public'; wp core install --url=https://chappress-staging.chapman.edu --title=chap-press --admin_user=chappress --admin_password=password --admin_email=chappress@gmail.com"
-    end
-  end    
-
   after :finished, :wp_permissions
   after :finished, :restart_services
-  after :finished, :core_install
   after :finishing, "deploy:cleanup"
 
   after :finished, 'prompt:complete' do 

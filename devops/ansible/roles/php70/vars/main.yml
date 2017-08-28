@@ -9,7 +9,7 @@ debug_mode: false
 # allow_url_fopen
 #   Default Value: On
 php_allow_url_fopen: "Off"
-php_disable_functions: "exec,passthru,shell_exec,system,proc_open,popen"
+php_disable_functions: "exec,passthru,shell_exec,system,popen"
 php_display_errors: "Off"
 php_error_reporting: "E_ALL & ~E_DEPRECATED & ~E_STRICT"
 php_memory_limit: "1024M"
