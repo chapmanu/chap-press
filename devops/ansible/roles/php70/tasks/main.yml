@@ -1,6 +1,11 @@
 ---
+################################################################################
 # Deploy PHP 7 (php-fpm) for Nginx on CentOS. (forked from itcraftsmanpl.php7)
-# https://galaxy.ansible.com/chusiang/php7/
+# Source: https://galaxy.ansible.com/chusiang/php7/
+################################################################################
+# Note: proc_open will be enabled on chap-press for wordpress cli access & other plugins.
+# https://github.com/chapmanu/chap-press/pull/7#issuecomment-324784310
+################################################################################
 
 # before install.
 - name: Install requires package for use yum module
