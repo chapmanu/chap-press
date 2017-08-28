@@ -36,20 +36,33 @@ namespace :deploy do
   desc "create WordPress files for symlinking"
   task :create_wp_files do
     on roles(:app) do
+      execute :mkdir, "-p #{shared_path}/public"
       execute :touch, "#{shared_path}/wp-config.php"
     end
   end
 
   after 'check:make_linked_dirs', :create_wp_files
   
-  #TODO FIX: remove cp config line, use shared folder to symlink to config file or better solution
   desc "WordPress directory and file permissions"
   task :wp_permissions do
     on roles(:app) do
-      execute "cp -v #{release_path}/public/wp-config.php{-dist,}"
       execute :chmod, "644 #{release_path}/public/wp-config.php"
     end
   end
+
+  # Task source: https://github.com/chapmanu/blogs/blob/development/lib/capistrano/tasks/wp.cap 
+  desc "Generates wp-config.php on staging server"
+  task :generate_staging_config do
+    on roles(:web) do
+      database = YAML::load_file('config/database.yml')[fetch(:stage).to_s]
+      # Create config file in staging environment
+      db_config = ERB.new(File.read('config/templates/wp-config.php.erb')).result(binding)
+      io = StringIO.new(db_config)
+      upload! io, File.join(shared_path, "public/wp-config.php")
+
+      print_success("The WordPress config file has been created on #{fetch(:stage_domain)}")
+    end
+  end  
 
   desc "Restart Nginx & Php-fpm services"
   task :restart_services do
@@ -60,6 +73,7 @@ namespace :deploy do
   end
 
   after :finished, :wp_permissions
+  after :finished, :generate_staging_config
   after :finished, :restart_services
   after :finishing, "deploy:cleanup"
 
