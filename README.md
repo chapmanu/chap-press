@@ -222,7 +222,7 @@ The main hook to use for the scope is 'wonolog.log'. A bare-minimum example of l
 
 ### WordPress Default Debug
 
-What is actually logged depends on the value of WP_DEBUG_LOG constant. When WP_DEBUG_LOG is set to true, Wonolog will log everything.
+What is actually logged depends on the value of `WP_DEBUG_LOG` constant. When `WP_DEBUG_LOG` is set to true, Wonolog will log everything.
 
 | Command | Description |
 | --- | --- |
