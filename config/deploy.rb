@@ -61,6 +61,13 @@ namespace :deploy do
       upload! io, File.join(shared_path, "public/wp-config.php")
       print_success("The WordPress config file has been created on #{fetch(:stage_domain)}")
     end
+  end
+
+  desc "Install Composer packages"
+  task :install_composer_packages do
+    on roles(:app) do
+      execute "composer install"
+    end
   end  
 
   desc "Restart Nginx & Php-fpm services"
@@ -73,6 +80,7 @@ namespace :deploy do
 
   after :finished, :wp_permissions
   after :finished, :generate_staging_config
+  after :finished, :install_composer_packages
   after :finished, :restart_services
   after :finishing, "deploy:cleanup"
 
