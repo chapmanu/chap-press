@@ -25,10 +25,13 @@ This WordPress project is intended to provide:
   - MariaDB (10.0)
   - Wordpress Command Line (1.2.1)
   - Composer (1.4.2)
+- Composer (1.4.2)
+  - Codeception for Wordpress (Wp-Browser 1.21)
+  - Wonolog (1.0.0)
 - PHP 7
-- Codeception for Wordpress (Wp-Browser 1.21)
 - Ansible (2.3.1.0) 
 - Capistrano (3.9)
+
 
 ***
 
@@ -194,21 +197,39 @@ Capistrano will deploy this repo and WordPress to the staging server.
 
 ## Debugging
 
-WordPress comes with specific debug systems designed to simplify the process.
-The following are meant only for local testing and staging installs.
+### Wonolog
 
-The following code is already set in the `wp-config.php` file.
-It will log all errors, notices, and warnings to a file called `debug.log` in the wp-content directory.
-It will also hide the errors so they do not interrupt page generation.
+[Wonolog](https://github.com/inpsyde/Wonolog) is a logging package for WordPress (based off of [Monolog](https://github.com/Seldaek/monolog)). This package allows anything to be logged in a WordPress site. 
+Wonolog comes with an easy bootstrap routine and some out-of-the-box configurations that make it possible to have a working and effective logging system with zero effort. It is included in the `composer.json` file. 
 
-<br/>
+The standard log path: `public/wp-content/wonolog`
+
+An [MU plugin](https://codex.wordpress.org/Must_Use_Plugins) has been added for any custom configurations: `/public/wp-content/mu-plugins/wonolog_load.php`
+
+**Automatically logged events include:**
+
+- PHP core notices, warnings and (fatal) errors;
+- uncaught exceptions;
+- WordPress errors and events (e.g., DB errors, HTTP API errors, wp_mail() errors, and 404 errors).
+
+### Logging
+
+The main hook to use for the scope is 'wonolog.log'. A bare-minimum example of logging with Wonolog could look like so:
+
+    do_action( 'wonolog.log', 'Logged from wp-config.php' );
+
+[See the Docs](https://github.com/inpsyde/Wonolog/tree/master/docs)
+
+### WordPress Default Debug
+
+What is actually logged depends on the value of WP_DEBUG_LOG constant. When WP_DEBUG_LOG is set to true, Wonolog will log everything.
 
 | Command | Description |
 | --- | --- |
 | `define( 'WP_DEBUG', true );` | Enable WP_DEBUG mode |
 | `define( 'WP_DEBUG_LOG', true );` | Enable Debug logging to `/wp-content/debug.log` |
 | `define( 'WP_DEBUG_DISPLAY', false );` | Disable display of errors and warnings |
-| `@ini_set( 'display_errors', 0 );` | // |
+| `@ini_set( 'display_errors', 0 );` | Disable display of errors in the php.ini file  |
 | `define( 'SCRIPT_DEBUG', true );` | Uses unminified versions of core JS and CSS files |
 
 ***
