@@ -1,5 +1,6 @@
 {
     "require-dev": {
-        "lucatume/wp-browser": "^1.21"
+        "lucatume/wp-browser": "^1.21",
+        "inpsyde/wonolog": "1.0.0"
     }
 }
