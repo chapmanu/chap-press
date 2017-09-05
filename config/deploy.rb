@@ -63,6 +63,13 @@ namespace :deploy do
     end
   end
 
+  desc "Install composer vendor packages"
+  task :vendor_install do
+    on roles(:app) do
+      execute "cd #{release_path} && composer install"
+    end
+  end
+
   desc "Restart Nginx & Php-fpm services"
   task :restart_services do
     on roles(:app) do
@@ -73,6 +80,7 @@ namespace :deploy do
 
   after :finished, :wp_permissions
   after :finished, :generate_staging_config
+  after :finished, :vendor_install
   after :finished, :restart_services
   after :finishing, "deploy:cleanup"
 
