@@ -11,6 +11,6 @@
  * 
 */
 
-  Inpsyde\Wonolog\bootstrap();
+  //Inpsyde\Wonolog\bootstrap();
 
 ?>
