@@ -93,7 +93,9 @@ define( 'SCRIPT_DEBUG', true );
  * or anytime before the 'muplugins_loaded' action is fired
  */
 
-require '/var/www/html/current/vendor/autoload.php';
+// Issue: Logging isn't displayed in staging server
+// Commented out until fixed:
+// require '/var/www/html/current/vendor/autoload.php';
 
 /*********************************************************************/
 
@@ -113,4 +115,6 @@ require_once(ABSPATH . 'wp-settings.php');
  * A bare-minimum example of logging with Wonolog could look like so:
  */
 
-do_action( 'wonolog.log', 'Some event happened in wp-config.php' );
+//  Issue: Logging isn't displayed in staging server
+//  Commented out until fixed:
+//  do_action( 'wonolog.log', 'Some event happened in wp-config.php' );

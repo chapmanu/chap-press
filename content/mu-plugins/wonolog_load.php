@@ -11,6 +11,8 @@
  * 
 */
 
-  //Inpsyde\Wonolog\bootstrap();
+//  Issue: Logging isn't displayed in staging server
+//  Commented out until fixed:
+//  Inpsyde\Wonolog\bootstrap();
 
 ?>
