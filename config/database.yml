@@ -2,8 +2,8 @@
 # This should be filled out and placed in /chap-press/config/database.yml
 # This file is *only* used to generate wp-config.php
 staging:
-  host: 'localhost' 
+  host: 'TBA' 
   database: 'chappress_dev' 
   username: 'chappress'
-  password: 'chappress'
+  password: 'TBA'
 

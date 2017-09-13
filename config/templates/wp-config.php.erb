@@ -25,22 +25,11 @@
  *  development for the ChapPress project.
  */
 
-/** The name of the database for WordPress */
 define('DB_NAME',     '<%= database['database'] %>');
-
-/** MySQL database username */
 define('DB_USER',     '<%= database['username'] %>');
-
-/** MySQL database password */
 define('DB_PASSWORD', '<%= database['password'] %>');
-
-/** MySQL hostname */
 define('DB_HOST',     '<%= database['host'] %>');
-
-/** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
-
-/** The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');
 
 /**#@+
@@ -104,7 +93,7 @@ define( 'SCRIPT_DEBUG', true );
  * or anytime before the 'muplugins_loaded' action is fired
  */
 
-require '/var/www/html/current/vendor/autoload.php';
+//require '/var/www/html/current/vendor/autoload.php';
 
 /*********************************************************************/
 
@@ -124,4 +113,4 @@ require_once(ABSPATH . 'wp-settings.php');
  * A bare-minimum example of logging with Wonolog could look like so:
  */
 
-do_action( 'wonolog.log', 'Some event happened in wp-config.php' );
+//do_action( 'wonolog.log', 'Some event happened in wp-config.php' );
