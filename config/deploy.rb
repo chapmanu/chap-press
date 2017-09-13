@@ -28,7 +28,6 @@ set :keep_releases, 5
 ############################################
 
 set :linked_files, %w{public/wp-config.php}
-set :linked_dirs, %w{content/uploads}
 
 namespace :deploy do
   include Helpers
@@ -41,7 +40,7 @@ namespace :deploy do
     end
   end
 
-  after 'check:make_linked_dirs', :create_wp_files
+  after 'check:make_linked_files', :create_wp_files
   
   desc "WordPress directory and file permissions"
   task :wp_permissions do
