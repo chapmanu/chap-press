@@ -40,12 +40,16 @@ namespace :deploy do
     end
   end
 
-  after 'check:make_linked_files', :create_wp_files
-  
+  after 'check:make_linked_dirs', :create_wp_files
+
   desc "WordPress directory and file permissions"
   task :wp_permissions do
     on roles(:app) do
       execute :chmod, "644 #{release_path}/public/wp-config.php"
+      # Sets permissions for wp-content folder via symlinked 'content' folder
+      # Allows Wonolog to write logs to the content folder
+      execute "sudo chown php-fpm:webadmin -R #{release_path}/content"
+      execute "sudo find #{release_path}/content -type d -exec chmod 775 {} \\;"
     end
   end
 

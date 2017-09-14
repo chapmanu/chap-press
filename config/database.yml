@@ -5,5 +5,5 @@ staging:
   host: 'localhost' 
   database: 'chappress_dev' 
   username: 'chappress'
-  password: 'chappress'
+  password: 'password'
 

@@ -25,22 +25,11 @@
  *  development for the ChapPress project.
  */
 
-/** The name of the database for WordPress */
 define('DB_NAME',     '<%= database['database'] %>');
-
-/** MySQL database username */
 define('DB_USER',     '<%= database['username'] %>');
-
-/** MySQL database password */
 define('DB_PASSWORD', '<%= database['password'] %>');
-
-/** MySQL hostname */
 define('DB_HOST',     '<%= database['host'] %>');
-
-/** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
-
-/** The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');
 
 /**#@+
@@ -87,10 +76,9 @@ $table_prefix  = 'wp_';
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
 define( 'WP_DEBUG', true );
-/* Log is saved to the directory: /wp-content/debug.log */
 define( 'WP_DEBUG_LOG', true );
-define( 'WP_DEBUG_DISPLAY', false );
-@ini_set( 'display_errors', 0 );
+define( 'WP_DEBUG_DISPLAY', true );
+@ini_set( 'display_errors', 1 );
 define( 'SCRIPT_DEBUG', true );
 
 /************************** WONOLOG **********************************/
@@ -104,7 +92,12 @@ define( 'SCRIPT_DEBUG', true );
  * or anytime before the 'muplugins_loaded' action is fired
  */
 
-require '/var/www/html/current/vendor/autoload.php';
+// Path file location for the current Capistrano release
+$autoload_path = realpath(__DIR__ . '/../../current/vendor/autoload.php');
+
+if (file_exists($autoload_path)) {
+  require $autoload_path;
+}
 
 /*********************************************************************/
 
@@ -116,7 +109,6 @@ if ( !defined('ABSPATH') )
 
 /** Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');
-
 
 /************************** Custom Log ***********************************/
 /* Logging in Wonolog is done via a WordPress function: do_action()
