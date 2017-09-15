@@ -98,7 +98,7 @@ Installation process for the setting up Wordpress on a local environment.
   Ansible will run a staging server to do WordPress testing.
 
       # install pip, if needed
-      sudo easy_install pip`
+      sudo easy_install pip
 
       sudo pip install ansible
       ansible --version
@@ -208,9 +208,9 @@ An [MU plugin](https://codex.wordpress.org/Must_Use_Plugins) has been added for 
 
 **Automatically logged events include:**
 
-- PHP core notices, warnings and (fatal) errors;
-- uncaught exceptions;
-- WordPress errors and events (e.g., DB errors, HTTP API errors, wp_mail() errors, and 404 errors).
+- PHP core notices, warnings and (fatal) errors
+- uncaught exceptions
+- WordPress errors and events (e.g., DB errors, HTTP API errors, wp_mail() errors, and 404 errors)
 
 ### Logging
 
