@@ -266,3 +266,16 @@ If you see this error when trying to create or grant privileges to a MYSQL user:
 Run `FLUSH PRIVILEGES;` first then run the command.
 
 [Skip-grant Source](https://unix.stackexchange.com/a/102916)
+
+### Wonolog
+If there is an issue with Wonolog on the staging server:
+- Go to `/config/templates.wp-config.php.erb`
+  - Verify the correct path file for `$autoload_path` variable. The path file is going up directories because of the Capistrano deploy release. Essentially, the require statement just needs the composer autoload file at `vendor/autoload.php`. 
+- Check the permissions of the `wp-content` folder. This folder is symlinked from `/public/wp-content/` to `/content/`
+  - Run:
+     - `chown php-fpm:webadmin -R ./content`
+     - `find ./content -type d -exec chmod 755 {} \;`
+  - [Stack Overflow](https://stackoverflow.com/questions/18352682/correct-file-permissions-for-wordpress)
+- Go to `/config/deploy.rb` and review the code for staging deployment. 
+- [Wonolog Github](https://github.com/inpsyde/Wonolog)
+- [require in php](https://stackoverflow.com/questions/35400672/difference-between-require-dir-file-php-and-requirefile-php) 
