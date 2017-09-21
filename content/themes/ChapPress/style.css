@@ -1,0 +1,23 @@
+/*!
+  Theme Name: ChapPress
+  Theme URI: https://chappress-staging.chapman.edu/ChapPress
+  Description: Child theme of the default WordPress theme - Twenty Seventeen. Developed for Chapman University's ChapPress Project. 
+  Author: Web and Interactive Marketing - Chapman University
+  Author URI: https://chappress-staging.chapman.edu
+  Template: twentyseventeen
+  Version: 1.0.0
+  License: GNU General Public License v2 or later
+  License URI: http://www.gnu.org/licenses/gpl-2.0.html
+  Tags: one-column, two-columns, right-sidebar, flexible-header, accessibility-ready, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
+  Text Domain: chappress
+  
+  Child Themes - https://codex.wordpress.org/Child_Themes
+  This child theme is using Sass-3.5.1 (http://sass-lang.com/)
+*/
+/* ==========================================================================
+   GENERAL STYLINGS
+   ========================================================================== */
+.page-title {
+  color: #98002E; }
+
+/*# sourceMappingURL=style.css.map */
