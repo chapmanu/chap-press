@@ -1,6 +1,6 @@
 
 // SMC STYLE GUIDE - Sass Variables
-
+// https://chapmanu.github.io/smc-style-guide/
 
 // BRAND COLORS & THEMES
 
@@ -38,6 +38,14 @@
 
 // TYPOGRAPHY
 
-  $futura-font:  Futura-PT, sans-serif;
-  $minion-font:  Minion-Pro, serif;
-  $proxima-font: Proxima-Nova, sans-serif;
+$futura-font:  "Futura-PT", Arial, Verdana, sans-serif;
+$minion-font:  "Minion-Pro", Times New Roman, serif;
+$proxima-font: "Proxima-Nova", Arial, Verdana, sans-serif;
+
+// FONT SIZES
+
+$lrg-font-size: 3em;       // 48px / 16px
+$med-font-size: 2em;      // 32px / 16px
+$sm-font-size: 1.125em; // 18px / 16px
+$reg-font-size: 0.875em; // 14px / 16px
+$link-border: 2px dotted #C1C1C1;

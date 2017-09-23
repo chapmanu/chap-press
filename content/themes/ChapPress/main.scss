@@ -15,15 +15,16 @@
   This child theme is using Sass-3.5.1 (http://sass-lang.com/)
 */
 
-// SMC style guide: https://chapmanu.github.io/smc-style-guide/
-@import "_smc_styles";
 
-/* ==========================================================================
-   GENERAL STYLINGS
-   ========================================================================== */   
+@import "./sass/_smc_styles";
+@import "./sass/_general";
+@import "./sass/_search";
+@import "./sass/_top-menu";
+@import "./sass/_sidebar";
+@import "./sass/_login";
 
-.page-title {
-  color: $red;
-}
+
+// The stylesheet is split into partials at the /sass folder
+// SMC style variables are located at /sass/_smc-styles
 
 

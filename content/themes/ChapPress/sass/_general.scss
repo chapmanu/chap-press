@@ -1,0 +1,70 @@
+body {
+  background-color: $silver;
+  font-size: 1em;
+}
+
+body, h1, h2, h4, time {
+  font-family: $futura-font;
+}
+
+h1 {
+  font-size: $lrg-font-size;
+}
+
+h2 {
+  font-size: $med-font-size;
+}
+
+h3 {
+  font-family: $minion-font;
+}
+
+
+p {
+  font-family: $proxima-font;
+  font-size: $reg-font-size;
+  line-height: 20px;
+  font-weight: normal;
+}
+
+a {
+  font-size: $reg-font-size;
+  line-height: 20px;
+  color: $red;
+}
+
+.site-title {
+  font-size: 3rem;
+}
+
+.entry-title a {
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 46px;
+  font-style: italic;
+}
+
+.page-title {
+  font-size: $futura-font;
+  font-size: 1.25em;
+  line-height: 48px;
+  font-weight: 800;
+}
+
+.custom-header {
+  background-color: $white;
+}
+
+.site-content-contain {
+  background-color: $silver;
+}
+
+.content-area {
+  background-color: $white;
+  padding: 1.125em;
+}
+
+.entry-date, .updated {
+  font-size: 1.125em;
+}
+

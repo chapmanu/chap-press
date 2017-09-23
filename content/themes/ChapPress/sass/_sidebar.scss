@@ -1,0 +1,15 @@
+.widget ul, .widget ol {
+  border-top: 1px solid $medium-gray;
+}
+
+.widget ul li, .widget ol li {
+  border-bottom: none;
+}
+
+.widget ul li a, .widget ol li a {
+  box-shadow: none;
+}
+
+ul li a {
+  font-size: 1em;
+}

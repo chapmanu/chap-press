@@ -14,10 +14,115 @@
   Child Themes - https://codex.wordpress.org/Child_Themes
   This child theme is using Sass-3.5.1 (http://sass-lang.com/)
 */
-/* ==========================================================================
-   GENERAL STYLINGS
-   ========================================================================== */
-.page-title {
+body {
+  background-color: #EAEAEA;
+  font-size: 1em; }
+
+body, h1, h2, h4, time {
+  font-family: "Futura-PT", Arial, Verdana, sans-serif; }
+
+h1 {
+  font-size: 3em; }
+
+h2 {
+  font-size: 2em; }
+
+h3 {
+  font-family: "Minion-Pro", Times New Roman, serif; }
+
+p {
+  font-family: "Proxima-Nova", Arial, Verdana, sans-serif;
+  font-size: 0.875em;
+  line-height: 20px;
+  font-weight: normal; }
+
+a {
+  font-size: 0.875em;
+  line-height: 20px;
   color: #98002E; }
+
+.site-title {
+  font-size: 3rem; }
+
+.entry-title a {
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 46px;
+  font-style: italic; }
+
+.page-title {
+  font-size: "Futura-PT", Arial, Verdana, sans-serif;
+  font-size: 1.25em;
+  line-height: 48px;
+  font-weight: 800; }
+
+.custom-header {
+  background-color: #FFFFFF; }
+
+.site-content-contain {
+  background-color: #EAEAEA; }
+
+.content-area {
+  background-color: #FFFFFF;
+  padding: 1.125em; }
+
+.entry-date, .updated {
+  font-size: 1.125em; }
+
+.search-form .search-submit {
+  color: #FFFFFF;
+  background-color: #98002E; }
+
+.search-form .search-submit:hover {
+  background-color: #BA183E; }
+
+.wrap .menu-scroll-down {
+  border: 2px solid #FFFFFF; }
+
+@media screen and (min-width: 320px) {
+  .navigation-top {
+    background-color: #7F0026;
+    border: #7F0026; }
+
+  #top-menu li a {
+    font-size: 1.25em;
+    color: #FFFFFF;
+    font-weight: 400; }
+
+  #top-menu {
+    background-color: #7F0026; }
+
+  button.menu-toggle {
+    color: #FFFFFF; }
+
+  h1 {
+    padding: 1em;
+    margin: 1em; }
+
+  .custom-logo-link img {
+    padding: 1em; } }
+.widget ul, .widget ol {
+  border-top: 1px solid #676767; }
+
+.widget ul li, .widget ol li {
+  border-bottom: none; }
+
+.widget ul li a, .widget ol li a {
+  box-shadow: none; }
+
+ul li a {
+  font-size: 1em; }
+
+#loginform {
+  background: #FFFFFF; }
+
+.login .button-primary {
+  background: #98002E;
+  border: #98002E;
+  text-shadow: none;
+  box-shadow: none; }
+
+.login .button-primary:hover {
+  background: #BA183E; }
 
 /*# sourceMappingURL=style.css.map */
