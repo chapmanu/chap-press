@@ -1,0 +1,28 @@
+.site-content-contain {
+  background-color: $silver;
+}
+
+.content-area {
+  background-color: $white;
+  padding: 2em;
+}
+
+.entry-date, .updated {
+  font-size: 1.125em;
+}
+
+.entry-content {
+  padding: 1em;
+}
+
+.entry-title a {
+  font-size: 32px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 46px;
+
+}
+
+.page .panel-content .entry-title, .page-title, body.page:not(.twentyseventeen-front-page) .entry-title {
+  font-size: 1.5em;
+}
