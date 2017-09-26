@@ -21,14 +21,13 @@ set :log_level, :debug
 set :use_sudo, false
 set :pty, true
 set :ssh_options, forward_agent: true
-set :keep_releases, 5
+set :keep_releases, 15
 
 ############################################
 # Linked files and directories (symlinks)
 ############################################
 
 set :linked_files, %w{public/wp-config.php}
-set :linked_dirs, %w{content/uploads}
 
 namespace :deploy do
   include Helpers
@@ -47,6 +46,7 @@ namespace :deploy do
   task :wp_permissions do
     on roles(:app) do
       execute :chmod, "644 #{release_path}/public/wp-config.php"
+      execute :chmod, "-R 755 #{release_path}/content/uploads"
       # Sets permissions for wp-content folder via symlinked 'content' folder
       # Allows Wonolog to write logs to the content folder
       execute "sudo chown php-fpm:webadmin -R #{release_path}/content"

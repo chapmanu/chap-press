@@ -3,7 +3,7 @@
 *.log
 *.sql
 *.sqlite
-# database.yml / allowed temporarily for staging setup
+database.yml
 secrets.yml
 
 # OS generated files #
