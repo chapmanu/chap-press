@@ -50,3 +50,8 @@ phpbuiltinserver.output.txt
 # Ansible #
 ###################
 *.retry
+
+# Sass #
+###################
+/content/themes/chappress/sass/.sass-cache
+/content/themes/chappress/sass/.sass-cache/*
