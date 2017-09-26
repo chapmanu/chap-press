@@ -18,24 +18,6 @@
   $bright-red:  #BA183E;
   $dark-red:    #7F0026;
 
-
-  // College themes for exclusive use by Chapman University only
-
-  $argyros:       #006185;
-  $CES:           #003764;
-  $copa:          #69465C;
-  $copa-dance:    #007165;
-  $copa-music:    #793141;
-  $copa-theater:  #002E5F;
-  $crean:         #1F8A84;
-  $dodge:         #2F2F2F;
-  $dowler:        #002F7C;
-  $schmid:        #4A5E0F;
-  $communication: #C88508;
-  $pharmacy:      #008EC1;
-  $wilkinson:     #008EC1;
-
-
 // TYPOGRAPHY
 
 $futura-font:  "Futura-PT", Arial, Verdana, sans-serif;
@@ -47,5 +29,5 @@ $proxima-font: "Proxima-Nova", Arial, Verdana, sans-serif;
 $lrg-header-size: 3em;    // 48px / 16px
 $med-header-size: 2em;    // 32px / 16px
 $sm-header-size: 1.125em; // 18px / 16px
-$body-font-size: 0.875em; // 14px / 16px
+$body-font-size: 1rem; // 14px / 16px
 $link-border: 2px dotted #C1C1C1;

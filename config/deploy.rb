@@ -28,6 +28,7 @@ set :keep_releases, 5
 ############################################
 
 set :linked_files, %w{public/wp-config.php}
+set :linked_dirs, %w{content/uploads}
 
 namespace :deploy do
   include Helpers
