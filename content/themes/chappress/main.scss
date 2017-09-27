@@ -1,7 +1,7 @@
 /*!
-  Theme Name: ChapPress
-  Theme URI: https://chappress-staging.chapman.edu/ChapPress
-  Description: Child theme of the default WordPress theme - Twenty Seventeen. Developed for Chapman University's ChapPress Project. 
+  Theme Name: chappress
+  Theme URI: https://chappress-staging.chapman.edu/chappress
+  Description: Child theme of the default WordPress theme - Twenty Seventeen. Developed for Chapman University's chappress Project. 
   Author: Web and Interactive Marketing - Chapman University
   Author URI: https://chappress-staging.chapman.edu
   Template: twentyseventeen
@@ -18,7 +18,6 @@
 @import "./sass/_smc_styles";
 @import "./sass/_entry";
 @import "./sass/_headers";
-@import "./sass/_search";
 @import "./sass/_top-menu";
 @import "./sass/_sidebar";
 @import "./sass/_login";
@@ -61,4 +60,9 @@ a {
   color: $red;
   font-size: $body-font-size;
   line-height: 20px;
+}
+
+.custom-logo-link {
+  background-image: url("http://localhost:8222/wp-content/themes/chappress/assets/images/cu-logo.png");
+  background-size: 100%;
 }

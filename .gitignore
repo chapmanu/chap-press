@@ -53,5 +53,5 @@ phpbuiltinserver.output.txt
 
 # Sass #
 ###################
-/content/themes/chappress/sass/.sass-cache
-/content/themes/chappress/sass/.sass-cache/*
+/content/themes/chappress/.sass-cache
+/content/themes/chappress/.sass-cache/*

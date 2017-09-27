@@ -34,14 +34,14 @@ add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
 function my_login_logo() { ?>
     <style type="text/css">
         #login h1 a, .login h1 a {
-            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/images/cu-logo.png);
+            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/assets/images/cu-logo.png);
             background-repeat: no-repeat;
         }
     </style>
 <?php }
 add_action( 'login_enqueue_scripts', 'my_login_logo' );
 
-/* Logo links to ChapPress site
+/* Logo links to Chappress site
    ######################################################
    https://codex.wordpress.org/Customizing_the_Login_Form
 */
@@ -52,7 +52,7 @@ function my_login_logo_url() {
 add_filter( 'login_headerurl', 'my_login_logo_url' );
 
 function my_login_logo_url_title() {
-    return 'ChapPress';
+    return 'chappress';
 }
 add_filter( 'login_headertitle', 'my_login_logo_url_title' );
 
@@ -67,3 +67,4 @@ function my_login_stylesheet() {
 add_action( 'login_enqueue_scripts', 'my_login_stylesheet' );
 
 ?>
+

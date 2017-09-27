@@ -1,7 +1,7 @@
 /*!
-  Theme Name: ChapPress
-  Theme URI: https://chappress-staging.chapman.edu/ChapPress
-  Description: Child theme of the default WordPress theme - Twenty Seventeen. Developed for Chapman University's ChapPress Project. 
+  Theme Name: chappress
+  Theme URI: https://chappress-staging.chapman.edu/chappress
+  Description: Child theme of the default WordPress theme - Twenty Seventeen. Developed for Chapman University's chappress Project. 
   Author: Web and Interactive Marketing - Chapman University
   Author URI: https://chappress-staging.chapman.edu
   Template: twentyseventeen
@@ -40,8 +40,8 @@
   font-size: 3rem; }
 
 .page-title {
-  font-weight: 800;
   font-size: 1.25em;
+  font-weight: 800;
   line-height: 48px; }
 
 .custom-header {
@@ -51,16 +51,6 @@
   .page.page-one-column .entry-header, .twentyseventeen-front-page.page-one-column .entry-header, .archive.page-one-column:not(.has-sidebar) .page-header {
     margin-bottom: .5em;
     padding-bottom: .5em; } }
-.search-form .search-submit {
-  color: #FFFFFF;
-  background-color: #98002E; }
-
-.search-form .search-submit:hover {
-  background-color: #BA183E; }
-
-.wrap .menu-scroll-down {
-  border: 2px solid #FFFFFF; }
-
 @media screen and (min-width: 320px) {
   .navigation-top {
     background-color: #7F0026;
@@ -79,10 +69,7 @@
 
   h1 {
     padding: 1em;
-    margin: 1em; }
-
-  .custom-logo-link img {
-    padding: 1em; } }
+    margin: 1em; } }
 .widget ul, .widget ol {
   border-top: 1px solid #676767; }
 
@@ -93,7 +80,7 @@
   box-shadow: none; }
 
 ul li a {
-  font-size: 1em; }
+  font-size: 0.875rem; }
 
 #loginform {
   background: #FFFFFF; }
@@ -126,13 +113,17 @@ h3 {
 
 p {
   font-family: "Proxima-Nova", Arial, Verdana, sans-serif;
-  font-size: 0.875em;
+  font-size: 1rem;
   font-weight: normal;
   line-height: 20px; }
 
 a {
   color: #98002E;
-  font-size: 0.875em;
+  font-size: 1rem;
   line-height: 20px; }
+
+.custom-logo-link {
+  background-image: url("http://localhost:8222/wp-content/themes/chappress/assets/images/cu-logo.png");
+  background-size: 100%; }
 
 /*# sourceMappingURL=style.css.map */
