@@ -3,7 +3,7 @@
 *.log
 *.sql
 *.sqlite
-database.yml
+/config/database.yml
 secrets.yml
 
 # OS generated files #

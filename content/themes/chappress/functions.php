@@ -66,5 +66,17 @@ function my_login_stylesheet() {
 }
 add_action( 'login_enqueue_scripts', 'my_login_stylesheet' );
 
+
+add_filter( 'get_custom_logo', 'change_logo_class' );
+
+
+function change_logo_class( $html ) {
+
+    $html = str_replace( 'custom-logo', 'chapman-logo-link', $html );
+    $html = str_replace( 'custom-logo-link', 'chapman-logo-link', $html );
+
+    return $html;
+}
+
 ?>
 
