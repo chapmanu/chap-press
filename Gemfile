@@ -5,3 +5,4 @@ group :development do
 end
 
 gem 'colorize'
+gem 'sass', '~> 3.5', '>= 3.5.1'

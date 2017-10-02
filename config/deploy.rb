@@ -28,6 +28,7 @@ set :keep_releases, 5
 ############################################
 
 set :linked_files, %w{public/wp-config.php}
+set :linked_dirs, %w{content/uploads}
 
 namespace :deploy do
   include Helpers
@@ -50,6 +51,11 @@ namespace :deploy do
       # Allows Wonolog to write logs to the content folder
       execute "sudo chown php-fpm:webadmin -R #{release_path}/content"
       execute "sudo find #{release_path}/content -type d -exec chmod 775 {} \\;"
+      execute "sudo find #{release_path}/content -type f -exec chmod 664 {} \\;"
+      ## Resources ##
+      # https://www.digitalocean.com/community/questions/how-can-i-fix-permissions-with-wordpress-file-uploads
+      # https://stackoverflow.com/questions/18352682/correct-file-permissions-for-wordpress
+      # https://kb-smc.chapman.edu/?p=2086
     end
   end
 
