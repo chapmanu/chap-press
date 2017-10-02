@@ -1,0 +1,26 @@
+@media screen and (min-width: 320px) {
+  // Mobile-first responsive design for top-menu & header/logo
+  .navigation-top {
+    background-color: $dark-red;
+    border: $dark-red;
+  }
+
+  #top-menu li a {
+    color: $white;
+    font-size: 1.25em;
+    font-weight: 400;
+  }
+
+  #top-menu {
+    background-color: $dark-red;
+  }
+
+  button.menu-toggle {
+    color: $white;
+  }
+
+  h1 {
+    padding: 1em;
+    margin: 1em;
+  }
+}

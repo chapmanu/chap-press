@@ -40,6 +40,7 @@ yum_php_packages:
   - php{{ yum_php_version }}-opcache
   - php{{ yum_php_version }}-pdo
   - php{{ yum_php_version }}-mbstring
+  - php{{ yum_php_version }}-gd
 
 # PHP-FPM FastCGI.
 centos_php_fastcgi_listen: "/run/php-fpm/www.sock"

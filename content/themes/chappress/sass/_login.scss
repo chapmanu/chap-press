@@ -1,0 +1,14 @@
+#loginform {
+  background: $white;
+}
+
+.login .button-primary {
+  background: $red;
+  border: $red;
+  box-shadow: none;
+  text-shadow: none;
+}
+
+.login .button-primary:hover {
+  background: $bright-red;
+}

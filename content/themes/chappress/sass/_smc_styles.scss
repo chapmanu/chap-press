@@ -1,0 +1,33 @@
+
+// SMC STYLE GUIDE - Sass Variables
+// https://chapmanu.github.io/smc-style-guide/
+
+// BRAND COLORS & THEMES
+
+
+  // Backgrounds, Borders, Shadows, Text
+
+  $white:       #FFFFFF;
+  $silver:      #EAEAEA;
+  $silver-gray: #D8D8D8;
+  $light-gray:  #CFCFCF;
+  $gray:        #C1C1C1;
+  $medium-gray: #676767;
+  $black:       #2F2F2F;
+  $red:         #98002E;
+  $bright-red:  #BA183E;
+  $dark-red:    #7F0026;
+
+// TYPOGRAPHY
+
+$futura-font:  "Futura-PT", Arial, Verdana, sans-serif;
+$minion-font:  "Minion-Pro", Times New Roman, serif;
+$proxima-font: "Proxima-Nova", Arial, Verdana, sans-serif;
+
+// FONT SIZES
+
+$lrg-header-size: 3em;    // 48px / 16px
+$med-header-size: 2em;    // 32px / 16px
+$sm-header-size: 1.125em; // 18px / 16px
+$body-font-size: 1rem; // 14px / 16px
+$link-border: 2px dotted #C1C1C1;
