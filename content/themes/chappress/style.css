@@ -69,7 +69,10 @@
 
   h1 {
     padding: 1em;
-    margin: 1em; } }
+    margin: 1em; }
+
+  .site-title a {
+    font-size: 2rem; } }
 .widget ul, .widget ol {
   border-top: 1px solid #676767; }
 
