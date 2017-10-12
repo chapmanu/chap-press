@@ -17,7 +17,17 @@
  
 $table_prefix  = 'wp_';
 
-define('DB_NAME',     'chappress_dev');
+if ($_SERVER[SERVER_PORT] == 8222) {
+  # Default DB
+  define('DB_NAME', 'chappress_dev');
+} else if ($_SERVER[SERVER_PORT] == 8777) {
+  # DB for Acceptance testing
+  define('DB_NAME', 'chappress_test');
+} else {
+  # Redirects here for the Functional Tests
+  define('DB_NAME', 'chappress_test');
+}
+
 define('DB_USER',     'chappress');
 define('DB_PASSWORD', 'chappress');
 define('DB_HOST',     'localhost');

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "10dac03d1b1c728c162fd2baf3932857",
+    "content-hash": "6c7fdd219ee1aac327510e2c1d2dd3be",
     "packages": [],
     "packages-dev": [
         {
@@ -253,46 +253,6 @@
                 "unit testing"
             ],
             "time": "2017-09-28T23:19:49+00:00"
-        },
-        {
-            "name": "codeception/phpbuiltinserver",
-            "version": "v1.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/tiger-seo/PhpBuiltinServer.git",
-                "reference": "e0509bb9e9b55ae841b5c46aca1b0db858f4c652"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/tiger-seo/PhpBuiltinServer/zipball/e0509bb9e9b55ae841b5c46aca1b0db858f4c652",
-                "reference": "e0509bb9e9b55ae841b5c46aca1b0db858f4c652",
-                "shasum": ""
-            },
-            "require": {
-                "codeception/codeception": "^2.1",
-                "php": ">=5.4.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Codeception": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "tiger-seo",
-                    "email": "tiger.seo@gmail.com"
-                }
-            ],
-            "description": "PhpBuiltinServer extension for Codeception",
-            "keywords": [
-                "codeception"
-            ],
-            "time": "2016-12-20T01:05:21+00:00"
         },
         {
             "name": "composer/ca-bundle",
@@ -1158,16 +1118,16 @@
         },
         {
             "name": "justinrainbow/json-schema",
-            "version": "5.2.4",
+            "version": "5.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/justinrainbow/json-schema.git",
-                "reference": "7ccb0e67ea8ace0f84c40900ca3c8a234467628c"
+                "reference": "0d4fda8efdf216ade084a7f0aad5637572ce9835"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/justinrainbow/json-schema/zipball/7ccb0e67ea8ace0f84c40900ca3c8a234467628c",
-                "reference": "7ccb0e67ea8ace0f84c40900ca3c8a234467628c",
+                "url": "https://api.github.com/repos/justinrainbow/json-schema/zipball/0d4fda8efdf216ade084a7f0aad5637572ce9835",
+                "reference": "0d4fda8efdf216ade084a7f0aad5637572ce9835",
                 "shasum": ""
             },
             "require": {
@@ -1220,7 +1180,7 @@
                 "json",
                 "schema"
             ],
-            "time": "2017-10-04T20:57:36+00:00"
+            "time": "2017-10-10T13:22:37+00:00"
         },
         {
             "name": "lucatume/codeception-setup-local",
@@ -1266,16 +1226,16 @@
         },
         {
             "name": "lucatume/wp-browser",
-            "version": "1.21.18",
+            "version": "1.21.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lucatume/wp-browser.git",
-                "reference": "ac22f2362db4436cc7ef5139fbbe62ebb243f152"
+                "reference": "74e4cf6e847cccc54cf61ce5f9c758d73554b64f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lucatume/wp-browser/zipball/ac22f2362db4436cc7ef5139fbbe62ebb243f152",
-                "reference": "ac22f2362db4436cc7ef5139fbbe62ebb243f152",
+                "url": "https://api.github.com/repos/lucatume/wp-browser/zipball/74e4cf6e847cccc54cf61ce5f9c758d73554b64f",
+                "reference": "74e4cf6e847cccc54cf61ce5f9c758d73554b64f",
                 "shasum": ""
             },
             "require": {
@@ -1324,7 +1284,7 @@
                 "codeception",
                 "wordpress"
             ],
-            "time": "2017-09-26T14:14:13+00:00"
+            "time": "2017-10-10T08:59:17+00:00"
         },
         {
             "name": "lucatume/wp-browser-commons",
@@ -2248,16 +2208,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "6.4.0",
+            "version": "6.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "a1bcaca096998de32c29535fdd2dea0c475e8f61"
+                "reference": "b770d8ba7e60295ee91d69d5a5e01ae833cac220"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/a1bcaca096998de32c29535fdd2dea0c475e8f61",
-                "reference": "a1bcaca096998de32c29535fdd2dea0c475e8f61",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/b770d8ba7e60295ee91d69d5a5e01ae833cac220",
+                "reference": "b770d8ba7e60295ee91d69d5a5e01ae833cac220",
                 "shasum": ""
             },
             "require": {
@@ -2328,7 +2288,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-10-06T03:14:57+00:00"
+            "time": "2017-10-07T17:53:53+00:00"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -5235,16 +5195,16 @@
         },
         {
             "name": "wp-cli/php-cli-tools",
-            "version": "v0.11.7",
+            "version": "v0.11.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/php-cli-tools.git",
-                "reference": "14b8a086b60cba2dc1e4203805efcec513643e9e"
+                "reference": "363c75349f5dde561e0b416dd00f7aaa76fa2c27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/php-cli-tools/zipball/14b8a086b60cba2dc1e4203805efcec513643e9e",
-                "reference": "14b8a086b60cba2dc1e4203805efcec513643e9e",
+                "url": "https://api.github.com/repos/wp-cli/php-cli-tools/zipball/363c75349f5dde561e0b416dd00f7aaa76fa2c27",
+                "reference": "363c75349f5dde561e0b416dd00f7aaa76fa2c27",
                 "shasum": ""
             },
             "require": {
@@ -5281,7 +5241,7 @@
                 "cli",
                 "console"
             ],
-            "time": "2017-10-02T20:04:30+00:00"
+            "time": "2017-10-12T21:50:48+00:00"
         },
         {
             "name": "wp-cli/rewrite-command",
@@ -5454,16 +5414,16 @@
         },
         {
             "name": "wp-cli/search-replace-command",
-            "version": "v1.0.4",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/search-replace-command.git",
-                "reference": "8c385100c437efa5d1838edd512407cc5e23f93d"
+                "reference": "54c5dc365b3fe404db319da2875f298604a78701"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/search-replace-command/zipball/8c385100c437efa5d1838edd512407cc5e23f93d",
-                "reference": "8c385100c437efa5d1838edd512407cc5e23f93d",
+                "url": "https://api.github.com/repos/wp-cli/search-replace-command/zipball/54c5dc365b3fe404db319da2875f298604a78701",
+                "reference": "54c5dc365b3fe404db319da2875f298604a78701",
                 "shasum": ""
             },
             "require": {
@@ -5503,7 +5463,7 @@
             ],
             "description": "Search/replace strings in the database.",
             "homepage": "https://github.com/wp-cli/search-replace-command",
-            "time": "2017-09-29T15:14:09+00:00"
+            "time": "2017-10-12T22:08:35+00:00"
         },
         {
             "name": "wp-cli/server-command",

@@ -115,47 +115,40 @@ Installation process for the setting up Wordpress on a local environment.
 
 ### Run Automated Tests
 
-- **Execute in terminal**: `codecept run`
+- **Execute in terminal**: `codecept run acceptance`
 
-This command will run all tests (acceptance, functional, unit, wpunit)
+This command will run the acceptance test. Replace `acceptance` with `functional` or `unit` to run those suites.
 
-[See Table](#codeception-commands) below for more specific commands
+Due to WordPress dependency on globals and constants the suites should not be ran at the same time.
 
-*Note: Restart your selenium server via `brew services restart selenium-server-standalone` if you see the following error.*
+To run the entire set of suites the recommended method is:
 
-    [ConnectionException] Can't connect to Webdriver at http://127.0.0.1:4444/wd/hub.  
-    Please make sure that Selenium Server or PhantomJS is running.
+`codecept run acceptance && codecept run functional && codecept run ...`
 
-
-<br/>
+[Codeception for Wordpress](https://github.com/lucatume/wp-browser)
 
 ### Codeception Commands
 
 | Command | Description |
 | --- | --- |
-| `codecept run` | Run all tests |
+| `codecept run acceptance` | Run all the acceptance tests |
 | `codecept run unit` | Run all the unit tests |
 | `codecept run functional` | Run all the functional tests |
-| `codecept run dry-run functional` | Do a dry run of a specific suite |
 | `codecept run --steps` | Print a step-by-step execution |
 | `codecept run --debug` | Print steps and debug information |
 | `codecept run --html` | Prints a stylized html report |
 | `codecept g:cept suite "Custom Name"` | Generates Cept (scenario-driven test) file |
 | `codecept g:cest suite "Custom Name"` | Generates Cest (scenario-driven object-oriented test) file |
 | `codecept g:test suite "Custom Name"` | Generates Unit test |
+| `codecept run dry-run functional` | Do a dry run of a specific suite |
 | `codecept run --h` | General help |
-
-[Codeception Console Commands](http://codeception.com/docs/reference/Commands)
 
 **Test Resources**
 
-[Chappress Wiki - Create A Test](https://github.com/chapmanu/chap-press/wiki#create-a-test) - See a quick example of how to create a test.  
+[Chappress Wiki - Automated Testing](https://github.com/chapmanu/chap-press/wiki#automated-testing) - Chappress Wiki with further information.  
 [Wordpress Methods](https://github.com/lucatume/wp-browser#methods) - WordPress methods to use when creating tests ($I->doSomething syntax).  
 [General Test Methods](http://codeception.com/docs/modules/PhpBrowser) - General methods to use from Codeception.
-
-**General**
-
-[Chappress Wiki - Automated Testing](https://github.com/chapmanu/chap-press/wiki#automated-testing)
+[Codeception Console Commands](http://codeception.com/docs/reference/Commands) - An in depth look at the different Codeception commands.
 
 ***
 
@@ -245,6 +238,15 @@ In case Github SSH access is denied, try:
 - [Add SSH to Github](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/)
 - Test SSH connection to Github
   - `ssh -T git@github.com`
+
+## Codeception Testing
+
+If you see the following error:
+
+    [ConnectionException] Can't connect to Webdriver at http://127.0.0.1:4444/wd/hub.  
+    Please make sure that Selenium Server or PhantomJS is running. 
+
+**Restart your selenium server** via `brew services restart selenium-server-standalone` 
 
 ### MariaDB
 -  If the MariaDB has not been used before, the MySQL database may have to be restarted or unlinked using Homebrew:

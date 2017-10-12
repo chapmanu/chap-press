@@ -1,39 +1,43 @@
-# Codeception Test Suite Configuration
+# ACCEPTANCE TEST CONFIGURATION
+###############################
 #
-# Suite for acceptance tests.
+# The WPWebDriver is a JavaScript capable module that drives a real browser. 
+# To be used in conjunction with a Selenium server, PhantomJS or any real 
+# web browser for acceptance testing requiring JavaScript support
+# If you need both WPWebDriver and WPBrowser tests - create a separate suite. 
 # 
-# Perform tests in browser using the WPWebDriver or WPBrowser.
-# Use WPDb to set up your initial database fixture.
-# If you need both WPWebDriver and WPBrowser tests - create a separate suite.
+# Acceptance test files located in the tests/acceptance directory.
 # 
-# For Reference:
-# The dump will import the chappress_dev database. 
-# It will replace the localhost:8222 with localhost:8777 for testing purposes. 
-# It uses it own database (chapress-test) for testing. After testing, the original
-# chappress_dev database should not be affected. Tests can run while the public folder
-# is running since they are on different ports.  
-
-
+# WordPress for Codeception  : https://github.com/lucatume/wp-browser
+# Chappress Wiki for Testing : https://github.com/chapmanu/chap-press/wiki/Automated-Testing#testing-suites
+# Getting Started            : http://codeception.com/docs/02-GettingStarted#Cept-Cest-and-Test-Formats
 
 actor: AcceptanceTester
 modules:
     enabled:
+        - Codeception\Extension\RunProcess: #Extension to start and stop server
+             - php -S 127.0.0.1:8777 -t ./public 
         - WPDb
-        - WPBrowser
+        - WPWebDriver
         - \Helper\Acceptance
     config:
-        WPDb:
-            dsn: 'mysql:host=localhost;dbname=chappress_test' #uses as the test db
+        WPDb: #set up your initial database fixture.
+            dsn: 'mysql:host=localhost;dbname=chappress_test'
             user: 'chappress'
             password: 'chappress'
-            dump: 'tests/_data/chappress_dev_dump.sql' #imports the chappress_dev site mysql
+            dump: 'tests/_data/dump.sql'
             populate: true #import the dump before the tests
             cleanup: true #import the dump between tests
-            url: 'http://localhost:8777'
-            urlReplacement: true #replaces the test db with the hardcoded dump URL with the one above
+            url: 'http://localhost:8777' #will replace db with this port
+            urlReplacement: true #replace the hardcoded dump URL with the one above
             tablePrefix: 'wp_'
-        WPBrowser:
+        WPWebDriver:
             url: 'http://localhost:8777'
+            window_size: 1024x768
+            browser: chrome
+            port: 4444
+            restart: true
+            wait: 2
             adminUsername: 'chappress'
             adminPassword: 'password'
-            adminPath: '/wp-admin'
+            adminUrl: /wp-admin

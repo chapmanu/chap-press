@@ -1,7 +1,15 @@
-# Codeception Test Suite Configuration
+# FUNCTIONAL TEST CONFIGURATION
+###############################
 #
-# Suite for functional tests
-# Emulate web requests and make WordPress process them
+# Functional tests will emulate web requests and make WordPress process them.
+# 
+# To generate a functional test use the default codecept commmand.
+# 
+#     codecept generate:cept functional "PostInsertion"
+#     
+# It creates a new PostInsertionTest file located in the tests/functional directory.
+# 
+# http://codeception.com/docs/04-FunctionalTests
 
 actor: FunctionalTester
 modules:
@@ -15,7 +23,7 @@ modules:
             dsn: 'mysql:host=localhost;dbname=chappress_test'
             user: 'chappress'
             password: 'chappress'
-            dump: 'tests/_data/chappress_dev_dump.sql'
+            dump: 'tests/_data/dump.sql'
             populate: true
             cleanup: true
             url: 'http://localhost:8777'

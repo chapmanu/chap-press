@@ -8,17 +8,14 @@ class DemoUnitTest extends \Codeception\Test\Unit
      */
     protected $tester;
 
-    protected function _before()
-    {
+    protected function _before() {
     }
 
-    protected function _after()
-    {
+    protected function _after() {
     }
 
     // tests
-    public function testReportedInterface()
-    {
+    public function testReportedInterface() {
         $this->assertInstanceOf('\\Codeception\\Test\\Interfaces\\Reported', $this);
         $this->assertEquals(array(
             'file' => __FILE__,

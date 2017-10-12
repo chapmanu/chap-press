@@ -7,15 +7,12 @@
 
 class expectUserAndAdminLoginCest
 {
-    public function _before(AcceptanceTester $I)
-    {
+    public function _before(AcceptanceTester $I) {
         //runs before each test
         $I->amOnPage('/');
-
     }
 
-    public function _after(AcceptanceTester $I)
-    {
+    public function _after(AcceptanceTester $I) {
         //runs after each test
     }
 
@@ -32,8 +29,7 @@ class expectUserAndAdminLoginCest
         $I->amOnPage('/wp-admin/index.php');
     }
 
-    function expectsAddNewUser(AcceptanceTester $I)
-    {
+    public function expectsAddNewUser(AcceptanceTester $I) {
         $I->wantTo('login as an Admin and add a new user');
         $I->amGoingTo('log in as Admin');
         $I->loginAsAdmin();
@@ -43,6 +39,4 @@ class expectUserAndAdminLoginCest
         $I->amGoingTo('submit form and add new user');
         $I->click('Add New User');
     }
-
-
 }

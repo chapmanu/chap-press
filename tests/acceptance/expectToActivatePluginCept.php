@@ -5,7 +5,7 @@
    Create the scenario first: $I = new AcceptanceTester($scenario);
 
    Continue with line-by-line instruction using predefined methods.
-   
+  
    http://codeception.com/docs/modules/PhpBrowser 
 */
 
@@ -18,6 +18,3 @@ $I->amGoingTo('activate plugin');
 $I->activatePlugin('akismet');
 $I->amGoingTo('check if plugin is activated');
 $I->seePluginActivated('akismet');
-
-
-
