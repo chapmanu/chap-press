@@ -111,7 +111,7 @@ To run the entire set of suites the recommended method is:
 
 `codecept run acceptance && codecept run functional && codecept run ...`
 
-[Codeception for Wordpress](https://github.com/lucatume/wp-browser)
+[Codeception for Wordpress](https://github.com/lucatume/wp-browser)  
 [Wiki - Automated Testing](https://github.com/chapmanu/chap-press/wiki#automated-testing)
 
 ***
@@ -210,55 +210,7 @@ What is actually logged depends on the value of `WP_DEBUG_LOG` constant. When `W
 
 ## Troubleshooting
 
-### Capistrano
-An RSA key is currently added to the GitHub repo.  
-In case Github SSH access is denied, try:
-- List the files in your .ssh directory, if they exist
-  - `ls -al ~/.ssh`
-- [Generate SSH](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)
-- [Add SSH to Github](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/)
-- Test SSH connection to Github
-  - `ssh -T git@github.com`
-
-## Codeception Testing
-
-If you see the following error:
-
-    [ConnectionException] Can't connect to Webdriver at http://127.0.0.1:4444/wd/hub.  
-    Please make sure that Selenium Server or PhantomJS is running. 
-
-**Restart your selenium server** via `brew services restart selenium-server-standalone` 
-
-### MariaDB
--  If the MariaDB has not been used before, the MySQL database may have to be restarted or unlinked using Homebrew:
-
-    brew services stop mysql
-    brew services list
-    brew unlink mysql
-    brew link mariadb
-    brew services start mariadb
-
-
-- ERROR 1290 --skip-grant-tables option Error
-
-If you see this error when trying to create or grant privileges to a MYSQL user:
-
-    ERROR 1290 (HY000): The MySQL server is running with the --skip-grant-tables
-    option so it cannot execute this statement
-
-Run `FLUSH PRIVILEGES;` first then run the command.
-
-[Skip-grant Source](https://unix.stackexchange.com/a/102916)
-
-### Wonolog
-If there is an issue with Wonolog on the staging server:
-- Go to `/config/templates.wp-config.php.erb`
-  - Verify the correct path file for `$autoload_path` variable. The path file is going up directories because of the Capistrano deploy release. Essentially, the require statement just needs the composer autoload file at `vendor/autoload.php`. 
-- Check the permissions of the `wp-content` folder. This folder is symlinked from `/public/wp-content/` to `/content/`
-  - Run:
-     - `chown php-fpm:webadmin -R ./content`
-     - `find ./content -type d -exec chmod 755 {} \;`
-  - [Stack Overflow](https://stackoverflow.com/questions/18352682/correct-file-permissions-for-wordpress)
-- Go to `/config/deploy.rb` and review the code for staging deployment. 
-- [Wonolog Github](https://github.com/inpsyde/Wonolog)
-- [require in php](https://stackoverflow.com/questions/35400672/difference-between-require-dir-file-php-and-requirefile-php) 
+[Capistrano - Github SSH access is denied](https://github.com/chapmanu/chap-press/issues/17)  
+[Codeception - Can't connect to Webdriver](https://github.com/chapmanu/chap-press/issues/18)  
+[MariaDB](https://github.com/chapmanu/chap-press/issues/19)  
+[Wonolog - Staging Server](https://github.com/chapmanu/chap-press/issues/20)
