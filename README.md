@@ -112,7 +112,7 @@ To run the entire set of suites the recommended method is:
 `codecept run acceptance && codecept run functional && codecept run ...`
 
 [Codeception for Wordpress](https://github.com/lucatume/wp-browser)  
-[Wiki - Automated Testing](https://github.com/chapmanu/chap-press/wiki#automated-testing)
+[Wiki - Automated Testing](https://github.com/chapmanu/chap-press/wiki/Automated-Testing)
 
 ***
 
