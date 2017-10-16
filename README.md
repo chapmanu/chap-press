@@ -57,12 +57,12 @@ Installation process for the setting up Wordpress on a local environment.
       cp -v wp-config.php{-dist,}
 
       # The wp-config file already contains the database information to get started.
-      # These are for local development only.
+      # Usage is for local & staging development only.
 
 - **Initialize Database for Local Server**
-  
-  While inside `/public` folder
-  
+
+  While inside the `/public` folder:
+
       brew install wp-cli
       wp core install --url=http://localhost:8222/ --title=chap-press --admin_user=chappress --admin_password=password --admin_email=chappress@gmail.com
 
@@ -72,19 +72,22 @@ Installation process for the setting up Wordpress on a local environment.
 
       composer install
       composer update
-      #installs depedency from composer.json
+      # Installs dependency from composer.json
 
       echo "alias codecept=./vendor/bin/codecept" >> ~/.bash_profile
-      #creates an alias
+      # Creates an alias
 
       source ~/.bash_profile
+
+      mysqldump chappress_test > ./tests/_data/dump.sql
+      # Exports test database for Codeception usage
 
       codecept --version
 
   Codeception executed as `codecept` or `./vendor/bin/codecept`
 
 - **Install Testing Tools**
-
+      brew update
       brew install selenium-server-standalone
       brew services start selenium-server-standalone
 

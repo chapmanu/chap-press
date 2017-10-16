@@ -6,7 +6,7 @@
 # web browser for acceptance testing requiring JavaScript support
 # If you need both WPWebDriver and WPBrowser tests - create a separate suite. 
 # 
-# Acceptance test files located in the tests/acceptance directory.
+# Acceptance test files located in the /tests/acceptance directory.
 # 
 # WordPress for Codeception  : https://github.com/lucatume/wp-browser
 # Chappress Wiki for Testing : https://github.com/chapmanu/chap-press/wiki/Automated-Testing#testing-suites
@@ -15,8 +15,6 @@
 actor: AcceptanceTester
 modules:
     enabled:
-        - Codeception\Extension\RunProcess: #Extension to start and stop server
-             - php -S 127.0.0.1:8777 -t ./public 
         - WPDb
         - WPWebDriver
         - \Helper\Acceptance
@@ -41,3 +39,7 @@ modules:
             adminUsername: 'chappress'
             adminPassword: 'password'
             adminUrl: /wp-admin
+extensions:
+    enabled:
+        - Codeception\Extension\RunProcess: #Extension to start and stop server
+             - php -S 127.0.0.1:8777 -t ./public

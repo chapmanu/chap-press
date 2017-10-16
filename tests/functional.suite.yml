@@ -7,7 +7,7 @@
 # 
 #     codecept generate:cept functional "PostInsertion"
 #     
-# It creates a new PostInsertionTest file located in the tests/functional directory.
+# It creates a new PostInsertionTest file located in the /tests/functional directory.
 # 
 # http://codeception.com/docs/04-FunctionalTests
 

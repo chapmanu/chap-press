@@ -35,7 +35,7 @@ class expectUserAndAdminLoginCest
         $I->loginAsAdmin();
         $I->amOnPage('/wp-admin/user-new.php');
         $I->fillField('Username', 'chappress-user');
-        $I->fillField('Email', 'chappress@gmail.com');
+        $I->fillField('Email', 'example@example.com');
         $I->amGoingTo('submit form and add new user');
         $I->click('Add New User');
     }
