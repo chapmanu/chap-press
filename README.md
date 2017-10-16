@@ -87,6 +87,7 @@ Installation process for the setting up Wordpress on a local environment.
   Codeception executed as `codecept` or `./vendor/bin/codecept`
 
 - **Install Testing Tools**
+
       brew update
       brew install selenium-server-standalone
       brew services start selenium-server-standalone
@@ -96,22 +97,6 @@ Installation process for the setting up Wordpress on a local environment.
 
       brew install phantomjs
 
-- **Install Ansible**
-
-  Ansible will run a staging server to do WordPress testing.
-
-      # install pip, if needed
-      sudo easy_install pip
-
-      sudo pip install ansible
-      ansible --version
-
-      ssh-copy-id wimops@chappress-staging.chapman.edu
-      # copy SSH Public Key to Staging Server
-
-      ansible all -m ping
-      # verify success
-
 ***
 
 ## Testing
@@ -120,38 +105,14 @@ Installation process for the setting up Wordpress on a local environment.
 
 - **Execute in terminal**: `codecept run acceptance`
 
-This command will run the acceptance test. Replace `acceptance` with `functional` or `unit` to run those suites.
-
-Due to WordPress dependency on globals and constants the suites should not be ran at the same time.
+This command will run the acceptance test. Replace `acceptance` with `functional` or `unit` to run those suites. Due to WordPress dependency on globals and constants the suites should not be ran at the same time.
 
 To run the entire set of suites the recommended method is:
 
 `codecept run acceptance && codecept run functional && codecept run ...`
 
 [Codeception for Wordpress](https://github.com/lucatume/wp-browser)
-
-### Codeception Commands
-
-| Command | Description |
-| --- | --- |
-| `codecept run acceptance` | Run all the acceptance tests |
-| `codecept run unit` | Run all the unit tests |
-| `codecept run functional` | Run all the functional tests |
-| `codecept run --steps` | Print a step-by-step execution |
-| `codecept run --debug` | Print steps and debug information |
-| `codecept run --html` | Prints a stylized html report |
-| `codecept g:cept suite "Custom Name"` | Generates Cept (scenario-driven test) file |
-| `codecept g:cest suite "Custom Name"` | Generates Cest (scenario-driven object-oriented test) file |
-| `codecept g:test suite "Custom Name"` | Generates Unit test |
-| `codecept run dry-run functional` | Do a dry run of a specific suite |
-| `codecept run --h` | General help |
-
-**Test Resources**
-
-[Chappress Wiki - Automated Testing](https://github.com/chapmanu/chap-press/wiki#automated-testing) - Chappress Wiki with further information.  
-[Wordpress Methods](https://github.com/lucatume/wp-browser#methods) - WordPress methods to use when creating tests ($I->doSomething syntax).  
-[General Test Methods](http://codeception.com/docs/modules/PhpBrowser) - General methods to use from Codeception.
-[Codeception Console Commands](http://codeception.com/docs/reference/Commands) - An in depth look at the different Codeception commands.
+[Wiki - Automated Testing](https://github.com/chapmanu/chap-press/wiki#automated-testing)
 
 ***
 
@@ -172,10 +133,27 @@ Site will be accessible at:
 Server provisioning has been automated using Ansible.  
 The staging server will be running at `https://chappress-staging.chapman.edu`
 
-**Run the playbook** from the ansible directory:
+- **Install Ansible**
+
+  Ansible will run a staging server to do WordPress testing.
+
+      # install pip, if needed
+      sudo easy_install pip
+
+      sudo pip install ansible
+      ansible --version
+
+      ssh-copy-id wimops@chappress-staging.chapman.edu
+      # copy SSH Public Key to Staging Server
+
+      ansible all -m ping
+      # verify success
+
+- **Run the playbook** from the ansible directory:
 
     cd devops/ansible
     ansible-playbook provision.yml --ask-become-pass
+
 
 ***
 
