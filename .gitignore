@@ -1,7 +1,6 @@
 # Logs and databases #
 ######################
 *.log
-*.sql
 *.sqlite
 /config/database.yml
 secrets.yml
@@ -43,9 +42,6 @@ php_error_log.txt
 # Codeception #
 ###################
 /tests/_output
-phpbuiltinserver.access_log.txt
-phpbuiltinserver.errors.txt
-phpbuiltinserver.output.txt
 
 # Ansible #
 ###################
