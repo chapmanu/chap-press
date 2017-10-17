@@ -78,9 +78,9 @@ Installation process for the setting up Wordpress on a local environment.
       # Creates an alias
 
       source ~/.bash_profile
-
-      mysqldump chappress_test > ./tests/_data/dump.sql
-      # Exports test database for Codeception usage
+      
+      cp -v ./tests/_data/dump.sql{-dist,}
+      # Codeception loads a database dump to cleanup the database between tests
 
       codecept --version
 
@@ -110,6 +110,12 @@ This command will run the acceptance test. Replace `acceptance` with `functional
 To run the entire set of suites the recommended method is:
 
 `codecept run acceptance && codecept run functional && codecept run ...`
+
+**Database Testing**: The WPDb module will cleanup the database between tests by loading a database dump.  
+
+If the dump file needs to be updated, while in `/tests/_data` run: 
+
+- `mysqldump chappress_test > dump.sql`
 
 [Codeception for Wordpress](https://github.com/lucatume/wp-browser)  
 [Wiki - Automated Testing](https://github.com/chapmanu/chap-press/wiki/Automated-Testing)

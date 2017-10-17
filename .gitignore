@@ -1,6 +1,7 @@
 # Logs and databases #
 ######################
 *.log
+*.sql
 *.sqlite
 /config/database.yml
 secrets.yml
