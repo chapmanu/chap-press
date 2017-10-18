@@ -185,7 +185,9 @@ Wonolog comes with an easy bootstrap routine and some out-of-the-box configurati
 
 The standard log path: `public/wp-content/wonolog`
 
-An [MU plugin](https://codex.wordpress.org/Must_Use_Plugins) has been added for any custom configurations: `/public/wp-content/mu-plugins/wonolog_load.php`
+**[MU plugins](https://codex.wordpress.org/Must_Use_Plugins)**  
+For custom Wonolog configurations: `/content/mu-plugins/bootstrap-wonolog.php`  
+A general log: `/content/mu-plugins/log-action-wonolog/php`
 
 **Automatically logged events include:**
 
