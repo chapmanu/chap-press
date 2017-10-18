@@ -183,11 +183,11 @@ Capistrano will deploy this repo and WordPress to the staging server.
 [Wonolog](https://github.com/inpsyde/Wonolog) is a logging package for WordPress (based off of [Monolog](https://github.com/Seldaek/monolog)). This package allows anything to be logged in a WordPress site. 
 Wonolog comes with an easy bootstrap routine and some out-of-the-box configurations that make it possible to have a working and effective logging system with zero effort. It is included in the `composer.json` file. 
 
-The standard log path: `public/wp-content/wonolog`
+The standard log path: `content/wonolog`
 
 **[MU plugins](https://codex.wordpress.org/Must_Use_Plugins)**  
-For custom Wonolog configurations: `/content/mu-plugins/bootstrap-wonolog.php`  
-A general log: `/content/mu-plugins/log-action-wonolog/php`
+For custom Wonolog configurations: `content/mu-plugins/bootstrap-wonolog.php`  
+A general log: `content/mu-plugins/log-action-wonolog.php`
 
 **Automatically logged events include:**
 
