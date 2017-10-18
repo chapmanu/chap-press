@@ -15,49 +15,32 @@
   This child theme is using Sass-3.5.1 (http://sass-lang.com/)
 */
 
-@import "./sass/_smc_styles";
-@import "./sass/_entry";
-@import "./sass/_headers";
-@import "./sass/_top-menu";
-@import "./sass/_sidebar";
-@import "./sass/_login";
+@import "./partials/_smc_styles";
+@import "./partials/_login";
 
-
-// The stylesheet is split into partials at the /sass folder
-// SMC style variables are located at /sass/_smc-styles
+// SMC style variables are located at /partials/_smc-styles
 
 body {
   background-color: $silver;
-  font-size: 1em;
 }
 
 body, h1, h2, h4, time {
   font-family: $futura-font;
 }
 
-h1 {
-  font-size: $lrg-header-size;
-}
-
-h2 {
-  font-size: $med-header-size;
-}
-
 h3 {
   font-family: $minion-font;
-  font-size: $sm-header-size;
 }
 
 
 p {
   font-family: $proxima-font;
-  font-size: $body-font-size;
-  font-weight: normal;
-  line-height: 20px;
 }
 
 a {
   color: $red;
-  font-size: $body-font-size;
-  line-height: 20px;
+}
+
+#wp-custom-header img {
+   content:url("assets/images/chapman-campus.jpg");
 }

@@ -111,13 +111,14 @@ To run the entire set of suites the recommended method is:
 
 `codecept run acceptance && codecept run functional && codecept run ...`
 
-**Database Testing**: The WPDb module will cleanup the database between tests by loading a database dump.  
+**Database Testing** - The WPDb module will cleanup the database between tests by loading a database dump.  
 
 If the dump file needs to be updated, while in `/tests/_data` run: 
 
 - `mysqldump chappress_test > dump.sql`
 
-[Codeception for Wordpress](https://github.com/lucatume/wp-browser)  
+[Codeception for Wordpress](http://codeception.com/for/wordpress)  
+[Wp-browser Github](https://github.com/lucatume/wp-browser)  
 [Wiki - Automated Testing](https://github.com/chapmanu/chap-press/wiki/Automated-Testing)
 
 ***

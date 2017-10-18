@@ -15,7 +15,7 @@
 
 
 #############################
-# Database Configuration
+# DATABASE CONFIGURATION
 #############################
 # The database values are generated from the /config/database.yml 
 # Please review the values and update the password via a team member
@@ -30,7 +30,7 @@ define('DB_CHARSET',  'utf8');
 define('DB_COLLATE',  '');
 
 #############################
-# Authentication Keys and Salts
+# AUTHENITICATION KEYS AND SALTS
 #############################
 # For ChapPress developers: These values need to be updated before release to production for the Chappress
 # project.
@@ -47,34 +47,37 @@ define('NONCE_SALT',       'put your unique phrase here');
 
 
 #############################
-# Debug
+# DEBUG
 #############################
 # For developers working in WordPress debugging mode.
 # When WP_DEBUG_LOG is set to true, Wonolog will log everything.
 
-define( 'WP_DEBUG', true );
-define( 'WP_DEBUG_LOG', true );
-define( 'WP_DEBUG_DISPLAY', false );
+define(   'WP_DEBUG', true );
+define(   'WP_DEBUG_LOG', true );
+define(   'WP_DEBUG_DISPLAY', false );
 @ini_set( 'display_errors', 0 );
-define( 'SCRIPT_DEBUG', true );
+define(   'SCRIPT_DEBUG', true );
 
 #############################
-# Logging 
-#############################
-# Wonolog is a monolog-based logging package for WordPress. Not to be used for the live site.      
-# https://github.com/inpsyde/Wonolog
-#
-# log path: public/wp-content/wonolog
-#
+# LOGGING 
+############################# 
+# Log path: public/wp-content/wonolog
+# A general logging MU plugin has been created at:
+# content/mu-plugins/log-action-wonolog.php
+#  
 # Ensure Composer autoload is loaded in wp-config.php 
 # or anytime before the 'muplugins_loaded' action is fired
 
-# Path file location for the current Capistrano release
+# Path file location for current Capistrano release
 $autoload_path = realpath(__DIR__ . '/../../current/vendor/autoload.php');
 
 if (file_exists($autoload_path)) {
   require $autoload_path;
 }
+
+# Logging in Wonolog is done via a WordPress function: do_action()
+# An example of logging with Wonolog:
+# do_action( 'wonolog.log', 'Some event happened');
 
 #############################
 # PATHS AND URLS
@@ -85,14 +88,3 @@ if ( !defined('ABSPATH') ) define('ABSPATH', dirname(__FILE__) . '/');
 
 # Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');
-
-#############################
-# Custom Log
-#############################
-# Logging in Wonolog is done via a WordPress function: do_action()
-# The main hook to use for the scope is 'wonolog.log'.
-# See the docs: https://github.com/inpsyde/Wonolog/tree/master/docs
-#
-# A bare-minimum example of logging with Wonolog could look like so:
-
-do_action( 'wonolog.log', 'Some event happened in wp-config.php' );
