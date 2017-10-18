@@ -65,6 +65,7 @@ Installation process for the setting up Wordpress on a local environment.
 
       brew install wp-cli
       wp core install --url=http://localhost:8222/ --title=chap-press --admin_user=chappress --admin_password=password --admin_email=chappress@gmail.com
+      wp theme activate chappress
 
 - **Install Automated Test Suite**
 
