@@ -19,7 +19,9 @@ do_action( 'wonolog.log', 'Some event happened in ' . $_SERVER['SCRIPT_NAME'] );
 #    PHP Fatal error:  Uncaught Error: Call to undefined function do_action() in the wp-config file 
 # 
 # The wp-config.php is calling a WordPress function before WordPress has been 
-# loaded to define it. PHP will fail out with a fatal error.
+# loaded to define it. PHP will fail out with a fatal error. 
+# 
+# The log will work but the WP CLI error will persist.
 # 
 # A temporary workaround to run the wp cli AND log in wp-config:
 # 

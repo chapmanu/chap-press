@@ -14,11 +14,12 @@
 # DATABASE CONFIGURATION
 ############################# 
 # Please review the values and update if necessary.
-# https://make.wordpress.org/cli/handbook/common-issues/#php-notice-undefined-index-on-_server-superglobal
- 
+
 $table_prefix  = 'wp_';
 
-if (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 8777) {
+require_once(__DIR__ . '/../content/set-environment.php');
+
+if (TESTING) {
   # DB for Acceptance & Functional testing
   define('DB_NAME', 'chappress_test');
 } else {
