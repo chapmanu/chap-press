@@ -35,7 +35,7 @@ modules:
             browser: chrome
             port: 4444
             restart: true
-            wait: 2
+            wait: 5
             adminUsername: 'chappress'
             adminPassword: 'password'
             adminUrl: /wp-admin

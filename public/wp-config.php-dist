@@ -9,6 +9,23 @@
 #
 #############################
 
+#############################
+# ENVIRONMENT
+#############################
+# Set the proper database based on the environment
+# https://make.wordpress.org/cli/handbook/common-issues/#php-notice-undefined-index-on-_server-superglobal
+
+$chap_db = '';
+
+if (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 8777) {
+  # DB for Acceptance & Functional testing
+  define('TESTING', true);
+} else {
+  # DB for Local & Staging server
+  define('TESTING', false);
+}
+
+(TESTING) ? $chap_db = 'chappress_test' : $chap_db = 'chappress_dev';
 
 #############################
 # DATABASE CONFIGURATION
@@ -17,16 +34,7 @@
 
 $table_prefix  = 'wp_';
 
-require_once(__DIR__ . '/../content/set-environment.php');
-
-if (TESTING) {
-  # DB for Acceptance & Functional testing
-  define('DB_NAME', 'chappress_test');
-} else {
-  # DB for Local & Staging server
-  define('DB_NAME', 'chappress_dev');
-}
-
+define('DB_NAME',     $chap_db   );
 define('DB_USER',     'chappress');
 define('DB_PASSWORD', 'chappress');
 define('DB_HOST',     'localhost');
