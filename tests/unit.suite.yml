@@ -1,6 +1,16 @@
-# Codeception Test Suite Configuration
+# UNIT TEST CONFIGURATION
+###############################
 #
-# Suite for unit or integration tests.
+# Codeception uses PHPUnit as a backend for running its tests. 
+# Thus, any PHPUnit test can be added to a Codeception test suite and then executed.
+# 
+# Create a test using the generate:test command with a suite and test names as parameters:
+# 
+#     codecept generate:test unit Example
+# 
+# It creates a new ExampleTest file located in the /tests/unit directory.
+# 
+# Codeception Unit Tests: http://codeception.com/docs/05-UnitTests
 
 actor: UnitTester
 modules:

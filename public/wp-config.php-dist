@@ -9,15 +9,32 @@
 #
 #############################
 
+#############################
+# ENVIRONMENT
+#############################
+# Set the proper database based on the environment
+# https://make.wordpress.org/cli/handbook/common-issues/#php-notice-undefined-index-on-_server-superglobal
+
+$chap_db = '';
+
+if (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 8777) {
+  # DB for Acceptance & Functional testing
+  define('TESTING', true);
+} else {
+  # DB for Local & Staging server
+  define('TESTING', false);
+}
+
+(TESTING) ? $chap_db = 'chappress_test' : $chap_db = 'chappress_dev';
 
 #############################
-# Database Configuration
+# DATABASE CONFIGURATION
 ############################# 
 # Please review the values and update if necessary.
- 
+
 $table_prefix  = 'wp_';
 
-define('DB_NAME',     'chappress_dev');
+define('DB_NAME',     $chap_db   );
 define('DB_USER',     'chappress');
 define('DB_PASSWORD', 'chappress');
 define('DB_HOST',     'localhost');
@@ -25,7 +42,7 @@ define('DB_CHARSET',  'utf8');
 define('DB_COLLATE',  '');
 
 #############################
-# Authentication Keys and Salts
+# AUTHENITICATION KEYS & SALTS
 #############################
 # For ChapPress developers: These values need to be updated before release to production for the Chappress
 # project.
@@ -42,34 +59,38 @@ define('NONCE_SALT',       'put your unique phrase here');
 
 
 #############################
-# Debug
+# DEBUG
 #############################
 # For developers working in WordPress debugging mode.
 # When WP_DEBUG_LOG is set to true, Wonolog will log everything.
+# content/debug.log
 
-define( 'WP_DEBUG', true );
-define( 'WP_DEBUG_LOG', true );
-define( 'WP_DEBUG_DISPLAY', false );
+define(   'WP_DEBUG', true );
+define(   'WP_DEBUG_LOG', true ); 
+define(   'WP_DEBUG_DISPLAY', false );
 @ini_set( 'display_errors', 0 );
-define( 'SCRIPT_DEBUG', true );
+define(   'SCRIPT_DEBUG', true );
 
 #############################
-# Logging 
-#############################
-# Wonolog is a monolog-based logging package for WordPress. Not to be used for the live site.      
-# https://github.com/inpsyde/Wonolog
-# 
+# LOGGING 
+############################# 
 # Log path: public/wp-content/wonolog
+# A general logging MU plugin has been created at:
+# content/mu-plugins/log-action-wonolog.php
 #  
 # Ensure Composer autoload is loaded in wp-config.php 
 # or anytime before the 'muplugins_loaded' action is fired
 
-# Path file location for the current Capistrano release
+# Path file location for Composer autoload
 $autoload_path = __DIR__ . '/../vendor/autoload.php';
 
 if (file_exists($autoload_path)) {
   require $autoload_path;
 }
+
+# Logging in Wonolog is done via a WordPress function: do_action()
+# An example of logging with Wonolog:
+# do_action( 'wonolog.log', 'Some event happened');
 
 #############################
 # PATHS AND URLS
@@ -80,14 +101,3 @@ if ( !defined('ABSPATH') ) define('ABSPATH', dirname(__FILE__) . '/');
 
 # Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');
-
-#############################
-# Custom Log
-#############################
-# Logging in Wonolog is done via a WordPress function: do_action()
-# The main hook to use for the scope is 'wonolog.log'.
-# See the docs: https://github.com/inpsyde/Wonolog/tree/master/docs
-#
-# A bare-minimum example of logging with Wonolog could look like so:
-
-do_action( 'wonolog.log', 'Some event happened in wp-config.php' );

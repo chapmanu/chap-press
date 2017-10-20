@@ -57,14 +57,15 @@ Installation process for the setting up Wordpress on a local environment.
       cp -v wp-config.php{-dist,}
 
       # The wp-config file already contains the database information to get started.
-      # These are for local development only.
+      # Usage is for local & staging development only.
 
 - **Initialize Database for Local Server**
-  
-  While inside `/public` folder
-  
+
+  While inside the `/public` folder:
+
       brew install wp-cli
       wp core install --url=http://localhost:8222/ --title=chap-press --admin_user=chappress --admin_password=password --admin_email=chappress@gmail.com
+      wp theme activate chappress
 
 - **Install Automated Test Suite**
 
@@ -72,12 +73,15 @@ Installation process for the setting up Wordpress on a local environment.
 
       composer install
       composer update
-      #installs depedency from composer.json
+      # Installs dependency from composer.json
 
       echo "alias codecept=./vendor/bin/codecept" >> ~/.bash_profile
-      #creates an alias
+      # Creates an alias
 
       source ~/.bash_profile
+      
+      cp -v ./tests/_data/dump.sql{-dist,}
+      # Codeception loads a database dump to cleanup the database between tests
 
       codecept --version
 
@@ -85,6 +89,7 @@ Installation process for the setting up Wordpress on a local environment.
 
 - **Install Testing Tools**
 
+      brew update
       brew install selenium-server-standalone
       brew services start selenium-server-standalone
 
@@ -93,69 +98,29 @@ Installation process for the setting up Wordpress on a local environment.
 
       brew install phantomjs
 
-- **Install Ansible**
-
-  Ansible will run a staging server to do WordPress testing.
-
-      # install pip, if needed
-      sudo easy_install pip
-
-      sudo pip install ansible
-      ansible --version
-
-      ssh-copy-id wimops@chappress-staging.chapman.edu
-      # copy SSH Public Key to Staging Server
-
-      ansible all -m ping
-      # verify success
-
 ***
 
 ## Testing
 
 ### Run Automated Tests
 
-- **Execute in terminal**: `codecept run`
+- **Execute in terminal**: `codecept run acceptance`
 
-This command will run all tests (acceptance, functional, unit, wpunit)
+This command will run the acceptance test. Replace `acceptance` with `functional` or `unit` to run those suites. Due to WordPress dependency on globals and constants the suites should not be ran at the same time.
 
-[See Table](#codeception-commands) below for more specific commands
+To run the entire set of suites the recommended method is:
 
-*Note: Restart your selenium server via `brew services restart selenium-server-standalone` if you see the following error.*
+`codecept run acceptance && codecept run functional && codecept run ...`
 
-    [ConnectionException] Can't connect to Webdriver at http://127.0.0.1:4444/wd/hub.  
-    Please make sure that Selenium Server or PhantomJS is running.
+**Database Testing** - The WPDb module will cleanup the database between tests by loading a database dump.  
 
+If the dump file needs to be updated, while in `/tests/_data` run: 
 
-<br/>
+- `mysqldump chappress_test > dump.sql`
 
-### Codeception Commands
-
-| Command | Description |
-| --- | --- |
-| `codecept run` | Run all tests |
-| `codecept run unit` | Run all the unit tests |
-| `codecept run functional` | Run all the functional tests |
-| `codecept run dry-run functional` | Do a dry run of a specific suite |
-| `codecept run --steps` | Print a step-by-step execution |
-| `codecept run --debug` | Print steps and debug information |
-| `codecept run --html` | Prints a stylized html report |
-| `codecept g:cept suite "Custom Name"` | Generates Cept (scenario-driven test) file |
-| `codecept g:cest suite "Custom Name"` | Generates Cest (scenario-driven object-oriented test) file |
-| `codecept g:test suite "Custom Name"` | Generates Unit test |
-| `codecept run --h` | General help |
-
-[Codeception Console Commands](http://codeception.com/docs/reference/Commands)
-
-**Test Resources**
-
-[Chappress Wiki - Create A Test](https://github.com/chapmanu/chap-press/wiki#create-a-test) - See a quick example of how to create a test.  
-[Wordpress Methods](https://github.com/lucatume/wp-browser#methods) - WordPress methods to use when creating tests ($I->doSomething syntax).  
-[General Test Methods](http://codeception.com/docs/modules/PhpBrowser) - General methods to use from Codeception.
-
-**General**
-
-[Chappress Wiki - Automated Testing](https://github.com/chapmanu/chap-press/wiki#automated-testing)
+[Codeception for Wordpress](http://codeception.com/for/wordpress)  
+[Wp-browser Github](https://github.com/lucatume/wp-browser)  
+[Wiki - Automated Testing](https://github.com/chapmanu/chap-press/wiki/Automated-Testing)
 
 ***
 
@@ -176,10 +141,27 @@ Site will be accessible at:
 Server provisioning has been automated using Ansible.  
 The staging server will be running at `https://chappress-staging.chapman.edu`
 
-**Run the playbook** from the ansible directory:
+- **Install Ansible**
+
+  Ansible will run a staging server to do WordPress testing.
+
+      # install pip, if needed
+      sudo easy_install pip
+
+      sudo pip install ansible
+      ansible --version
+
+      ssh-copy-id wimops@chappress-staging.chapman.edu
+      # copy SSH Public Key to Staging Server
+
+      ansible all -m ping
+      # verify success
+
+- **Run the playbook** from the ansible directory:
 
     cd devops/ansible
     ansible-playbook provision.yml --ask-become-pass
+
 
 ***
 
@@ -202,9 +184,11 @@ Capistrano will deploy this repo and WordPress to the staging server.
 [Wonolog](https://github.com/inpsyde/Wonolog) is a logging package for WordPress (based off of [Monolog](https://github.com/Seldaek/monolog)). This package allows anything to be logged in a WordPress site. 
 Wonolog comes with an easy bootstrap routine and some out-of-the-box configurations that make it possible to have a working and effective logging system with zero effort. It is included in the `composer.json` file. 
 
-The standard log path: `public/wp-content/wonolog`
+The standard log path: `content/wonolog`
 
-An [MU plugin](https://codex.wordpress.org/Must_Use_Plugins) has been added for any custom configurations: `/public/wp-content/mu-plugins/wonolog_load.php`
+**[MU plugins](https://codex.wordpress.org/Must_Use_Plugins)**  
+For custom Wonolog configurations: `content/mu-plugins/bootstrap-wonolog.php`  
+A general log: `content/mu-plugins/log-action-wonolog.php`
 
 **Automatically logged events include:**
 
@@ -236,46 +220,7 @@ What is actually logged depends on the value of `WP_DEBUG_LOG` constant. When `W
 
 ## Troubleshooting
 
-### Capistrano
-An RSA key is currently added to the GitHub repo.  
-In case Github SSH access is denied, try:
-- List the files in your .ssh directory, if they exist
-  - `ls -al ~/.ssh`
-- [Generate SSH](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)
-- [Add SSH to Github](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/)
-- Test SSH connection to Github
-  - `ssh -T git@github.com`
-
-### MariaDB
--  If the MariaDB has not been used before, the MySQL database may have to be restarted or unlinked using Homebrew:
-
-    brew services stop mysql
-    brew services list
-    brew unlink mysql
-    brew link mariadb
-    brew services start mariadb
-
-
-- ERROR 1290 --skip-grant-tables option Error
-
-If you see this error when trying to create or grant privileges to a MYSQL user:
-
-    ERROR 1290 (HY000): The MySQL server is running with the --skip-grant-tables
-    option so it cannot execute this statement
-
-Run `FLUSH PRIVILEGES;` first then run the command.
-
-[Skip-grant Source](https://unix.stackexchange.com/a/102916)
-
-### Wonolog
-If there is an issue with Wonolog on the staging server:
-- Go to `/config/templates.wp-config.php.erb`
-  - Verify the correct path file for `$autoload_path` variable. The path file is going up directories because of the Capistrano deploy release. Essentially, the require statement just needs the composer autoload file at `vendor/autoload.php`. 
-- Check the permissions of the `wp-content` folder. This folder is symlinked from `/public/wp-content/` to `/content/`
-  - Run:
-     - `chown php-fpm:webadmin -R ./content`
-     - `find ./content -type d -exec chmod 755 {} \;`
-  - [Stack Overflow](https://stackoverflow.com/questions/18352682/correct-file-permissions-for-wordpress)
-- Go to `/config/deploy.rb` and review the code for staging deployment. 
-- [Wonolog Github](https://github.com/inpsyde/Wonolog)
-- [require in php](https://stackoverflow.com/questions/35400672/difference-between-require-dir-file-php-and-requirefile-php) 
+[Capistrano - Github SSH access is denied](https://github.com/chapmanu/chap-press/issues/17)  
+[Codeception - Can't connect to Webdriver](https://github.com/chapmanu/chap-press/issues/18)  
+[MariaDB](https://github.com/chapmanu/chap-press/issues/19)  
+[Wonolog - Staging Server](https://github.com/chapmanu/chap-press/issues/20)

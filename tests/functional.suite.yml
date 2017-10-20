@@ -1,0 +1,37 @@
+# FUNCTIONAL TEST CONFIGURATION
+###############################
+#
+# Functional tests will emulate web requests and make WordPress process them.
+# 
+# To generate a functional test use the default codecept commmand.
+# 
+#     codecept generate:cept functional "PostInsertion"
+#     
+# It creates a new PostInsertionTest file located in the /tests/functional directory.
+# 
+# http://codeception.com/docs/04-FunctionalTests
+
+actor: FunctionalTester
+modules:
+    enabled:
+        - WPDb
+        - WordPress
+        - Asserts
+        - \Helper\Functional
+    config:
+        WPDb:
+            dsn: 'mysql:host=localhost;dbname=chappress_test'
+            user: 'chappress'
+            password: 'chappress'
+            dump: 'tests/_data/dump.sql'
+            populate: true
+            cleanup: true
+            url: 'http://localhost:8777'
+            urlReplacement: true
+            tablePrefix: 'wp_'
+        WordPress:
+            depends: WPDb
+            wpRootFolder: './public'
+            adminUsername: 'chappress'
+            adminPassword: 'password'
+            adminPath: '/wp-admin'
