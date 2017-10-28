@@ -1,6 +1,0 @@
----
-mysqlservice: mysqld
-mysql_port: 3306
-wp_db_name: "chappress_dev"
-wp_db_user: "chappress"
-wp_db_password: "chappress"

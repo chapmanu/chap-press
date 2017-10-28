@@ -1,0 +1,46 @@
+---
+- name: Install Common Packages
+  yum: name=git state=present
+
+- name: Check if wp-cli is installed
+  stat: path=/usr/local/bin/wp
+  register: wp_file
+
+#Install wp-cli if file isn't located
+- name: download wp-cli
+  get_url: url=https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar dest=/usr/local/bin/wp
+  when: not wp_file.stat.exists
+
+- name: update permissions of wp-cli to allow anyone to execute it
+  file: path=/usr/local/bin/wp mode=0755
+
+- name : Create Ansible variable for group results
+  command: cat /etc/group
+  register: group_result
+
+# Creates webadmin group if group doesn't exist
+- name: Create new webadmin group
+  command: groupadd webadmin
+  when: '"webadmin" not in group_result.stdout'
+
+# Adds wimops to webadmin if group doesn't exist
+- name: Create new group with wimops
+  command: usermod -a -G webadmin wimops
+  when: '"webadmin" not in group_result.stdout'
+
+- name: Create www directory
+  file: state=directory path="/var/www" 
+
+- name: Create html directory
+  file: state=directory path="/var/www/html"
+
+# Linux command: chown -v root:webadmin /var/www/html
+- name: Set group permissions for webadmin at server root
+  file: path=/var/www/html owner=root group=webadmin
+
+# Linux command: chmod 2775 /var/www/html -Rv
+- name: Set file permissions at server root
+  file: path=/var/www/html recurse=yes mode=2775
+
+- name: restart nginx
+  service: name=nginx state=restarted enabled=yes

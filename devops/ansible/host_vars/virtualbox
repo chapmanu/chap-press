@@ -1,0 +1,2 @@
+nginx_server_name: localhost
+nginx_server_name_direct: localhost

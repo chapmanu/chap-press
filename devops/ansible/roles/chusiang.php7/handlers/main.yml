@@ -1,0 +1,7 @@
+---
+
+- name: restart php7-fpm
+  service: name=php{{ apt_php_version }}-fpm enabled=yes state=restarted
+
+- name: restart php7-fpm on centos
+  service: name=php-fpm enabled=yes state=restarted

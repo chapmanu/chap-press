@@ -1,0 +1,12 @@
+#!/usr/bin/env ansible-playbook
+---
+
+- name: run setup stage
+  include: setup.yml
+  tags: setup
+
+- name: run configure stage
+  include: configure.yml
+  tags: config
+
+## vim:ft=ansible :

@@ -1,0 +1,6 @@
+#
+# Inventory File for Production Server
+# Usage: ansible-playbook webserver.yml -i hosts/staging --ask-become-pass
+#
+[webserver]
+staging ansible_host=chappress-staging.chapman.edu ansible_user=wimops

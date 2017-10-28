@@ -1,0 +1,25 @@
+language: bash
+sudo: true
+services:
+  - docker
+
+before_install:
+  - docker info
+  - docker version
+
+  - echo "==> Build with Docker ..."
+  - docker build -f tests/Dockerfile.ubuntu1404 -t php7:ubuntu1404 . | tee tests/output.ubuntu14.04.log
+  - docker build -f tests/Dockerfile.debian8    -t php7:debian8    . | tee tests/output.debian8.log
+  - docker build -f tests/Dockerfile.centos6    -t php7:centos6    . | tee tests/output.centos6.log
+
+script:
+  - echo "==> Run Test case ..."
+  - grep '00:00:00 php-fpm7.0' tests/output.ubuntu14.04.log
+  - grep '00:00:00 php-fpm7.0' tests/output.debian8.log
+  - grep '00:00:00 php-fpm'    tests/output.centos6.log
+
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/
+  slack:
+    secure: O6q479jQCo6M7ghhgaiu887ncwrYlv0LPWbSYzMi1mzgn5bwtO1povfLxOlAHjI5E8BdHHxI7nOblURqX9fdzM2+ANf+jOVXzAhQfK8Uc68i8QPopJL2AnmJJOIm2+rbgAc+p24kMlboplLTO9ROnz6njqElL2MNZ8Ur63VP7CNeYBTkpU7BVcC3DeSWtkppo6kRGuzh940B2XISH7KCzkwekyLyJnfzgFCB3WDnbHsdFJ6jIwBN+GOw5zgy55RaMx6eg1p5O26i2Mx7BhCsiUz6+Gu6wWZq1vIEWunMluw6F21gs/6f1l3rfmSRtrasyCpYX9I1DdmqZ+9PX7rNMLx3Dy+idRbKaYrTOXu2rKYHVai41mlm5cfJoTQpVYSsupuxxneEAm0WZKIGXHKS4HQMVPCXUI/686JTXJRNs4wk6s7rZJwCtHEcsRjyU2sNH7DLF6vEpV4ZwWGfDcg4tic9xBDsDXIfngvpLvMoWImLHwq0/1GWOyw0aTDvA740XxbgWvxK+2GaUN1aJ9STsc7iGaplrTjf+3nTRVsemi7KhUsYbJ7LWCXQmoVoWdKFqPXKgkIALwSGpBHpWscT5BasvkHHumWiNQYrYBZLIKmUAjw3kyfvY8/tOuQwncjd8H8+BHYxputlEy8bvz1Lv6iaEhE6HaPX76HlrBhb2bA=
+

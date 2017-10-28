@@ -1,0 +1,8 @@
+# PHP-FPM FastCGI server
+# network or unix domain socket configuration
+
+upstream php-fpm {
+  server {{ centos_nginx_fastcgi_server }};
+}
+
+# vim:ft=nginx :
