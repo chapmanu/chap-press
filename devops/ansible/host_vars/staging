@@ -1,2 +1,2 @@
 nginx_server_name: chappress-staging.chapman.edu
-nginx_server_name_direct: www.chappress-staging.chapman.edu
+nginx_server_root: /var/www/html/current/public

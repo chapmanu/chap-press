@@ -14,6 +14,12 @@
 - name: update permissions of wp-cli to allow anyone to execute it
   file: path=/usr/local/bin/wp mode=0755
 
+- name: Copy nginx server configuration
+  template: 
+    src: "chappress-default.conf.j2" 
+    dest: "/etc/nginx/conf.d/chappress-default.conf"
+  notify: restart nginx
+
 - name : Create Ansible variable for group results
   command: cat /etc/group
   register: group_result
@@ -41,6 +47,3 @@
 # Linux command: chmod 2775 /var/www/html -Rv
 - name: Set file permissions at server root
   file: path=/var/www/html recurse=yes mode=2775
-
-- name: restart nginx
-  service: name=nginx state=restarted enabled=yes

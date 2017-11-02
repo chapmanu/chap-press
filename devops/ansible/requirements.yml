@@ -11,6 +11,15 @@
 # - http://docs.ansible.com/ansible/latest/galaxy.html#installing-multiple-roles-from-a-file
 #
 
+# Avoid issues with time skew.
+- src: geerlingguy.ntp
+
+# Sets up user accounts.
+- src: ontic.account
+
+# Self-signed certificates for vm/staging servers.
+- src: jdauphant.ssl-certs
+
 # Install Composer, the PHP Dependency Manager
 - src: geerlingguy.composer
 
@@ -23,14 +32,5 @@
 # Deploy PHP 7 (php-fpm) for nginx 
 - src: chusiang.php7
 
-# Generate and/or deploy SSL certificate
-- src: jdauphant.ssl-certs
-
-# Sets up user accounts.
-- src: ontic.account
-
-# Adds needed Red Hat repos.
-- src: geerlingguy.repo-epel
-
-# Self-signed certificates for vm/staging servers.
-- src: tjarrett.selfsignedcertificate
+# Manages firewall.
+- src: geerlingguy.firewall

@@ -14,13 +14,12 @@
   become: true
 
   roles:
+    - { role: geerlingguy.ntp,      tags: ['ntp'] }
     - { role: geerlingguy.mysql,    tags: ['mariadb'] }
-    - { role: geerlingguy.repo-epel, tags: ['epel'] }
+    - { role: ontic.account,        tags: ['ontic'] }
+    - { role: jdauphant.ssl-certs,  tags: ['ssl'] }
+    - { role: geerlingguy.firewall, tags: ['firewall'] }
     - { role: geerlingguy.nginx,    tags: ['nginx'] }
     - { role: chusiang.php7,        tags: ['php70'] }
-    # - { role: jdauphant.ssl-certs,  tags: ['ssl'] }
-    - { role: tjarrett.selfsignedcertificate, when: use_self_signed_cert, tags: ['ssl'] }
-    - { role: geerlingguy.composer, tags: ['composer'] }
-    - { role: ontic.account,        tags: ['ontic'] }
     - { role: basic-packages,       tags: ['basic'] }
-    
+    - { role: geerlingguy.composer, tags: ['composer'] }

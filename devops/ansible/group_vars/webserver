@@ -22,20 +22,16 @@ yum_php_packages:
 php_disable_functions: "exec,passthru,shell_exec,system,popen"
 php_allow_url_fopen: "On"
 
-# DEFAULTS FROM IMPOSTER PACKAGE
-# Puma needs ownership of the full path to run so we put the app root under the
-# app_user home rather than /var/www.
+#
+# Role: ontic.account
+# https://github.com/ontic/ansible-role-account/tree/master/docs
+# http://docs.ansible.com/ansible/latest/playbooks_lookups.html#the-password-lookup
 #
 app_name: chappress
 app_user: deploy
 app_user_pw_path: "/tmp/ansible-{{ app_name }}-{{ app_user }}-{{inventory_hostname}}-pw.txt"
 app_remote_path: "/var/www/{{ app_name }}"
 
-#
-# Role: ontic.account
-# https://github.com/ontic/ansible-role-account/tree/master/docs
-# http://docs.ansible.com/ansible/latest/playbooks_lookups.html#the-password-lookup
-#
 account_groups:
   - name: "{{ app_user }}"
     system: yes
@@ -51,70 +47,47 @@ account_users:
         state: 'directory'
 
 #
-# Role: jdauphant.ssl-certs
+# Role: geerlingguy.firewall
 #
-# ssl_certs_country: "US"
-# ssl_certs_locality: "California"
-# ssl_certs_organization: "Chapman University"
-# ssl_certs_state: "California"
-
-# ssl_certs_path_owner: "nginx"
-# ssl_certs_path_group: "nginx"
-
-#
-# Role: tjarrett.selfsignedcertificate
-#
-use_self_signed_cert: yes
-self_signed_cert_path: /etc/pki/tls/certs
-self_signed_cert_key_path: /etc/pki/tls/private
-self_signed_cert_filename: self-signed-cert
-
-selfsignedcertificates:
-  - {
-      certs_path: "{{ self_signed_cert_path }}",
-      key_path: "{{ self_signed_cert_key_path }}",
-      filename: "{{ self_signed_cert_filename }}",
-      country: US,
-      state: California,
-      locality: Orange,
-      organization: "Chapman University",
-      domain: "{{ app_name }}.chapman.edu"
-    }
+firewall_allowed_tcp_ports:
+  - "22"
+  - "80"
+  - "443"
 
 #
 # Role: geerlingguy.nginx
 #
+# This is the default Red Hat setting from the role.
 
-nginx_vhosts:
-  - listen: "443 ssl http2"
-    server_name: "{{ nginx_server_name }}"
-    server_name_redirect: "{{ nginx_server_name_direct }}"
-    root: "/var/www/html"
-    index: "index.php index.html index.htm"
-    error_page: ""
-    access_log: ""
-    error_log: ""
-    state: "present"
-    template: "{{ nginx_vhost_template }}"
-    filename: "chappress-local.conf"
-    extra_parameters: |
-      location ~ \.php$ {
-                try_files $uri =404;
-                fastcgi_split_path_info ^(.+\.php)(/.+)$;
-                fastcgi_index index.php;
-                fastcgi_pass  unix:/run/php-fpm/www.sock;
-                fastcgi_param   SCRIPT_FILENAME
-                                $document_root$fastcgi_script_name;
-                include       fastcgi_params;
-      }
-      ssl_certificate     /etc/pki/tls/certs/self-signed-cert.csr;
-      ssl_certificate_key /etc/pki/tls/private/self-signed-cert.key;
-      ssl_protocols       TLSv1.1 TLSv1.2;
-      ssl_ciphers         HIGH:!aNULL:!MD5;
+nginx_remove_default_vhost: true
 
-nginx_extra_http_options: |
-  proxy_buffering    off;
-  proxy_set_header   X-Real-IP $remote_addr;
-  proxy_set_header   X-Scheme $scheme;
-  proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
-  proxy_set_header   Host $http_host;
+#
+# Role: jdauphant.ssl-certs
+#
+ssl_certs_country: "US"
+ssl_certs_locality: "California"
+ssl_certs_organization: "Chapman University"
+ssl_certs_state: "California"
+ssl_certs_common_name: "chappress-staging"
+ssl_certs_days: "365"
+ssl_certs_fields: "/C={{ssl_certs_country}}/ST={{ssl_certs_state}}/L={{ssl_certs_locality}}/O={{ssl_certs_organization}}/CN={{ssl_certs_common_name}}"
+
+ssl_certs_path: "/etc/ssl"
+ssl_certs_path_owner: "wimops"
+ssl_certs_path_group: "webadmin"
+ssl_certs_privkey_path: "/etc/ssl/private/chappress-staging.key"
+ssl_certs_cert_path: "/etc/ssl/certs/chappress-staging.pem"
+ssl_certs_csr_path: "/etc/ssl/certs/chappress-staging.csr"
+ssl_certs_dhparam_path: "/etc/ssl/certs/dhparam.pem"
+ssl_certs_mode: "0700"
+ssl_certs_force_replace: yes
+
+ssl_certs_local_privkey_path: "{{inventory_dir|default(playbook_dir)}}/files/ssl/chappress-staging.key"
+ssl_certs_local_cert_path: "{{inventory_dir|default(playbook_dir)}}/files/ssl/chappress-staging.pem"
+ssl_certs_local_privkey_data: ""
+ssl_certs_local_cert_data: ""
+
+ssl_certs_generate_self_signed: true
+ssl_certs_key_size: "2048"
+ssl_certs_generate_dh_param: true
+ssl_certs_dhparam_size: "2048"
