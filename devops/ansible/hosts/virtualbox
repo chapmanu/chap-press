@@ -7,4 +7,4 @@
 #
 [webserver]
 # Note: ansible_become_pass is only OK for dev. Never use this for staging or production.
-virtualbox ansible_host=localhost ansible_port=2222 ansible_user=wimops ansible_become_pass=qqwwee
+virtualbox ansible_host=localhost ansible_port=2222 ansible_user=wimops ansible_become_pass=chapman123

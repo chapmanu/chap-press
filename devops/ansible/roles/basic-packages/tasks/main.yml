@@ -2,11 +2,12 @@
 - name: Install Common Packages
   yum: name=git state=present
 
+# WP CLI
 - name: Check if wp-cli is installed
   stat: path=/usr/local/bin/wp
   register: wp_file
 
-#Install wp-cli if file isn't located
+# Install wp-cli if file isn't located
 - name: download wp-cli
   get_url: url=https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar dest=/usr/local/bin/wp
   when: not wp_file.stat.exists
@@ -14,12 +15,23 @@
 - name: update permissions of wp-cli to allow anyone to execute it
   file: path=/usr/local/bin/wp mode=0755
 
+# Template for nginx server
 - name: Copy nginx server configuration
   template: 
     src: "chappress-default.conf.j2" 
     dest: "/etc/nginx/conf.d/chappress-default.conf"
   notify: restart nginx
 
+# Create private folder if it doesn't exist
+- name: Check if private dir exists
+  stat: path=/etc/ssl/private
+  register: priv_dir
+
+- name: Create private directory
+  file: state=directory path="/etc/ssl/private"
+  when: not priv_dir.stat.exists
+
+# USER & GROUP PERMISSIONS
 - name : Create Ansible variable for group results
   command: cat /etc/group
   register: group_result

@@ -5,6 +5,7 @@
 #
 # Role: chusiang.php7
 #
+
 yum_php_version: "70u"
 yum_php_packages:
   - php{{ yum_php_version }}-cli

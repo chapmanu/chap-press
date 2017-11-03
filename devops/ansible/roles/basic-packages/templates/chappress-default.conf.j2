@@ -3,9 +3,11 @@ server {
         server_name {{ nginx_server_name }};
 
         # redirects both www and non-www to https
-        return 301 https://$host$request_uri;
-
         # https://www.bjornjohansen.no/redirect-to-https-with-nginx
+        #
+        # return 301 https://$host$request_uri;
+
+        
 }
 
 server {
