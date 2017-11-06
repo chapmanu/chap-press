@@ -34,6 +34,3 @@
 
 # Manages firewall.
 - src: geerlingguy.firewall
-
-# Adds needed Red Hat repos.
-- src: geerlingguy.repo-epel

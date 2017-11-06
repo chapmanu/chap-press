@@ -15,12 +15,11 @@
 
   roles:
     - { role: geerlingguy.ntp,      tags: ['ntp'] }
-    - { role: geerlingguy.repo-epel,tags: ['epel'] }
-    - { role: geerlingguy.mysql,    tags: ['mariadb'] }
-    - { role: ontic.account,        tags: ['ontic'] }
     - { role: geerlingguy.nginx,    tags: ['nginx'] }
     - { role: basic-packages,       tags: ['basic'] }
     - { role: jdauphant.ssl-certs,  tags: ['ssl'] }
+    - { role: geerlingguy.mysql,    tags: ['mariadb'] }
+    - { role: ontic.account,        tags: ['ontic'] }
     - { role: chusiang.php7,        tags: ['php'] }
     - { role: geerlingguy.composer, tags: ['composer'] }
     - { role: geerlingguy.firewall, tags: ['firewall'] }

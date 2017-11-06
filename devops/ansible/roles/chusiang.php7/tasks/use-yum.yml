@@ -39,6 +39,7 @@
 
 - name: Install ius from remote repo
   command: bash /tmp/setup-ius.sh
+  ignore_errors: yes
 
 # Upgrade all packages.
 - name: upgrade all packages
