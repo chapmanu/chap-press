@@ -1,6 +1,8 @@
 server {
         listen 80;
         server_name {{ nginx_server_name }};
+        root {{ nginx_server_root }};
+        index index.php index.html index.htm;
 
         # redirects both www and non-www to https
         # https://www.bjornjohansen.no/redirect-to-https-with-nginx
