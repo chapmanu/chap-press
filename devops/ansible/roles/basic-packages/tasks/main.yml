@@ -22,40 +22,25 @@
     dest: "/etc/nginx/conf.d/chappress-default.conf"
   notify: restart nginx
 
-# Create private folder if it doesn't exist
-- name: Check if private dir exists
-  stat: path=/etc/ssl/private
-  register: priv_dir
+# WORDPRESS CONFIGURATIONS
 
-- name: Create private directory
-  file: state=directory path="/etc/ssl/private"
-  when: not priv_dir.stat.exists
-
-# USER & GROUP PERMISSIONS
-- name : Create Ansible variable for group results
-  command: cat /etc/group
-  register: group_result
-
-# Creates webadmin group if group doesn't exist
-- name: Create new webadmin group
-  command: groupadd webadmin
-  when: '"webadmin" not in group_result.stdout'
-
-# Adds wimops to webadmin if group doesn't exist
-- name: Create new group with wimops
-  command: usermod -a -G webadmin wimops
-  when: '"webadmin" not in group_result.stdout'
-
+# Create directories
 - name: Create www directory
   file: state=directory path="/var/www" 
 
 - name: Create html directory
-  file: state=directory path="/var/www/html"
+  file: state=directory path="/var/www/html" 
 
-# Linux command: chown -v root:webadmin /var/www/html
+# Set permissions
 - name: Set group permissions for webadmin at server root
-  file: path=/var/www/html owner=root group=webadmin
+  file: path=/var/www/html owner=root group=deploy # command: chown -v root:deploy /var/www/html
 
-# Linux command: chmod 2775 /var/www/html -Rv
 - name: Set file permissions at server root
-  file: path=/var/www/html recurse=yes mode=2775
+  file: path=/var/www/html recurse=yes mode=2775  # command: chmod 2775 /var/www/html -Rv
+
+# Create WordPress DB
+- name: Create WordPress database
+  mysql_db: name={{ wp_db_name }} login_user=root state=present
+
+- name: Create WordPress database user
+  mysql_user: name={{ wp_db_user }} password={{ wp_db_password }} priv={{ wp_db_name }}.*:ALL host='localhost' state=present

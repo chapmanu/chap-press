@@ -3,27 +3,6 @@
 #
 
 #
-# Role: chusiang.php7
-#
-
-yum_php_version: "70u"
-yum_php_packages:
-  - php{{ yum_php_version }}-cli
-  - php{{ yum_php_version }}-common
-  - php{{ yum_php_version }}-fpm
-  - php{{ yum_php_version }}-fpm-nginx
-  - php{{ yum_php_version }}-json
-  - php{{ yum_php_version }}-mysqlnd
-  - php{{ yum_php_version }}-opcache
-  - php{{ yum_php_version }}-pdo
-  - php{{ yum_php_version }}-mbstring
-  - php{{ yum_php_version }}-gd
-  - php{{ yum_php_version }}-xml
-
-php_disable_functions: "exec,passthru,shell_exec,system,popen"
-php_allow_url_fopen: "On"
-
-#
 # Role: ontic.account
 # https://github.com/ontic/ansible-role-account/tree/master/docs
 # http://docs.ansible.com/ansible/latest/playbooks_lookups.html#the-password-lookup
@@ -59,36 +38,46 @@ firewall_allowed_tcp_ports:
 # Role: geerlingguy.nginx
 #
 # This is the default Red Hat setting from the role.
-
 nginx_remove_default_vhost: true
 
 #
-# Role: jdauphant.ssl-certs
+# Role: Basic packages
 #
-ssl_certs_country: "US"
-ssl_certs_locality: "California"
-ssl_certs_organization: "Chapman University"
-ssl_certs_state: "California"
-ssl_certs_common_name: "chappress-staging"
-ssl_certs_days: "365"
-ssl_certs_fields: "/C={{ssl_certs_country}}/ST={{ssl_certs_state}}/L={{ssl_certs_locality}}/O={{ssl_certs_organization}}/CN={{ssl_certs_common_name}}"
+# Creates WordPress database
+wp_db_name: "chappress_dev"
+wp_db_user: "chappress"
+wp_db_password: "chappress"
 
-ssl_certs_path: "/etc/ssl"
-ssl_certs_path_owner: "wimops"
-ssl_certs_path_group: "webadmin"
-ssl_certs_privkey_path: "/etc/ssl/private/chappress-staging.key"
-ssl_certs_cert_path: "/etc/ssl/certs/chappress-staging.pem"
-ssl_certs_csr_path: "/etc/ssl/certs/chappress-staging.csr"
-ssl_certs_dhparam_path: "/etc/ssl/certs/dhparam.pem"
-ssl_certs_mode: "0700"
-ssl_certs_force_replace: yes
+#
+# Role: tjarrett.selfsignedcertificate
+#
+use_self_signed_cert: yes
+self_signed_cert_path: /etc/pki/tls/certs
+self_signed_cert_key_path: /etc/pki/tls/private
+self_signed_cert_filename: self-signed-cert
 
-ssl_certs_local_privkey_path: "{{inventory_dir|default(playbook_dir)}}/files/ssl/chappress-staging.key"
-ssl_certs_local_cert_path: "{{inventory_dir|default(playbook_dir)}}/files/ssl/chappress-staging.pem"
-ssl_certs_local_privkey_data: ""
-ssl_certs_local_cert_data: ""
+selfsignedcertificates:
+  - {
+      certs_path: "{{ self_signed_cert_path }}",
+      key_path: "{{ self_signed_cert_key_path }}",
+      filename: "{{ self_signed_cert_filename }}",
+      country: US,
+      state: California,
+      locality: Orange,
+      organization: "Chapman University",
+      domain: "{{ app_name }}.chapman.edu"
+    }
 
-ssl_certs_generate_self_signed: true
-ssl_certs_key_size: "2048"
-ssl_certs_generate_dh_param: true
-ssl_certs_dhparam_size: "2048"
+#
+# Role: geerlingguy.php
+# FIX: Following settings need to be further edited to properly setup PHP70 with Nginx & WordPress
+php_enablerepo: "remi-php70"
+php_packages_state: "latest"
+__php_webserver_daemon: "nginx"
+__php_fpm_pool_user: nginx
+__php_fpm_pool_group: nginx
+php_webserver_daemon: "nginx"
+php_fpm_pool_user: nginx
+php_fpm_pool_group: nginx
+php_date_timezone: "America/Los_Angeles"
+php_enable_php_fpm: true

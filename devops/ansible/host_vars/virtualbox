@@ -1,2 +1,3 @@
 nginx_server_name: localhost
 nginx_server_root: /var/www/html
+nginx_redirect: localhost:8443
