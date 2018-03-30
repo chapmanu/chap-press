@@ -1,3 +1,5 @@
 nginx_server_name: localhost
-nginx_server_root: /var/www/html
+nginx_server_root: /var/www/html/current/public
 nginx_redirect: localhost:8443
+redirect_domain: localhost:8443
+isVirtualMachine: true

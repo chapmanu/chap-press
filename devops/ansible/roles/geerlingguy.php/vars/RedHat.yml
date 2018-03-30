@@ -9,7 +9,6 @@ __php_packages:
   - php-imap
   - php-ldap
   - php-mbstring
-  - php-mysql
   - php-opcache
   - php-pdo
   - php-pear

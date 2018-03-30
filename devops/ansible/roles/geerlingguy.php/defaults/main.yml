@@ -100,7 +100,6 @@ php_source_configure_command: >
   --enable-ftp
   --enable-exif
   --enable-calendar
-  --enable-fpm
   --enable-opcache
   --enable-pdo
   --enable-sysvmsg

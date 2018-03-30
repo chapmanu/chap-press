@@ -17,7 +17,7 @@
 # Adds needed Red Hat repos.
 - src: geerlingguy.repo-epel
 
-# Add Remi Repo
+# Adds Remi's RPM repository for RHEL/CentOS.
 - src: geerlingguy.repo-remi
 
 # Sets up user accounts.
@@ -40,3 +40,9 @@
 
 # Manages firewall.
 - src: geerlingguy.firewall
+
+# Install Git
+- src: geerlingguy.git
+
+# Rotate logs.
+- src: nickhammond.logrotate

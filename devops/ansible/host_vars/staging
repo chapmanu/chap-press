@@ -1,3 +1,5 @@
 nginx_server_name: chappress-staging.chapman.edu
 nginx_server_root: /var/www/html/current/public
 nginx_redirect: $host$request_uri
+redirect_domain: chappress-staging.chapman.edu
+isVirtualMachine: false

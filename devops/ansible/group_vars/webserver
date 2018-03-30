@@ -7,7 +7,7 @@
 # https://github.com/ontic/ansible-role-account/tree/master/docs
 # http://docs.ansible.com/ansible/latest/playbooks_lookups.html#the-password-lookup
 #
-app_name: chappress
+app_name: blogs
 app_user: deploy
 app_user_pw_path: "/tmp/ansible-{{ app_name }}-{{ app_user }}-{{inventory_hostname}}-pw.txt"
 app_remote_path: "/var/www/{{ app_name }}"
@@ -33,7 +33,9 @@ firewall_allowed_tcp_ports:
   - "22"
   - "80"
   - "443"
-
+  - "5666"
+firewall_forwarded_tcp_ports:
+  - { src: "192.168.20.39", dest: "5666" }
 #
 # Role: geerlingguy.nginx
 #
@@ -41,12 +43,9 @@ firewall_allowed_tcp_ports:
 nginx_remove_default_vhost: true
 
 #
-# Role: Basic packages
+# Role: geerlingguy.git
 #
-# Creates WordPress database
-wp_db_name: "chappress_dev"
-wp_db_user: "chappress"
-wp_db_password: "chappress"
+git_packages: git
 
 #
 # Role: tjarrett.selfsignedcertificate
@@ -69,15 +68,66 @@ selfsignedcertificates:
     }
 
 #
+# Role: nickhammond.logrotate
+#
+logrotate_scripts:
+  - name: nginx
+    path: /var/log/nginx/*.log
+    options:
+      - daily
+      - rotate 28
+      - size 25M
+      - missingok
+      - compress
+      - delaycompress
+      - copytruncate
+      - dateext
+      - sharedscripts
+    scripts:
+      postrotate: "[ -s /run/nginx.pid ] && kill -USR1 `cat /run/nginx.pid`"
+
+#
 # Role: geerlingguy.php
-# FIX: Following settings need to be further edited to properly setup PHP70 with Nginx & WordPress
-php_enablerepo: "remi-php70"
+#
+php_enablerepo: "remi-php71"
 php_packages_state: "latest"
-__php_webserver_daemon: "nginx"
-__php_fpm_pool_user: nginx
-__php_fpm_pool_group: nginx
-php_webserver_daemon: "nginx"
-php_fpm_pool_user: nginx
-php_fpm_pool_group: nginx
-php_date_timezone: "America/Los_Angeles"
 php_enable_php_fpm: true
+php_date_timezone: "America/Los_Angeles"
+php_source_configure_command: >
+  ./configure
+  --prefix={{ php_source_install_path }}
+  --with-config-file-path={{ php_conf_paths | first }}
+  --enable-mbstring
+  --enable-zip
+  --enable-bcmath
+  --enable-pcntl
+  --enable-ftp
+  --enable-exif
+  --enable-calendar
+  --enable-fpm
+  --enable-opcache
+  --enable-pdo
+  --enable-sysvmsg
+  --enable-sysvsem
+  --enable-sysvshm
+  --enable-wddx
+  --with-curl
+  --with-mcrypt
+  --with-iconv
+  --with-gmp
+  --with-pspell
+  --with-gd
+  --with-jpeg-dir=/usr
+  --with-png-dir=/usr
+  --with-zlib-dir=/usr
+  --with-xpm-dir=/usr
+  --with-freetype-dir=/usr
+  --enable-gd-native-ttf
+  --enable-gd-jis-conv
+  --with-openssl
+  --with-pdo-mysql=/usr
+  --with-gettext=/usr
+  --with-zlib=/usr
+  --with-bz2=/usr
+  --with-recode=/usr
+  --with-mysqli=/usr/bin/mysql_config
