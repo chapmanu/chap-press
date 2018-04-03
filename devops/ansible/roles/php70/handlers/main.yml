@@ -1,3 +1,0 @@
----
-- name: restart php7-fpm on centos
-  service: name=php-fpm enabled=yes state=restarted

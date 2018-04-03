@@ -1,0 +1,48 @@
+---
+#
+# Ansible Requirement Files
+# Imports third-party roles.
+#
+# Usage:
+#   ansible-galaxy install -r requirements.yml
+#
+# References:
+# - https://stackoverflow.com/a/30176625/6763239
+# - http://docs.ansible.com/ansible/latest/galaxy.html#installing-multiple-roles-from-a-file
+#
+
+# Avoid issues with time skew.
+- src: geerlingguy.ntp
+
+# Adds needed Red Hat repos.
+- src: geerlingguy.repo-epel
+
+# Adds Remi's RPM repository for RHEL/CentOS.
+- src: geerlingguy.repo-remi
+
+# Sets up user accounts.
+- src: ontic.account
+
+# Self-signed certificates for vm/staging servers.
+- src: tjarrett.selfsignedcertificate
+
+# Install Composer, the PHP Dependency Manager
+- src: geerlingguy.composer
+
+# Install and configure MySQL or MariaDB server
+- src: geerlingguy.mysql
+
+# Install nginx webserver.
+- src: geerlingguy.nginx
+
+# Deploy PHP 7 
+- src: geerlingguy.php
+
+# Manages firewall.
+- src: geerlingguy.firewall
+
+# Install Git
+- src: geerlingguy.git
+
+# Rotate logs.
+- src: nickhammond.logrotate

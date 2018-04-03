@@ -1,0 +1,24 @@
+---
+# Role: geerlingguy.php 
+# To override values in the galaxy role directory var/redhat.yml
+# http://docs.ansible.com/ansible/latest/playbooks_variables.html#variable-precedence-where-should-i-put-a-variable
+php_packages:
+  - php
+  - php-cli
+  - php-common
+  - php-devel
+  - php-fpm
+  - php-gd
+  - php-imap
+  - php-ldap
+  - php-mbstring
+  - php-mysql
+  - php-opcache
+  - php-pdo
+  - php-pear
+  - php-pecl-apcu
+  - php-xml
+  - php-xmlrpc
+php_webserver_daemon: "nginx"
+php_fpm_pool_user: nginx
+php_fpm_pool_group: nginx

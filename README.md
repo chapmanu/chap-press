@@ -159,8 +159,8 @@ The staging server will be running at `https://chappress-staging.chapman.edu`
 
 - **Run the playbook** from the ansible directory:
 
-    cd devops/ansible
-    ansible-playbook provision.yml --ask-become-pass
+      cd devops/ansible
+      ansible-playbook provision.yml --ask-become-pass
 
 
 ***

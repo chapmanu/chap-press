@@ -1,0 +1,58 @@
+---
+# WORDPRESS CONFIGURATIONS
+# https://github.com/darthwade/ansible-role-wordpress/blob/master/tasks/main.yml
+# https://stackoverflow.com/questions/18352682/correct-file-permissions-for-wordpress
+
+# WP CLI
+- name: Check if wp-cli is installed
+  stat: path=/usr/local/bin/wp
+  register: wp_file
+
+# Install wp-cli if file isn't located
+- name: download wp-cli
+  get_url: url=https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar dest=/usr/local/bin/wp
+  when: not wp_file.stat.exists
+
+- name: update permissions of wp-cli to allow anyone to execute it
+  file: path=/usr/local/bin/wp mode=0755
+
+# WP permissions
+- name: Create www directory
+  file: state=directory path="{{ item }}" owner=deploy group=deploy mode=0755 recurse=yes
+  with_items:
+    - /var/www
+    - /var/www/html
+
+- name: File permissions
+  command: find /var/www/html/ -type f -exec chmod 644 {} \;
+
+- name: Create WordPress database
+  mysql_db: name=chapman_blogs_vm login_user=root state=present
+  when: isVirtualMachine
+
+- name: Create WordPress database user
+  mysql_user: name=bloguser password=password priv=chapman_blogs_vm.*:ALL host='localhost' state=present
+  when: isVirtualMachine
+
+# SERVER Config
+- name: Create sites directory
+  file: state=directory path="{{ item }}" owner=root group=root
+  with_items:
+    - /etc/nginx/sites-available
+    - /etc/nginx/sites-enabled
+
+- name: Copy server templates for WordPress
+  template: src={{item.src}} dest={{item.dest}}
+  with_items:
+      - { src: 'restrictions.conf.j2',  dest: '/etc/nginx/conf.d/restrictions.conf' }
+      - { src: 'ssl.conf.j2',           dest: '/etc/nginx/conf.d/ssl.conf' }
+      - { src: 'wordpress-ms.conf.j2',  dest: '/etc/nginx/conf.d/wordpress-ms.conf' }
+      - { src: 'nginx.conf.j2',         dest: '/etc/nginx/nginx.conf' }
+      - { src: 'blogs-staging.conf.j2', dest: '/etc/nginx/sites-available/blogs-staging.conf' }
+
+- name: Symlink to sites-enabled
+  file: 
+    src: /etc/nginx/sites-available/blogs-staging.conf
+    dest: /etc/nginx/sites-enabled/blogs-staging.conf
+    state: link
+  notify: Restart nginx

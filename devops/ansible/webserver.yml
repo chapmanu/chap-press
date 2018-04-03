@@ -1,0 +1,31 @@
+---
+#
+# To run playbook:
+#   cd devops/ansible
+#   ansible-playbook webserver.yml -i hosts/virtualbox
+#
+# To run specific roles, tag the role(s) dev and use the --tags option:
+#   ansible-playbook webserver.yml -i hosts/virtualbox --tags dev -v
+#
+# See group_vars/webserver for more info on each role.
+#
+- name: Install a nginx web server with relevant packages 
+  hosts: webserver
+  become: true
+  vars_files:
+    - vars/main.yml
+  roles:
+    - { role: geerlingguy.ntp,                tags: ['ntp'] }
+    - { role: geerlingguy.repo-epel,          tags: ['epel'] }
+    - { role: geerlingguy.repo-remi,          tags: ['remi'] }
+    - { role: geerlingguy.nginx,              tags: ['nginx'] }
+    - { role: ontic.account,                  tags: ['ontic'] }
+    - { role: geerlingguy.mysql,              tags: ['mysql'] }
+    - { role: tjarrett.selfsignedcertificate, tags: ['ssl'] }
+    - { role: geerlingguy.php,                tags: ['php'] }
+    - { role: geerlingguy.composer,           tags: ['composer'] }
+    - { role: geerlingguy.firewall,           tags: ['firewall'] }
+    - { role: nickhammond.logrotate,          tags: ['log'] }
+    - { role: geerlingguy.git,                tags: ['git'] }
+    - { role: ssh-config,                     tags: ['ssh'] }
+    - { role: wordpress-config,               tags: ['wordpress'] }
