@@ -1,0 +1,66 @@
+# WordPress single site rules.
+# https://codex.wordpress.org/Nginx#General_WordPress_rules
+
+location / {
+    try_files $uri $uri/ /index.php?$args ;
+}
+
+# https://stackoverflow.com/questions/15423500/nginx-showing-blank-php-pages
+location ~ [^/]\.php(/|$) {
+    fastcgi_split_path_info ^(.+?\.php)(/.*)$;
+    if (!-f $document_root$fastcgi_script_name) {
+        return 404;
+    }
+    include       fastcgi_params;
+    fastcgi_index index.php;
+    fastcgi_pass  127.0.0.1:9000;
+    fastcgi_param   SCRIPT_FILENAME
+                    $document_root$fastcgi_script_name;
+    # Bypass Cache
+    fastcgi_cache_bypass $no_cache;
+
+    #Do not Cache
+    fastcgi_no_cache $no_cache;
+
+    # Cache configuration
+    fastcgi_cache WORDPRESS;
+    fastcgi_cache_valid 200 24h;
+    fastcgi_cache_valid 404 1m;
+}
+
+# BEGIN Cache Ignore Rules
+set $no_cache 0;
+
+# Don't cache POST requests and urls with a query strings
+if ($request_method = POST) {
+    set $no_cache 1;
+}
+if ($query_string != "") {
+    set $no_cache 1;
+}
+
+# Don't cache uris containing the following segments
+if ($request_uri ~* "(/wp-admin/|/xmlrpc.php|/wp-(app|cron|login|register|mail).php|wp-.*.php|/feed/|index.php|wp-comments-popup.php|wp-links-opml.php|wp-locations.php|sitemap(_index)?.xml|[a-z0-9_-]+-sitemap([0-9]+)?.xml)") {
+    set $no_cache 1;
+}
+
+# Don't use the cache for logged in users or recent commenters
+if ($http_cookie ~* "comment_author|wordpress_[a-f0-9]+|wp-postpass|wordpress_no_cache|wordpress_logged_in") {
+    set $no_cache 1;
+}
+
+if ($request_uri ~* "panther-alert") {
+    set $no_cache 1;
+}
+
+# END Cache Ignore Rules
+
+# Block trackbacks/pingbacks
+location ^~ /wp-trackback.php {
+    deny all;
+}
+
+location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
+        expires max;
+        log_not_found off;
+}

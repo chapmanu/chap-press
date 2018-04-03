@@ -1,0 +1,20 @@
+# # WordPress single site rules.
+# https://codex.wordpress.org/Nginx#Per_Site_configuration
+# A conf.d directory is used to add extra rules for general purpose use.
+
+server {
+    server_name  _;
+    return 302 https://{{ nginx_redirect }};
+}
+
+server {
+    server_name {{ nginx_server_name }};
+    root {{ nginx_server_root }};
+    index index.php;
+    access_log /var/log/nginx/{{ nginx_server_name }}-access.log;
+    error_log /var/log/nginx/{{ nginx_server_name }}-error.log;
+    #include /etc/nginx/nginx.conf;
+    include /etc/nginx/conf.d/restrictions.conf;
+    include /etc/nginx/conf.d/wordpress.conf;
+    include /etc/nginx/conf.d/ssl.conf;
+}
