@@ -27,57 +27,22 @@ set :keep_releases, 5
 # Linked files and directories (symlinks)
 ############################################
 
-set :linked_files, %w{public/wp-config.php}
+set :linked_files, %w{wp-config.php}
 set :linked_dirs, %w{content/uploads}
 
 namespace :deploy do
   include Helpers
 
+  after 'starting', 'check_changes'
+
   desc "create WordPress files for symlinking"
   task :create_wp_files do
     on roles(:app) do
-      execute :mkdir, "-p #{shared_path}/public"
-      execute :touch, "#{shared_path}/public/wp-config.php"
+      execute :touch, "#{shared_path}/wp-config.php"
     end
   end
 
   after 'check:make_linked_dirs', :create_wp_files
-
-  desc "WordPress directory and file permissions"
-  task :wp_permissions do
-    on roles(:app) do
-      execute :chmod, "644 #{release_path}/public/wp-config.php"
-      # Sets permissions for wp-content folder via symlinked 'content' folder
-      # Allows Wonolog to write logs to the content folder
-      execute "sudo chown php-fpm:webadmin -R #{release_path}/content"
-      execute "sudo find #{release_path}/content -type d -exec chmod 775 {} \\;"
-      execute "sudo find #{release_path}/content -type f -exec chmod 664 {} \\;"
-      ## Resources ##
-      # https://www.digitalocean.com/community/questions/how-can-i-fix-permissions-with-wordpress-file-uploads
-      # https://stackoverflow.com/questions/18352682/correct-file-permissions-for-wordpress
-      # https://kb-smc.chapman.edu/?p=2086
-    end
-  end
-
-  # Task source: https://github.com/chapmanu/blogs/blob/development/lib/capistrano/tasks/wp.cap 
-  desc "Generates wp-config.php on staging server"
-  task :generate_staging_config do
-    on roles(:web) do
-      database = YAML::load_file('config/database.yml')[fetch(:stage).to_s]
-      # Create config file in staging environment
-      db_config = ERB.new(File.read('config/templates/wp-config.php.erb')).result(binding)
-      io = StringIO.new(db_config)
-      upload! io, File.join(shared_path, "public/wp-config.php")
-      print_success("The WordPress config file has been created on #{fetch(:stage_domain)}")
-    end
-  end
-
-  desc "Install composer vendor packages"
-  task :vendor_install do
-    on roles(:app) do
-      execute "cd #{release_path} && composer install"
-    end
-  end
 
   desc "Restart Nginx & Php-fpm services"
   task :restart_services do
@@ -87,9 +52,6 @@ namespace :deploy do
     end
   end
 
-  after :finished, :wp_permissions
-  after :finished, :generate_staging_config
-  after :finished, :vendor_install
   after :finished, :restart_services
   after :finishing, "deploy:cleanup"
 

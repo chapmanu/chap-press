@@ -7,7 +7,7 @@
 # https://github.com/ontic/ansible-role-account/tree/master/docs
 # http://docs.ansible.com/ansible/latest/playbooks_lookups.html#the-password-lookup
 #
-app_name: blogs
+app_name: chappress
 app_user: deploy
 app_user_pw_path: "/tmp/ansible-{{ app_name }}-{{ app_user }}-{{inventory_hostname}}-pw.txt"
 app_remote_path: "/var/www/{{ app_name }}"

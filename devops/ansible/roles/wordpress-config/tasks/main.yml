@@ -23,15 +23,19 @@
     - /var/www
     - /var/www/html
 
+# WP cache
+- name: Create cache directory
+  file: state=directory path=/var/cache/nginx owner=root group=root
+
 - name: File permissions
   command: find /var/www/html/ -type f -exec chmod 644 {} \;
 
 - name: Create WordPress database
-  mysql_db: name=chapman_blogs_vm login_user=root state=present
+  mysql_db: name=chappress_vm login_user=root state=present
   when: isVirtualMachine
 
 - name: Create WordPress database user
-  mysql_user: name=bloguser password=password priv=chapman_blogs_vm.*:ALL host='localhost' state=present
+  mysql_user: name=bloguser password=password priv=chappress_vm.*:ALL host='localhost' state=present
   when: isVirtualMachine
 
 # SERVER Config
@@ -46,13 +50,13 @@
   with_items:
       - { src: 'restrictions.conf.j2',  dest: '/etc/nginx/conf.d/restrictions.conf' }
       - { src: 'ssl.conf.j2',           dest: '/etc/nginx/conf.d/ssl.conf' }
-      - { src: 'wordpress-ms.conf.j2',  dest: '/etc/nginx/conf.d/wordpress-ms.conf' }
+      - { src: 'wordpress.conf.j2',  dest: '/etc/nginx/conf.d/wordpress.conf' }
       - { src: 'nginx.conf.j2',         dest: '/etc/nginx/nginx.conf' }
-      - { src: 'blogs-staging.conf.j2', dest: '/etc/nginx/sites-available/blogs-staging.conf' }
+      - { src: 'chappress-staging.conf.j2', dest: '/etc/nginx/sites-available/chappress-staging.conf' }
 
 - name: Symlink to sites-enabled
   file: 
-    src: /etc/nginx/sites-available/blogs-staging.conf
-    dest: /etc/nginx/sites-enabled/blogs-staging.conf
+    src: /etc/nginx/sites-available/chappress-staging.conf
+    dest: /etc/nginx/sites-enabled/chappress-staging.conf
     state: link
   notify: Restart nginx
