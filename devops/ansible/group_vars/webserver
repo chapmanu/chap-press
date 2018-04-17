@@ -20,7 +20,7 @@ account_users:
     createhome: yes
     sudoer: yes
     group: "{{ app_user }}"
-    password: "{{ lookup('password', '{{ app_user_pw_path }} length=16 encrypt=md5_crypt') }}"
+    password: "{{ lookup('password', '{{ app_user_pw_path }} length=16') }}"
     files:
       - path: '.ssh'
         mode: '0700'
