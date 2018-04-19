@@ -68,8 +68,7 @@ define(   'SCRIPT_DEBUG', true );
 # Ensure Composer autoload is loaded in wp-config.php 
 # or anytime before the 'muplugins_loaded' action is fired
 
-# Path file location for current Capistrano release
-$autoload_path = realpath(__DIR__ . '/../../current/vendor/autoload.php');
+$autoload_path = "/var/www/html/current/vendor/autoload.php";
 
 if (file_exists($autoload_path)) {
   require $autoload_path;
