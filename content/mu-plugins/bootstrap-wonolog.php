@@ -8,6 +8,11 @@
 
   if ( defined( 'Inpsyde\Wonolog\LOG' ) ) {
     Inpsyde\Wonolog\bootstrap();
+
+    # Tell the default handler to use the given directory for logs.
+    # Log location: /var/log/wonolog 
+    
+    putenv( 'WONOLOG_DEFAULT_HANDLER_ROOT_DIR=/var/log/wonolog' );
 }
 
 

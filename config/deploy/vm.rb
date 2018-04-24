@@ -1,10 +1,10 @@
 ############################################
-# Staging Server
+# Local VM Server
 ############################################
 
-set :stage, :staging
-set :stage_domain, "chappress-staging.chapman.edu"
-server "cprs-pre-wb01.chapman.edu", user: "deploy", roles: %w(web app db)
+set :stage, :vm
+set :stage_domain, "localhost:8443"
+server "127.0.0.1", user: "deploy", roles: %w{web app db}, port:2222
 set :deploy_to, "/var/www/html"
 
 

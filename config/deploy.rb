@@ -28,12 +28,10 @@ set :keep_releases, 5
 ############################################
 
 set :linked_files, %w{wp-config.php}
-set :linked_dirs, %w{content/uploads}
+set :linked_dirs, %w{content/uploads vendor}
 
 namespace :deploy do
   include Helpers
-
-  after 'starting', 'check_changes'
 
   desc "create WordPress files for symlinking"
   task :create_wp_files do

@@ -8,10 +8,9 @@
 # Logging in Wonolog is done via a WordPress function: do_action()
 # The main hook to use for the scope is 'wonolog.log'.
 # See the docs: https://github.com/inpsyde/Wonolog/tree/master/docs
-#
-# An example of logging with Wonolog:
 
-do_action( 'wonolog.log', 'Some event happened in ' . $_SERVER['SCRIPT_NAME'] );
+# Uncomment the next line for a demo:
+# do_action( 'wonolog.log', 'Some event happened in ' . $_SERVER['SCRIPT_NAME'] );
 
 ############################ 
 # Note: 

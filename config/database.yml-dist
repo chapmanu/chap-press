@@ -6,4 +6,8 @@ staging:
   database: 'chappress_dev' 
   username: 'chappress'
   password: 'TBA'
-
+vm:
+  host: 'localhost' 
+  database: 'chappress_vm' 
+  username: 'TBA'
+  password: 'TBA'
