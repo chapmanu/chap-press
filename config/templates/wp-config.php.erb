@@ -30,21 +30,27 @@ define('DB_CHARSET',  'utf8');
 define('DB_COLLATE',  '');
 
 #############################
-# AUTHENITICATION KEYS AND SALTS
+# Security Keys (Salt)
 #############################
-# For ChapPress developers: These values need to be updated before release to production for the Chappress
-# project.
-# You can generate these using the {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service}
+require('<%= shared_path %>/wp-security-keys.php');
 
-define('AUTH_KEY',         'put your unique phrase here');
-define('SECURE_AUTH_KEY',  'put your unique phrase here');
-define('LOGGED_IN_KEY',    'put your unique phrase here');
-define('NONCE_KEY',        'put your unique phrase here');
-define('AUTH_SALT',        'put your unique phrase here');
-define('SECURE_AUTH_SALT', 'put your unique phrase here');
-define('LOGGED_IN_SALT',   'put your unique phrase here');
-define('NONCE_SALT',       'put your unique phrase here');
+#############################
+# PATHS AND URLS
+#############################
+define('DOMAIN_CURRENT_SITE', '<%= wp_domain %>');
 
+define('WP_HOME','https://'.DOMAIN_CURRENT_SITE);
+define('WP_SITEURL','https://'.DOMAIN_CURRENT_SITE);
+
+// wp-content paths
+define('WP_CONTENT_URL', 'https://'.DOMAIN_CURRENT_SITE.'/wp-content');
+define('WP_CONTENT_DIR', realpath('<%= project_path %>/content'));
+
+// Nginx cache path for nginx-helper
+define('RT_WP_NGINX_HELPER_CACHE_PATH', '/var/cache/nginx/wordpress/');
+
+// Absolute path to the WP directory
+if ( !defined('ABSPATH') ) define('ABSPATH', '<%= project_path %>/public/');
 
 #############################
 # DEBUG
@@ -79,11 +85,31 @@ if (file_exists($autoload_path)) {
 # do_action( 'wonolog.log', 'Some event happened');
 
 #############################
+# Authentication Keys
+#############################
+class smc_keychain {
+  private $hash = 'd554c68aa02990597ffc2d68f445a6fa';
+  private $keys = array(
+    'email_username' => '<%= secrets['email']['username'] if secrets['email'] %>',
+    'email_password' => '<%= secrets['email']['password'] if secrets['email']  %>',
+
+    'roleservice_api_url'  => '<%= secrets['roleservice']['api_url'] if secrets['roleservice'] %>',
+    'roleservice_username' => '<%= secrets['roleservice']['username'] if secrets['roleservice'] %>',
+    'roleservice_password' => '<%= secrets['roleservice']['password'] if secrets['roleservice'] %>',
+  );
+
+  public function __construct($passphrase) {
+    if (md5($passphrase) != $this->hash) unset($this->keys);
+  }
+
+  public function get($name) {
+    return ($this->keys && array_key_exists($name, $this->keys)) ? $this->keys[$name] : md5(time());
+  }
+}
+
+#############################
 # PATHS AND URLS
 #############################
-
-# Absolute path to the WordPress directory. */
-if ( !defined('ABSPATH') ) define('ABSPATH', dirname(__FILE__) . '/');
 
 # Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');

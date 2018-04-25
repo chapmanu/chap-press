@@ -6,7 +6,10 @@
 # Role: ontic.account
 # https://github.com/ontic/ansible-role-account/tree/master/docs
 # http://docs.ansible.com/ansible/latest/playbooks_lookups.html#the-password-lookup
-#
+# 
+# The authorized_keys module will do the ssh-copy-id step for current user so cap can deploy.
+# Other devs will need to look up deploy user password in PassPack and run ssh-copy-id.
+
 app_name: chappress
 app_user: deploy
 app_user_pw_path: "/tmp/ansible-{{ app_name }}-{{ app_user }}-{{inventory_hostname}}-pw.txt"
@@ -20,11 +23,18 @@ account_users:
     createhome: yes
     sudoer: yes
     group: "{{ app_user }}"
-    password: "{{ lookup('password', '{{ app_user_pw_path }} length=16') }}"
+    password: "{{ lookup('password', '{{ app_user_pw_path }} length=16 encrypt=md5_crypt') }}"
+    generate_ssh_key: yes
     files:
       - path: '.ssh'
         mode: '0700'
         state: 'directory'
+    authorized_keys:
+      - key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"
+    known_hosts:
+      - key: "{{ lookup('pipe', 'ssh-keyscan -t rsa github.com') }}"
+        name: "github.com"
+        state: "present"
 
 #
 # Role: geerlingguy.firewall
@@ -131,3 +141,4 @@ php_source_configure_command: >
   --with-bz2=/usr
   --with-recode=/usr
   --with-mysqli=/usr/bin/mysql_config
+  

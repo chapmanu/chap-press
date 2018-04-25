@@ -27,5 +27,5 @@
     - { role: geerlingguy.firewall,           tags: ['firewall'] }
     - { role: nickhammond.logrotate,          tags: ['log'] }
     - { role: geerlingguy.git,                tags: ['git'] }
-    - { role: ssh-config,                     tags: ['ssh'] }
     - { role: wordpress-config,               tags: ['wordpress'] }
+    
