@@ -64,25 +64,12 @@ define(   'WP_DEBUG_DISPLAY', false );
 @ini_set( 'display_errors', 0 );
 define(   'SCRIPT_DEBUG', true );
 
-#############################
-# LOGGING 
-############################# 
-# Log path: public/wp-content/wonolog
-# A general logging MU plugin has been created at:
-# content/mu-plugins/log-action-wonolog.php
-#  
-# Ensure Composer autoload is loaded in wp-config.php 
-# or anytime before the 'muplugins_loaded' action is fired
+# Logging managed by Wonolog
+# Log path: /var/log/wonolog
+# see content/mu-plugins/log-action-wonolog.php
 
 $autoload_path = "/var/www/html/current/vendor/autoload.php";
-
-if (file_exists($autoload_path)) {
-  require $autoload_path;
-}
-
-# Logging in Wonolog is done via a WordPress function: do_action()
-# An example of logging with Wonolog:
-# do_action( 'wonolog.log', 'Some event happened');
+if (file_exists($autoload_path)) { require $autoload_path; }
 
 #############################
 # Authentication Keys
