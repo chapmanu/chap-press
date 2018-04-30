@@ -30,6 +30,7 @@
     gid: '{{ item.gid | default(omit) }}'
     state: '{{ item.state | default(omit) }}'
     system: '{{ item.system | default(omit) }}'
+  no_log: '{{ item.no_log | default(omit) }}'
   with_items: '{{ account_groups }}'
 
 - name: 'Account | Configure present sudo groups.'
@@ -44,6 +45,7 @@
     mode: '0440'
     state: '{{ item.sudoer | ternary("present", "absent") }}'
     validate: 'visudo -cf %s'
+  no_log: '{{ item.no_log | default(omit) }}'
   with_items: '{{ account_groups }}'
   when: 'item.sudoer is defined and item.sudoer'
 
@@ -52,6 +54,7 @@
   file:
     path: '/etc/sudoers.d/group_{{ item.name }}'
     state: 'absent'
+  no_log: '{{ item.no_log | default(omit) }}'
   with_items: '{{ account_groups }}'
   when: 'item.sudoer is not defined or not item.sudoer'
 
@@ -85,6 +88,7 @@
     system: '{{ item.system | default(omit) }}'
     uid: '{{ item.uid | default(omit) }}'
     update_password: '{{ item.update_password | default(omit) }}'
+  no_log: '{{ item.no_log | default(omit) }}'
   with_items: '{{ account_users }}'
 
 - name: 'Account | Configure present sudo users.'
@@ -99,6 +103,7 @@
     mode: '0440'
     state: '{{ item.sudoer | ternary("present", "absent") }}'
     validate: 'visudo -cf %s'
+  no_log: '{{ item.no_log | default(omit) }}'
   with_items: '{{ account_users }}'
   when: 'item.sudoer is defined and item.sudoer'
 
@@ -107,6 +112,7 @@
   file:
     path: '/etc/sudoers.d/user_{{ item.name }}'
     state: 'absent'
+  no_log: '{{ item.no_log | default(omit) }}'
   with_items: '{{ account_users }}'
   when: 'item.sudoer is not defined or not item.sudoer'
 
@@ -121,6 +127,7 @@
     path: '{{ item.1.path | default(omit) }}'
     state: '{{ item.1.state | default(omit) }}'
     validate_certs: '{{ item.1.validate_certs | default(omit) }}'
+  no_log: '{{ item.0.no_log | default(omit) }}'
   with_subelements:
     - '{{ account_users }}'
     - 'authorized_keys'
@@ -135,6 +142,7 @@
     key: '{{ item.1.key | default(omit) }}'
     name: '{{ item.1.name }}'
     state: '{{ item.1.state | default(omit) }}'
+  no_log: '{{ item.0.no_log | default(omit) }}'
   with_subelements:
     - '{{ account_users }}'
     - 'known_hosts'
@@ -157,6 +165,7 @@
     seuser: '{{ item.1.seuser | default(omit) }}'
     src: '{{ item.1.src | default(omit) }}'
     state: '{{ item.1.state | default(omit) }}'
+  no_log: '{{ item.0.no_log | default(omit) }}'
   with_subelements:
     - '{{ account_users }}'
     - 'files'
@@ -182,6 +191,7 @@
     seuser: '{{ item.1.seuser | default(omit) }}'
     src: '{{ item.1.src | default(omit) }}'
     validate: '{{ item.1.validate | default(omit) }}'
+  no_log: '{{ item.0.no_log | default(omit) }}'
   with_subelements:
     - '{{ account_users }}'
     - 'copies'
@@ -210,6 +220,7 @@
     update: yes
     verify_commit: '{{ item.1.verify_commit | default(omit) }}'
     version: '{{ item.1.version | default(omit) }}'
+  no_log: '{{ item.0.no_log | default(omit) }}'
   with_subelements:
     - '{{ account_users }}'
     - 'repositories'
@@ -230,6 +241,7 @@
     prefer_dist: '{{ item.1.prefer_dist | default(omit) }}'
     prefer_source: '{{ item.1.prefer_source | default(omit) }}'
     working_dir: '/home/{{ item.0.name }}/{{ item.1.working_dir }}'
+  no_log: '{{ item.0.no_log | default(omit) }}'
   with_subelements:
     - '{{ account_users }}'
     - 'composers'

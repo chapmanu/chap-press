@@ -46,6 +46,8 @@ The account groups you would like to manage. Each group supports all parameters 
 specified, valid values are `yes` or `no`. When defined and the value is `yes` the group will be added to
 the `/etc/sudoers` file, users belonging to that group will not need to provide a password when privileges need
 to be elevated. If defined and the value is `no` the group will be removed from the `/etc/sudoers` file.
+Another extra parameter is `no_log`, valid values are `yes` or `no`. When defined and the value is `yes`,
+results of the executed command will be suppressed.
 
 ```
 account_users: []
@@ -56,6 +58,9 @@ The account users you would like to manage. Each user supports all parameters fr
 specified, valid values are `yes` or `no`. When defined and the value is `yes` the user will be added to
 the `/etc/sudoers` file, the user will not need to provide a password when privileges need to be elevated. If 
 defined and the value is `no` the user will be removed from the `/etc/sudoers` file.
+
+Another extra parameter is `no_log`, valid values are `yes` or `no`. When defined and the value is `yes`,
+results of the executed command will be suppressed.
 
 There's also additional parameters which are basically wrappers around other modules. The only
 difference being that the `path` and `dest` properties are restricted to the users home directory. When

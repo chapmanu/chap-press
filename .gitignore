@@ -47,6 +47,7 @@ php_error_log.txt
 # Ansible #
 ###################
 *.retry
+.galaxy_install_info
 
 # Sass #
 ###################

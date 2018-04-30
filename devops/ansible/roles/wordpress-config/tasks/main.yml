@@ -1,5 +1,8 @@
 ---
 # WORDPRESS CONFIGURATIONS
+# This role is a custom Ansible Role developed by the SMC team.
+# Sets up WordPress related configurations.
+# 
 # https://github.com/darthwade/ansible-role-wordpress/blob/master/tasks/main.yml
 # https://stackoverflow.com/questions/18352682/correct-file-permissions-for-wordpress
 
@@ -50,6 +53,13 @@
   become: yes
   notify: Reload ssh service
 
+# Gives the server privileges to write to WordPress directory
+- name: Adding existing nginx user to group deploy
+  user: name=nginx
+        shell=/bin/bash
+        groups=deploy
+        append=yes
+        
 # SERVER Config
 - name: Create sites directory
   file: state=directory path="{{ item }}" owner=root group=root

@@ -141,4 +141,10 @@ php_source_configure_command: >
   --with-bz2=/usr
   --with-recode=/usr
   --with-mysqli=/usr/bin/mysql_config
-  
+
+#
+# Role: wordpress-config
+#
+
+ssl_cert_key: /etc/pki/tls/certs/self-signed-cert.csr
+ssl_cert_private: /etc/pki/tls/private/self-signed-cert.key
