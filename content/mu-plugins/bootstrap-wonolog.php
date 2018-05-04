@@ -15,7 +15,7 @@ All Wonolog configurations have to be done in a MU plugin
     Inpsyde\Wonolog\bootstrap();
 
     // Uncomment to tell the default handler to use the given directory for logs.
-    // putenv( 'WONOLOG_DEFAULT_HANDLER_ROOT_DIR=/var/log/wonolog' );
+    putenv( 'WONOLOG_DEFAULT_HANDLER_ROOT_DIR=/var/log/wonolog' );
 }
 
 ?>
