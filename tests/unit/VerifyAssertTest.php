@@ -28,4 +28,4 @@ class VerifyAssertTest extends \Codeception\Test\Unit
         $string = "this is a string type";
         $this->assertInternalType('string', $string);
     }
-}
+    

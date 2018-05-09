@@ -1,0 +1,8 @@
+# Configuration for wp-cli
+path: public
+
+
+# Subcommand defaults (e.g. `wp eval-file config`)
+eval-file config:
+    extra-php: |
+        define( 'WP_DEBUG', true );

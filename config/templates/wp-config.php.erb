@@ -30,7 +30,7 @@ define('DB_CHARSET',  'utf8');
 define('DB_COLLATE',  '');
 
 #############################
-# Security Keys (Salt)
+# SECURITY KEYS (SALT)
 #############################
 require('<%= shared_path %>/wp-security-keys.php');
 
@@ -65,14 +65,14 @@ define(   'WP_DEBUG_DISPLAY', false );
 define(   'SCRIPT_DEBUG', true );
 
 # Logging managed by Wonolog
-# Log path: /var/log/wonolog
-# see content/mu-plugins/log-action-wonolog.php
+# Log path: /content/wonolog
+# see /content/mu-plugins/bootstrap-wonolog.php
 
 $autoload_path = "/var/www/html/current/vendor/autoload.php";
 if (file_exists($autoload_path)) { require $autoload_path; }
 
 #############################
-# Authentication Keys
+# AUTHENTICATION KEYS
 #############################
 # Connects to the Chapman University IS&T web service
 # See custom plugin: /content/custom-mail-setup.

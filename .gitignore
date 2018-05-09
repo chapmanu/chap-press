@@ -39,6 +39,7 @@ vendor/*
 /tmp
 php_error_log.txt
 .ruby-version
+/content/wonolog
 
 # Codeception #
 ###################
