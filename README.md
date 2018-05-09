@@ -173,6 +173,11 @@ Capistrano will deploy this repo and WordPress to the staging server.
 
     cap staging deploy
 
+To generate an edited wp-config.php file for the staging server.  
+_Get `config/database.yml` & `config/secrets.yml` from a WDM team member._
+
+    cap staging wp:setup:generate_remote_files
+
 [Wiki](https://github.com/chapmanu/chap-press/wiki/Capistrano)
 
 ***

@@ -28,7 +28,7 @@ set :keep_releases, 5
 ############################################
 
 set :linked_files, %w{wp-config.php}
-set :linked_dirs, %w{content/uploads vendor}
+set :linked_dirs, %w{content/uploads content/wonolog vendor}
 
 namespace :deploy do
   include Helpers
