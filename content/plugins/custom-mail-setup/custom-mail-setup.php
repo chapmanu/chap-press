@@ -4,6 +4,12 @@
  Description: Modify WordPress default mail setup
  Version:     1.0
  Author:      Chapman SMC
+ Text Domain: custom-mail-setup
+
+ Connects to the Chapman University IS&T web service via the wp-config.php credentials (Authentication Keys). 
+
+ Red Hat Linux servers use Postfix as the default MTA. This plugin modifies the default settings and changes the default port from 25 to the submission port 587. Contact IS&T for any issues (port restrictions,etc.) 
+
 */
 
 class smc_mail_Customization {
