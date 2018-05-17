@@ -5,7 +5,7 @@
 #   ansible-playbook webserver.yml -i hosts/virtualbox
 #
 # To run specific roles, tag the role(s) dev and use the --tags option:
-#   ansible-playbook webserver.yml -i hosts/virtualbox --tags dev -v
+#   ansible-playbook webserver.yml -i hosts/virtualbox --tags "nginx" -v
 #
 # See group_vars/webserver for more info on each role.
 #
@@ -27,5 +27,5 @@
     - { role: geerlingguy.firewall,           tags: ['firewall'] }
     - { role: nickhammond.logrotate,          tags: ['log'] }
     - { role: geerlingguy.git,                tags: ['git'] }
-    - { role: ssh-config,                     tags: ['ssh'] }
     - { role: wordpress-config,               tags: ['wordpress'] }
+    

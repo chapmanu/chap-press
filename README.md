@@ -173,6 +173,11 @@ Capistrano will deploy this repo and WordPress to the staging server.
 
     cap staging deploy
 
+To generate an edited wp-config.php file for the staging server.  
+_Get `config/database.yml` & `config/secrets.yml` from a WDM team member._
+
+    cap staging wp:setup:generate_remote_files
+
 [Wiki](https://github.com/chapmanu/chap-press/wiki/Capistrano)
 
 ***
@@ -184,11 +189,11 @@ Capistrano will deploy this repo and WordPress to the staging server.
 [Wonolog](https://github.com/inpsyde/Wonolog) is a logging package for WordPress (based off of [Monolog](https://github.com/Seldaek/monolog)). This package allows anything to be logged in a WordPress site. 
 Wonolog comes with an easy bootstrap routine and some out-of-the-box configurations that make it possible to have a working and effective logging system with zero effort. It is included in the `composer.json` file. 
 
-Log path: `/var/log/wonolog`
+Log path: `/content/wonolog`
 
 **[MU plugins](https://codex.wordpress.org/Must_Use_Plugins)**  
 For custom Wonolog configurations: `content/mu-plugins/bootstrap-wonolog.php`  
-A demo log: `content/mu-plugins/log-action-wonolog.php`
+[Chapress Wiki - Wonolog](https://github.com/chapmanu/chap-press/wiki/Wonolog)
 
 **Automatically logged events include:**
 

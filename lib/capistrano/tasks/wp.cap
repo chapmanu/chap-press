@@ -1,0 +1,82 @@
+namespace :wp do
+  include Helpers
+
+  task :set_permissions do
+    on roles(:app) do
+      execute :chmod, "-R 755 #{shared_path}/content/uploads"
+    end
+  end
+
+  namespace :setup do
+
+    desc "Generates wp-config.php on remote server"
+    task :generate_remote_files do
+      on roles(:web) do
+
+        if confirm("Do you want to create/overwrite #{shared_path}/wp-config.php on #{fetch(:stage_domain)}?")
+
+          execute :mkdir, "-p #{shared_path}"
+
+          # Setup Variables
+          wp_env       = fetch(:stage)
+          wp_debug     = false
+          wp_domain    = fetch(:stage_domain)
+          project_path = fetch(:deploy_to) + '/current'
+
+          # Generate new salt
+          secret_keys  = capture("curl -s -k https://api.wordpress.org/secret-key/1.1/salt")
+
+          # Get database credentials
+          database = YAML::load_file('config/database.yml')[fetch(:stage).to_s]
+
+          # Get other credentials
+          secrets = YAML::load_file('config/secrets.yml')
+
+          # Create config file in remote environment
+          db_config = ERB.new(File.read('config/templates/wp-config.php.erb')).result(binding)
+          io = StringIO.new(db_config)
+          upload! io, File.join(shared_path, "wp-config.php")
+
+          print_success("The WordPress config file has been created on #{fetch(:stage_domain)}
+NOTE: Because the salt keys were changed, all WP users must now re-authenticate. ")
+
+        else # else no confirm
+          print_warning('No changes were made to the wp-config file')
+        end # end confirm
+
+        if confirm("Generate new security keys and force all users to re-authenticate on #{fetch(:stage_domain)}?")
+          invoke 'wp:setup:generate_security_keys'
+        end
+
+      end
+
+    end
+
+    desc "Create or update the WP Security Keys"
+    task :generate_security_keys do
+      on roles(:web) do
+
+        # Fetch new keys
+        secret_keys = "<?php \n\n" + `curl -s -k https://api.wordpress.org/secret-key/1.1/salt`
+
+        # Write to disk
+        io = StringIO.new(secret_keys)
+        upload! io, File.join(shared_path, "wp-security-keys.php")
+        execute :chmod, "644 #{shared_path}/wp-security-keys.php"
+        # Done!
+        print_success "The WP Security Keys have been changed. Existing user sessions have been invalidated and users must log in again on #{fetch(:stage_domain)}."
+
+      end
+    end
+
+
+    desc "Setup WP on remote environment"
+    task :remote do
+      invoke 'wp:setup:generate_remote_files'
+      invoke 'deploy'
+      invoke 'wp:set_permissions'
+    end
+
+  end
+
+end

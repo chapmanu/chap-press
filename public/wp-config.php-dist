@@ -42,7 +42,7 @@ define('DB_CHARSET',  'utf8');
 define('DB_COLLATE',  '');
 
 #############################
-# AUTHENITICATION KEYS & SALTS
+# AUTHENTICATION KEYS & SALTS
 #############################
 # For ChapPress developers: These values need to be updated before release to production for the Chappress
 # project.
@@ -57,40 +57,24 @@ define('SECURE_AUTH_SALT', 'put your unique phrase here');
 define('LOGGED_IN_SALT',   'put your unique phrase here');
 define('NONCE_SALT',       'put your unique phrase here');
 
-
 #############################
 # DEBUG
 #############################
 # For developers working in WordPress debugging mode.
 # When WP_DEBUG_LOG is set to true, Wonolog will log everything.
-# content/debug.log
 
 define(   'WP_DEBUG', true );
-define(   'WP_DEBUG_LOG', true ); 
+define(   'WP_DEBUG_LOG', true );
 define(   'WP_DEBUG_DISPLAY', false );
 @ini_set( 'display_errors', 0 );
 define(   'SCRIPT_DEBUG', true );
 
-#############################
-# LOGGING 
-############################# 
-# Log path: public/wp-content/wonolog
-# A general logging MU plugin has been created at:
-# content/mu-plugins/log-action-wonolog.php
-#  
-# Ensure Composer autoload is loaded in wp-config.php 
-# or anytime before the 'muplugins_loaded' action is fired
+# Logging managed by Wonolog
+# Log path: /content/wonolog
+# see /content/mu-plugins/bootstrap-wonolog.php
 
-# Path file location for Composer autoload
 $autoload_path = __DIR__ . '/../vendor/autoload.php';
-
-if (file_exists($autoload_path)) {
-  require $autoload_path;
-}
-
-# Logging in Wonolog is done via a WordPress function: do_action()
-# An example of logging with Wonolog:
-# do_action( 'wonolog.log', 'Some event happened');
+if (file_exists($autoload_path)) { require $autoload_path; }
 
 #############################
 # PATHS AND URLS

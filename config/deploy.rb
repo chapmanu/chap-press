@@ -1,10 +1,10 @@
 ###########################################
-# Capistrano deployment sourced from Chapman Blogs
-# https://github.com/chapmanu/blogs
-# Capistrano Gem updated to 3.9
+# Capistrano Deployment
+# https://github.com/chapmanu/chap-press
 ########################################### 
  
-lock '3.9'
+# config valid for current version and patch releases of Capistrano
+lock "~> 3.10.2"
 
 ############################################
 # Setup project
@@ -28,7 +28,7 @@ set :keep_releases, 5
 ############################################
 
 set :linked_files, %w{wp-config.php}
-set :linked_dirs, %w{content/uploads vendor}
+set :linked_dirs, %w{content/uploads content/wonolog vendor}
 
 namespace :deploy do
   include Helpers

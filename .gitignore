@@ -4,7 +4,7 @@
 *.sql
 *.sqlite
 /config/database.yml
-secrets.yml
+/config/secrets.yml
 
 # OS generated files #
 ######################
@@ -39,6 +39,7 @@ vendor/*
 /tmp
 php_error_log.txt
 .ruby-version
+/content/wonolog
 
 # Codeception #
 ###################
@@ -47,6 +48,7 @@ php_error_log.txt
 # Ansible #
 ###################
 *.retry
+.galaxy_install_info
 
 # Sass #
 ###################

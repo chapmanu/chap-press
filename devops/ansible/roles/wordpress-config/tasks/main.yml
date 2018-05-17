@@ -1,5 +1,8 @@
 ---
 # WORDPRESS CONFIGURATIONS
+# This role is a custom Ansible Role developed by the SMC team.
+# Sets up WordPress related configurations.
+# 
 # https://github.com/darthwade/ansible-role-wordpress/blob/master/tasks/main.yml
 # https://stackoverflow.com/questions/18352682/correct-file-permissions-for-wordpress
 
@@ -38,6 +41,25 @@
   mysql_user: name=bloguser password=password priv=chappress_vm.*:ALL host='localhost' state=present
   when: isVirtualMachine
 
+# IS&T sets AllowUsers in sshd config by default. So let's go with that and add
+# that line with current ansible and app users.
+# Source: https://stackoverflow.com/a/31436781/6763239
+# See also: https://github.com/chapmanu/imposter/blob/development/devops/ansible/roles/ssh/tasks/main.yml
+- name: Add users to sshd_config AllowUsers line
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: '^AllowUsers'
+    line: "AllowUsers {{ ansible_user }} {{ app_user }} root"
+  become: yes
+  notify: Reload ssh service
+
+# Gives the server privileges to write to WordPress directory
+- name: Adding existing nginx user to group deploy
+  user: name=nginx
+        shell=/bin/bash
+        groups=deploy
+        append=yes
+        
 # SERVER Config
 - name: Create sites directory
   file: state=directory path="{{ item }}" owner=root group=root
